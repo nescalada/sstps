@@ -1,9 +1,9 @@
 function [x, y, t] = dosis()
 
+	u 	= zeros(1,70);
+	t 	= [0:0.1:4];
 	
-	t = [0:0.1:6.1];
-	length(t)
-	 x	= [30];
+	 x	= [0];
 	 y	= [0];
 	k0	= 0.5;
 	k1	= 2.5;
@@ -14,22 +14,22 @@ function [x, y, t] = dosis()
 	c2 	= 0;
 	i       = 1;
 	tiemp   = 0;
-	K 	= 0;
-	u 	= 30
+	K 	= 4;
+		
+	while( tiemp < 4 )
+
+		u(i) 	= K* 30 - K * c2;
 	
-	while( tiemp < 6 )
-			
-	
-		m1 = h * (-( k1 + k0 ) * c1 + b0 * u );
+		m1 = h * (-( k1 + k0 ) * c1 + b0 * u(i) );
 		n1 = h * (k2 * c1 - k2 * c2 );
 		
-		m2 = h * (-( k1 + k0 ) * ( c1 + m1 / 2 ) + b0 * u );
+		m2 = h * (-( k1 + k0 ) * ( c1 + m1 / 2 ) + b0 * u(i) );
 		n2 = h * (k2 * ( c1 + m1 /2 ) - k2 * (c2 + n1/ 2) );
 	
-		m3 = h * (-( k1 + k0 ) * ( c1 + m2 / 2 ) + b0 * u );
+		m3 = h * (-( k1 + k0 ) * ( c1 + m2 / 2 ) + b0 * u(i) );
 		n3 = h * (k2 * ( c1 + m2 /2 ) - k2 * (c2 + n2/ 2) );
 
-		m4 = h * (-( k1 + k0 ) * ( c1 + m3 ) + b0 * u );
+		m4 = h * (-( k1 + k0 ) * ( c1 + m3 ) + b0 * u(i) );
 		n4 = h * (k2 * ( c1 + m3 ) - k2 * (c2 + n3 ) );
 
 		x = [x; ( c1 + ( m1 + 2*m2 + 2*m3 + m4 ) / 6 )];
@@ -43,6 +43,6 @@ function [x, y, t] = dosis()
 		i++;
 		
 	end
-	plot(t, x, t, y)
+	plot(t, x, t, y,t, 30,'')
 end
 
