@@ -1,4 +1,4 @@
-function [x, y, t] = dosis()
+function [x, y, t] = dosis(K)
 
 	u 	= zeros(1,500);		%funcion de imput
 	t 	= [0:0.01:1.5];
@@ -14,7 +14,8 @@ function [x, y, t] = dosis()
 	c2 	= 0;		% concentracion en organo inicial
 	i       = 1;
 	tiemp   = 0;		% tiempo en horas
-	K 	= 9;		% Constante K que hay que variar experimentalmente
+	%K 	= 9;		% Constante K que hay que variar experimentalmente
+    
 	%u(i)	= 60;
 
 	while( tiemp < 1.5 )
@@ -41,8 +42,10 @@ function [x, y, t] = dosis()
 		c1 = x(i + 1);
 		c2 = y(i + 1);
 		
-		i++;
-	end
-	plot(t, x, t,y  )
+		i=i+1;
+    end
+    hold on
+	plot(t, x)
+    plot( t,y  )
 end
 
