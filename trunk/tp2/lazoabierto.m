@@ -1,4 +1,4 @@
-function [x, y, t] = dosis(K)
+function [x, y, t] = lazoabierto(K)
 
 	u 	= zeros(1,500);		%funcion de imput
 	t 	= [0:0.01:10.01];
@@ -47,8 +47,9 @@ function [x, y, t] = dosis(K)
 length( x )
 length( y )
 length( t )
-  %  hold on
-	plot(t, x, t,y)
+  hold on
+	plot(t, x, '-')
+    plot(t,y, '.')
     
 end
 
