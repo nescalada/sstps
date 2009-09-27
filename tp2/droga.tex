@@ -609,30 +609,29 @@ Cin\'etica farmacol\'ogica, Modelo de dos compartimentos, realimentaci\'on
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
 \IEEEPARstart{L}{ }a farmacocin\'etica, es la rama de la farmacolog\'ia, que estudia la din\'amica que describe 
-como una droga se distribuye en el organ\'ismo, y los procesos a los que el f\'armaco es sometido a trav\'es de su
+c\'omo una droga se distribuye en el organismo, y los procesos a los que el f\'armaco es sometido a trav\'es de su
 paso por el mismo.\\
-\indent Nosotros modelamos la din\'amica de una sustancia, mediante un modelo de dos compartimentos, 
-los cuales uno cumple el rol de la sangre en el organ\'ismo, y el otro compartimento representa un \'organo cualquiera 
+\indent Nosotros modelamos la din\'amica de una sustancia mediante un modelo de dos compartimentos, 
+donde uno cumple el rol de la sangre en el organ\'ismo, y el otro representa un \'organo cualquiera 
 del cuerpo. En el modelo, consideramos que los compartimentos poseen paredes porosas que permiten el intercambio 
 de materia, y asi simulamos la transferencia de la droga desde la sangre hacia el \'organo y visceversa. \\
-\indent Tras una serie de simulaciones expermientales logramos establecer los par\'ametros mas adecuados para lograr
+\indent Tras una serie de simulaciones expermientales logramos establecer los par\'ametros m\'as adecuados para lograr
 la estabilidad en la concentraci\'on de la droga en un determinado tiempo.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 \section{Modelo de Compartimentos}
 El modelo de compartimentos que utilizamos lo mostramos en la figura 1. Estimamos tres tasas de difusi\'on $ q_{0}$, $q_{12}$ y $q_{21}$ que dependen de
 las caracter\'isticas del intercambio de sustancia. $u$ es la dosis aplicada y representa la entrada del sistema.\\
-\indent La dosis de flujo de sustancia esta dada por las ecuaciones diferenciales x1 y x2. donde $c_{1}1$ es la concentraci\'on de la sustancia 
-en sangre. $c_{2}$ representa la concentraci\'on de la sustancia en el \'organo. 
+\indent La dosis de flujo de sustancia est\'a dada por las ecuaciones diferenciales (1) y (2) donde $c_{1}$ es la concentraci\'on de la sustancia en sangre, $c_{2}$ representa la concentraci\'on de la sustancia en el \'organo. 
 \begin{align}
  V_{1}\frac{dc_{1}}{dt} &= q_{12}(c_{2} - c_{1}) - q_{0}c_{1} + c_{0}u \\
-V_{2}\frac{dc_{2}}{dt} &= q_{21}(c_{1} - c_{2})
+ V_{2}\frac{dc_{2}}{dt} &= q_{21}(c_{1} - c_{2})
 \end{align}
 Llamando $k_{0} = \frac{ q_{0} }{ V_{1} } $, $ k_{1} = \frac{q_{12}}{V_{1}}$, $k_{2} =  \frac{ q_{21} }{ V_{2} }$ y $ b_{0} = \frac{c_{0}}{V_{1}}$ 
 obtenemos las ecuaciones (3) y (4).
 \begin{align}
  \frac{dc_{1}}{dt} &= -(k_{1} + k_{0}) + k_{1}c_{2} + b_{0}u \\
-\frac{dc_{2}}{dt} &= k_{2}c_{1} - k_{2}c_{2}
+ \frac{dc_{2}}{dt} &= k_{2}c_{1} - k_{2}c_{2}
 \end{align}
 Expresamos el sistema de ecuaciones diferenciales de (3) y (4) como un sistema lineal $ \dot{x} = Ax + bu$ expresado en (5). $x = ( c_{1}, c_{2} )$.
 \begin{equation}
@@ -653,7 +652,7 @@ como $ u(t) = K(r(t) - y(t))$. $r(t)$ es la concentraci\'on deseada. En nuestras
 
 
 \begin{figure}[t]
-\label{fig:grafico_k}
+%\label{fig:modelo}
 \begin{center}
 %\centering
 \includegraphics[width=3.2in]{Imagen 1} 
@@ -666,7 +665,28 @@ $ k_{1} = \frac{q_{12}}{V_{1}}$, $k_{2} =  \frac{ q_{21} }{ V_{2} }$}
 \end{center}
 \end{figure}
 \section{Estabilidad del modelo}
- ( aca habria que sacar los autovalores y autovectores y explicar que el modelo es estable y poner algun grafico)
+Para analizar la estabilidad del modelo propuesto, se calculan los autovalores asociados a la matriz del sistema ($A$).
+\begin{equation}
+\label{eqn:autovalores1}
+  	\bigg\vert
+	\lambda Id - A
+	\bigg\vert
+	=
+	\bigg\vert
+	\begin{matrix} 
+		\lambda + k_{0} + k_{1} 	&	-k_{1} \\
+		-k_{2}				&	\lambda + k_{2}
+	\end{matrix}
+	\bigg\vert
+\end{equation}
+Calculando el m\'odulo se obtiene la ecuaci\'on \ref{eq:autovalores2}, y se iguala a cero
+para determinar los autovalores
+\begin{equation}
+\label{eq:autovalores2}
+	\lambda^2 + ( k_{0} + k_{1} + k_{2} ) \lambda + k_{0} k_{2} = 0
+\end{equation}
+Que resultan ser $\lambda_{1} = -0.261387212$ y $\lambda_{2} = -5.738612788$.
+Como ambos son negativos, el modelo propuesto es estable.
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
 
