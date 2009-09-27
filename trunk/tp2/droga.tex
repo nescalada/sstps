@@ -620,16 +620,25 @@ la estabilidad en la concentraci\'on de la droga en un determinado tiempo.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 \section{Modelo de Compartimentos}
-El modelo de compartimentos que utilizamos lo mostramos en la figura 1. 
+El modelo de compartimentos que utilizamos lo mostramos en la figura 1. Estimamos tres tasas de difusi\'on $ q_{0}$, $q_{12}$ y $q_{21}$ que dependen de
+las caracter\'isticas del intercambio de sustancia. $u$ es la dosis aplicada y representa la entrada del sistema.\\
+\indent La dosis de flujo de sustancia esta dada por las ecuaciones diferenciales x1 y x2.
+\begin{align}
+ V_{1}\frac{dc_{1}}{dt} &= q_{12}(c_{2} - c_{1}) - q_{0}c_{1} + c_{0}u \\
+V_{2}\frac{dc_{2}}{dt} &= q_{21}(c_{1} - c_{2})
+\end{align}
+
 \begin{figure}[t]
 \label{fig:grafico_k}
 \begin{center}
 %\centering
-\includegraphics[width=3.2in]{Imagen 1}
+\includegraphics[width=3.2in]{Imagen 1} 
 % where an .eps filename suffix will be assumed under latex, 
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 % via \DeclareGraphicsExtensions.
-\caption{$ V_{1}$ representa el volumen de sangre. $V_{2} $ representa el vol\'umen del \'organo.  }
+\caption{$ V_{1}$ representa el volumen de sangre. $V_{2} $ representa el vol\'umen del \'organo. $k_{0} = \frac{ q_{0} }{ V_{1} } $, 
+$ k_{1} = \frac{q_{12}}{V_{1}}$, $k_{2} =  \frac{ q_{21} }{ V_{2} }$}
+
 \end{center}
 \end{figure}
 \section{Estabilidad del modelo}
