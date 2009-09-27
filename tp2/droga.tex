@@ -687,7 +687,21 @@ para determinar los autovalores
 	\lambda^2 + ( k_{0} + k_{1} + k_{2} ) \lambda + k_{0} k_{2} = 0
 \end{equation}
 que resultan ser $\lambda_{1} = -0.261387212$ y $\lambda_{2} = -5.738612788$.
-Como ambos son negativos, el modelo propuesto es estable.
+\indent Al obtener autovalores negativos, determinamos teoricamente que el modelo del sistema es estable. Hicimos una simulaci\'on 
+del modelo a lazo abierto ( sin realimentacion ) con una entrada inicial de 30 mol y corroboramos que el modelo del sistema es estable 
+como observamos en la figura 2.
+
+\begin{figure}[t]
+%\label{fig:sim1}
+\begin{center}
+%\centering
+\includegraphics[width=3.2in]{lazo_abierto}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{epigrafe}
+\end{center}
+\end{figure}
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
 
@@ -722,18 +736,6 @@ Como ambos son negativos, el modelo propuesto es estable.
 %\end{table}
 
 
-%\begin{figure}[t]
-%\label{fig:sim1}
-%\begin{center}
-%\centering
-%\includegraphics[width=3.2in]{simulacro}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulaci\'on de la batalla de Iwo Jima}
-%\end{center}
-%\end{figure}
-
 \section{Simulaciones}
 En nuestro modelo proponemos una concentraci\'on deseada $r(t)$ de 30 mol. Por lo tanto la funcion de realimentaci\'on que nos queda la vemos 
 en la ecuaci\'on 8.
@@ -742,7 +744,7 @@ en la ecuaci\'on 8.
 \end{equation}
 \indent Nos propusimos determinar el rango de valores de $K$ tal que la concentraci\'on deseada se alcance en 0.3 horas. Para ello realizamos
  reiteradas simulaciones del modelo variando el valor de $K$. Determinamos experimentalmente que el rango mas adecuado de $ K $ para que la 
-concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura 2 y en la figura 3.
+concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura 3 y en la figura 4.
 
 \begin{figure}[t]
 %\label{fig:sim1}
