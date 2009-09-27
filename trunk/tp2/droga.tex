@@ -648,7 +648,7 @@ Expresamos el sistema de ecuaciones diferenciales de (3) y (4) como un sistema l
 \end{matrix} \right) u
 \end{equation}
 Lo que medimos como salida del sistema es la concentraci\'on $c_{2}$, $y = (0,  1)x$, $ u $ es la realimentaci\'on que controla el sistema, que modelamos 
-como $ u(t) = K(r(t) - y(t))$. $r(t)$ es la concentraci\'on deseada. En nuestras simulaciones, $r(t) = 30$ mol
+como $ u(t) = K(r(t) - y(t))$. $r(t)$ es la concentraci\'on deseada. En nuestras simulaciones, $r(t) = 30$ mol. 
 
 
 \begin{figure}[t]
@@ -735,7 +735,27 @@ Como ambos son negativos, el modelo propuesto es estable.
 %\end{figure}
 
 \section{Simulaciones}
-(aca habria que ir cambiando K y explicar cual K es el adecuado para controlar el sistema )
+En nuestro modelo proponemos una concentraci\'on deseada $r(t)$ de 30 mol. Por lo tanto la funcion de realimentaci\'on que nos queda la vemos 
+en la ecuaci\'on 8.
+\begin{equation}
+ u(t) = K 30 - Kc_{2}
+\end{equation}
+\indent Nos propusimos determinar el rango de valores de $K$ tal que la concentraci\'on deseada se alcance en 0.3 horas. Para ello realizamos
+ reiteradas simulaciones del modelo variando el valor de $K$. Determinamos experimentalmente que el rango mas adecuado de $ K $ para que la 
+concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura 2 y en la figura 3.
+
+\begin{figure}[t]
+%\label{fig:sim1}
+\begin{center}
+%\centering
+\includegraphics[width=3.2in]{sangre_lazo_cerrado}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulaci\'on de la batalla de Iwo Jima}
+\end{center}
+\end{figure}
+\indent Para 
 
 \section{Variables de estado}
 
