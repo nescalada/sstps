@@ -622,11 +622,21 @@ la estabilidad en la concentraci\'on de la droga en un determinado tiempo.
 \section{Modelo de Compartimentos}
 El modelo de compartimentos que utilizamos lo mostramos en la figura 1. Estimamos tres tasas de difusi\'on $ q_{0}$, $q_{12}$ y $q_{21}$ que dependen de
 las caracter\'isticas del intercambio de sustancia. $u$ es la dosis aplicada y representa la entrada del sistema.\\
-\indent La dosis de flujo de sustancia esta dada por las ecuaciones diferenciales x1 y x2.
+\indent La dosis de flujo de sustancia esta dada por las ecuaciones diferenciales x1 y x2. donde $c_{1}1$ es la concentraci\'on de la sustancia 
+en sangre. $c_{2}$ representa la concentraci\'on de la sustancia en el \'organo. 
 \begin{align}
  V_{1}\frac{dc_{1}}{dt} &= q_{12}(c_{2} - c_{1}) - q_{0}c_{1} + c_{0}u \\
 V_{2}\frac{dc_{2}}{dt} &= q_{21}(c_{1} - c_{2})
 \end{align}
+Llamando $k_{0} = \frac{ q_{0} }{ V_{1} } $, $ k_{1} = \frac{q_{12}}{V_{1}}$, $k_{2} =  \frac{ q_{21} }{ V_{2} }$ y $ b_{0} = \frac{c_{0}}{V_{1}}$ 
+obtenemos las ecuaciones (3) y (4).
+\begin{align}
+ \frac{dc_{1}}{dt} &= -(k_{1} + k_{0}) + k_{1}c_{2} + b_{0}u \\
+\frac{dc_{2}}{dt} &= k_{2}c_{1} - k_{2}c_{2}
+\end{align}
+Expresamos el sistema de ecuaciones diferenciales de (3) y (4) como un sistema lineal $ \dot{x} = Ax + bu$ expresado en (5) 
+
+
 
 \begin{figure}[t]
 \label{fig:grafico_k}
@@ -846,7 +856,7 @@ $ k_{1} = \frac{q_{12}}{V_{1}}$, $k_{2} =  \frac{ q_{21} }{ V_{2} }$}
 
 
 \bibitem{IEEEhowto:kopka}
- Wagner, John G. \emph{Farmacocin\'etica cl\'inica.}
+ Lanchester, Frederick William. \emph{Aircraft in Warfare: The Dawn of the Fourth Arm.}
 
 \end{thebibliography}
 
