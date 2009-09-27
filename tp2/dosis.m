@@ -45,7 +45,7 @@ function [x, y, t] = dosis(K)
 		i=i+1;
     end
     hold on
-	plot(t, x)
+	%plot(t, x)
     plot( t,y  )
 end
 
