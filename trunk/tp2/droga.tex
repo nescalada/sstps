@@ -421,7 +421,7 @@
 
 
 % correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor u-san-do u-sa-mos}
+\hyphenation{ semi-conduc-tor u-san-do u-sa-mos}
 
 \begin{document}
 %
@@ -772,7 +772,45 @@ concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura
 \end{figure}
 \indent Para 
 
-\section{Variables de estado}
+\section{Realimentaci\'on en variables de estado}
+
+Realimentamos el modelo nuevamente, pero esta vez utilizamos variables de estado, quedando la funci\'on de realimentaci\'on $ u(t) =
+ r(t) - \beta_{1}c_1 - \beta_{2}c_{2}$. Determinamos $ \beta_1$ y $\beta_2 $ de manera tal que la concentraci\'on de la
+ sustancia se estabilice sin oscilaciones.\\
+ \indent Para determinar $ \beta_1$ y $\beta_2 $, elegimos que los autovalores del modelo a lazo cerrado $\dot{x}(t)=(A-bk^T)x(t)-br(t)$  sean negativos y reales. Donde $A$ y  $b$ corresponden al modelo a lazo abierto,  $k^T=(\beta_1, \beta_2)$ y $r(t)$ es el nivel de concentraci\'on que deseamos. Al mismo tiempo
+ dichos autovalores deben cumplir que $\frac{1}{\lambda_{1,2}} \leq 0.3 $ para que la soluci\'on exponencial se estabilice
+ en 0.3 horas. \\
+
+\indent A partir del modelo a lazo cerrado, obtenemos el polinomio caracter\'istico: $0= \lambda^2 + \lambda(1.5 \beta_1 +6) +(4.5 \beta_1 + 4.5\beta_2)$.
+ \indent Los autovalores que elegimos los vemos en ( 9 ).
+ \begin{equation}
+  \lambda_1 = -2.49 \hspace{0.8 cm} \lambda_2 = -1.8 
+ \end{equation}
+ Adem\'as sabemos que $\lambda^2-(\lambda_1+\lambda_2)\lambda + \lambda_1 \lambda_2 $.  Con los autovalores de ( 9 ) determinamos los valores
+ de $ \beta_1$ y $\beta_2 $ que observamos en ( 10 ).
+ \begin{equation}
+  \beta_1 = -1.14  \hspace{0.8 cm} \beta_2 = 2.136
+ \end{equation}
+
+En la figura (5) vemos el nivel de concentraci\'on en funci\'on del tiempo, para la realimentaci\'on con ganancias $\beta_1$ y $\beta_2$.  
+
+
+\begin{figure}[t]
+%\label{fig:sim1}
+\begin{center}
+%\centering
+\includegraphics[width=3.2in]{sangre_puntob}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{Observamos que la concentraci\'on de droga en sangre se estabiliza en un nivel de 30 mol cerca de las 2 horas de la aplicaci\'on de la droga. }
+\end{center}
+\end{figure}
+
+
+
+
+
 
 
 % An example of a floating figure using the graphicx package.
@@ -846,10 +884,10 @@ concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura
 
 
 \section{Conclusi\'on}
-%Con el modelo que propusimos de la batalla de Iwo Jima, expresado por las ecuaciones diferenciales 8 y 9, 
-%nos aproximamos considerablemente a los valores reales. Sin embargo, el modelo puede ser mejorado agregando a las ecuaciones factores que 
-%pueden influir en la cantidad de bajas de cada ej\'ercito, como por ejemplo estimar una tasa de p\'erdidas operativas
-%que puede depender de la calidad m\'edica, la alimentaci\'on, o las deserciones de ambas fuerzas.
+
+
+
+Con los autovalores que elegimos, el sistema no oscila y se estabiliza en un tiempo mayor al que esperamos.
 
 
 
@@ -926,8 +964,7 @@ concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura
 
 
 \bibitem{IEEEhowto:kopka}
- Lanchester, Frederick William. \emph{Aircraft in Warfare: The Dawn of the Fourth Arm.}
-
+PONER ALGOOO
 \end{thebibliography}
 
 \end{document}
