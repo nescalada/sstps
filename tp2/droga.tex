@@ -525,9 +525,9 @@
 \IEEEcompsoctitleabstractindextext{%
 \begin{abstract}
 %\boldmath
-Simulamos un sistema de administraci\'on de dosis de una droga en sangre. Variamdo par\'ametros del modelo, buscamos experimentalmente
+Simulamos un sistema de administraci\'on de dosis de una droga en sangre. Variando par\'ametros del modelo, buscamos experimentalmente
 mediante reiteradas simulaciones, lograr establecer una pol\'itica adecuada que controle la concentraci\'on de la sustancia en la sangre.
-en la sangre. Analizamos la estabilidad del modelo
+ Analizamos la estabilidad del modelo.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -612,17 +612,17 @@ Cin\'etica farmacol\'ogica, Modelo de dos compartimentos, realimentaci\'on
 c\'omo una droga se distribuye en el organismo, y los procesos a los que el f\'armaco es sometido a trav\'es de su
 paso por el mismo.\\
 \indent Nosotros modelamos la din\'amica de una sustancia mediante un modelo de dos compartimentos, 
-donde uno cumple el rol de la sangre en el organ\'ismo, y el otro representa un \'organo cualquiera 
+donde uno cumple el rol de la sangre en el organismo, y el otro representa un \'organo cualquiera 
 del cuerpo. En el modelo, consideramos que los compartimentos poseen paredes porosas que permiten el intercambio 
-de materia, y asi simulamos la transferencia de la droga desde la sangre hacia el \'organo y visceversa. \\
-\indent Tras una serie de simulaciones expermientales logramos establecer los par\'ametros m\'as adecuados para lograr
+de materia, y asi simulamos la transferencia de la droga desde la sangre hacia el \'organo y viceversa. \\
+\indent Tras una serie de simulaciones logramos establecer los par\'ametros m\'as adecuados para lograr
 la estabilidad en la concentraci\'on de la droga en un determinado tiempo.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 \section{Modelo de Compartimentos}
 El modelo de compartimentos que utilizamos lo mostramos en la figura 1. Estimamos tres tasas de difusi\'on $ q_{0}$, $q_{12}$ y $q_{21}$ que dependen de
 las caracter\'isticas del intercambio de sustancia. $u$ es la dosis aplicada y representa la entrada del sistema.\\
-\indent La dosis de flujo de sustancia est\'a dada por las ecuaciones diferenciales (1) y (2) donde $c_{1}$ es la concentraci\'on de la sustancia en sangre, $c_{2}$ representa la concentraci\'on de la sustancia en el \'organo. 
+\indent La dosis de flujo de sustancia est\'a dada por las ecuaciones diferenciales (1) y (2) donde $c_{1}$ es la concentraci\'on de la sustancia en sangre y $c_{2}$ representa la concentraci\'on de la sustancia en el \'organo. 
 \begin{align}
  V_{1}\frac{dc_{1}}{dt} &= q_{12}(c_{2} - c_{1}) - q_{0}c_{1} + c_{0}u \\
  V_{2}\frac{dc_{2}}{dt} &= q_{21}(c_{1} - c_{2})
@@ -647,7 +647,7 @@ Expresamos el sistema de ecuaciones diferenciales de (3) y (4) como un sistema l
  0
 \end{matrix} \right) u
 \end{equation}
-Lo que medimos como salida del sistema es la concentraci\'on $c_{2}$, $y = (0,  1)x$, $ u $ es la realimentaci\'on que controla el sistema, que modelamos 
+Lo que medimos como salida del sistema es la concentraci\'on en el \'organo ($c_{2}$). $ u $ es la realimentaci\'on que controla el sistema, que modelamos 
 como $ u(t) = K(r(t) - y(t))$. $r(t)$ es la concentraci\'on deseada. En nuestras simulaciones, $r(t) = 30$ mol. 
 
 
@@ -666,7 +666,7 @@ $ k_{1} = \frac{q_{12}}{V_{1}}$, $k_{2} =  \frac{ q_{21} }{ V_{2} }$}
 
 \section{Estabilidad del modelo}
 Para analizar la estabilidad del modelo propuesto, calculamos los autovalores asociados a la matriz del sistema ($A$)
-obteniendo la ecuaci\'on 6.
+obteniendo la ecuaci\'on (6).
 \begin{equation}
 \label{eqn:autovalores1}
   	\bigg\vert
@@ -680,7 +680,7 @@ obteniendo la ecuaci\'on 6.
 	\end{matrix}
 	\bigg\vert
 \end{equation}
-Calculando el m\'odulo obtenemos la ecuaci\'on \ref{eq:autovalores2}, e igualamos a cero
+Calculando el m\'odulo obtenemos la ecuaci\'on (\ref{eq:autovalores2}), e igualamos a cero
 para determinar los autovalores
 \begin{equation}
 \label{eq:autovalores2}
@@ -737,13 +737,13 @@ como observamos en la figura 2.
 
 
 \section{Simulaciones}
-En nuestro modelo proponemos una concentraci\'on deseada $r(t)$ de 30 mol. Por lo tanto la funcion de realimentaci\'on que nos queda la vemos 
-en la ecuaci\'on 8.
+En nuestro modelo proponemos una concentraci\'on deseada $r(t)$ de 30 mol. Por lo tanto la funci\'on de realimentaci\'on que nos queda la vemos 
+en la ecuaci\'on (8).
 \begin{equation}
  u(t) = K 30 - Kc_{2}
 \end{equation}
 \indent Nos propusimos determinar el rango de valores de $K$ tal que la concentraci\'on deseada se alcance en 0.3 horas. Para ello realizamos
- reiteradas simulaciones del modelo variando el valor de $K$. Determinamos experimentalmente que el rango mas adecuado de $ K $ para que la 
+ reiteradas simulaciones del modelo variando el valor de $K$. Determinamos experimentalmente que el rango m\'as adecuado de $ K $ para que la 
 concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura 3 y en la figura 4.
 
 \begin{figure}[t]
