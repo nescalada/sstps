@@ -1,5 +1,5 @@
-%function y=funa1(t,X)
-function y = funa1(X, t)
+function[y] =funa1(t,X)
+%function y = funa1(X, t)
 
 lambda1 = -0.83/0.3333333
 lambda2 = -0.6/0.333333
@@ -20,5 +20,5 @@ B=[ b0; 0 ];
 
 y= (A * X) + B*30;
 
-
-endfunction
+end
+%endfunction
