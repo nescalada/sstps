@@ -792,14 +792,14 @@ Realimentamos el modelo nuevamente, pero esta vez utilizamos variables de estado
   \beta_1 = -1.14  \hspace{0.8 cm} \beta_2 = 2.136
  \end{equation}
 
-En la figura (5) vemos el nivel de concentraci\'on en funci\'on del tiempo, para la realimentaci\'on con ganancias $\beta_1$ y $\beta_2$.  
+En la figura 5 vemos el nivel de concentraci\'on en sangre de la sustancia en funci\'on del tiempo, para la realimentaci\'on con ganancias $\beta_1$ y $\beta_2$.  
 
 
 \begin{figure}[t]
 %\label{fig:sim1}
 \begin{center}
 %\centering
-\includegraphics[width=3.2in]{sangre_puntob}
+\includegraphics[width=3.2in]{verdadera_parteb}
 % where an .eps filename suffix will be assumed under latex, 
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 % via \DeclareGraphicsExtensions.
@@ -884,7 +884,11 @@ En la figura (5) vemos el nivel de concentraci\'on en funci\'on del tiempo, para
 
 
 \section{Conclusi\'on}
-
+Mediante los resultados que obtenemos en las simulaciones realizadas, podemos determinar valores
+de la constante $K$ que hagan estable al modelo en un tiempo determinado. Dicho de otra manera, logramos construir un 
+controlador para una aplicaci\'on de una droga en sangre. Tambi\'en observamos que el modelo de compartimentos
+se comporta adecuadamente, y muestra las oscilaciones que existen entre un \'organo y la sangre durante la transferencia
+de sustancias.
 
 
 Con los autovalores que elegimos, el sistema no oscila y se estabiliza en un tiempo mayor al que esperamos.
