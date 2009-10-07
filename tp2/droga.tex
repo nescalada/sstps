@@ -891,7 +891,16 @@ se comporta adecuadamente, y muestra las oscilaciones que existen entre un \'org
 de sustancias.
 
 
-Con los autovalores que elegimos, el sistema no oscila y se estabiliza en un tiempo mayor al que esperamos.
+\indent Al buscar la ganancia de la funci\'on de realimentaci\'on del sistema a lazo cerrado, obtenemos un sistema
+que se estabiliza m\'as lentamente, que teniendo uno que depende de la variable $K$.   Sin embargo, lo bueno de esta
+implementaci\'on de la funci\'on de realimentaci\'on, es que no presenta oscilaciones.  
+
+\indent Si queremos evitar que la droga alcance alcance alg\'un valor t\'oxico para el organismo, entonces, 
+la funci\'on de realimentaci\'on que depende de $\beta_1$ y $\beta_2$ es mejor, aunque alcance el nivel deseado en m\'as tiempo.
+Por el contrario, si deseamos que el nivel de droga en sangre requerido, se alcance lo m\'as r\'apido posible, entonces conviene
+usar un sistema realimentado que dependa de $K$, pero hay que tener en cuenta que puede llegar a alcanzar niveles demasiado altos.
+
+
 
 
 
@@ -968,7 +977,8 @@ Con los autovalores que elegimos, el sistema no oscila y se estabiliza en un tie
 
 
 \bibitem{IEEEhowto:kopka}
-PONER ALGOOO
+D\'iaz, A. R. \emph{El concepto de control}. Departamento de Ingenier\'ia Informatica. 
+Instituto Tecnol\'ogico de Buenos Aires.
 \end{thebibliography}
 
 \end{document}
