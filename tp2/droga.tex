@@ -614,7 +614,7 @@ paso por el mismo.\\
 \indent Nosotros modelamos la din\'amica de una sustancia mediante un modelo de dos compartimentos, 
 donde uno cumple el rol de la sangre en el organismo, y el otro representa un \'organo cualquiera 
 del cuerpo. En el modelo, consideramos que los compartimentos poseen paredes porosas que permiten el intercambio 
-de materia, y asi simulamos la transferencia de la droga desde la sangre hacia el \'organo y viceversa. \\
+de materia, y as\'i simulamos la transferencia de la droga desde la sangre hacia el \'organo y viceversa. \\
 \indent Tras una serie de simulaciones logramos establecer los par\'ametros m\'as adecuados para lograr
 la estabilidad de la concentraci\'on de la droga en un determinado tiempo.
 % You must have at least 2 lines in the paragraph with the drop letter
@@ -686,7 +686,7 @@ Calculando el m\'odulo obtenemos la ecuaci\'on (\ref{eq:autovalores2}), y determ
 	\lambda^2 + ( k_{0} + k_{1} + k_{2} ) \lambda + k_{0} k_{2} = 0
 \end{equation}
 que resultan ser $\lambda_{1} = -0.261387212$ y $\lambda_{2} = -5.738612788$.
-\indent Al obtener autovalores negativos, determinamos en forma te\'orica que el modelo del sistema es estable. Hicimos una simulaci\'on 
+\indent Al obtener autovalores negativos, determinamos en forma te\'orica que el modelo del sistema es estable. Hacemos una simulaci\'on 
 del modelo a lazo abierto ( sin realimentacion ) con una entrada inicial de 30 mol y corroboramos que el modelo del sistema es estable 
 como observamos en la figura 2.
 
@@ -741,7 +741,7 @@ en la ecuaci\'on (8).
 \begin{equation}
  u(t) = K 30 - Kc_{2}
 \end{equation}
-\indent Nos propusimos determinar el rango de valores de $K$ tal que la concentraci\'on deseada se alcance en 0.3 horas. Para ello realizamos
+\indent Nos proponemos determinar el rango de valores de $K$ tal que la concentraci\'on deseada se alcance en 0.3 horas. Para ello realizamos
  reiteradas simulaciones del modelo variando el valor de $K$. Determinamos experimentalmente que el rango m\'as adecuado de $ K $ para que la 
 concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura 3 y en la figura 4.
 \begin{figure}[t]
@@ -777,17 +777,22 @@ Realimentamos el modelo nuevamente, pero esta vez utilizamos variables de estado
  dichos autovalores deben cumplir que $\frac{1}{\lambda_{1,2}} \leq 0.3 $ para que la soluci\'on exponencial se estabilice
  en 0.3 horas. \\
 
-\indent A partir del modelo a lazo cerrado, obtenemos el polinomio caracter\'istico del sistema lineal
+\indent A partir del modelo a lazo cerrado, obtenemos el polinomio caracter\'istico del sistema lineal (9)
 \begin{equation}
 \lambda^2 + \lambda(1.5 \beta_1 +6) +(4.5 \beta_1 + 4.5\beta_2) = 0
 \end{equation}
 
- \indent Los autovalores que elegimos los vemos en ( 9 ).
+ \indent Los autovalores que elegimos los vemos en (10).
  \begin{equation}
   \lambda_1 = -2.49 \hspace{0.8 cm} \lambda_2 = -1.8 
  \end{equation}
- Adem\'as sabemos que $\lambda^2-(\lambda_1+\lambda_2)\lambda + \lambda_1 \lambda_2 $.  Con los autovalores de ( 9 ) determinamos los valores
- de $ \beta_1$ y $\beta_2 $ que observamos en ( 10 ).
+ \indent Como sabemos de (11) que 
+\begin{equation}
+  \lambda^2-(\lambda_1+\lambda_2)\lambda + \lambda_1 \lambda_2 = 0
+\end{equation}
+con los autovalores de (9) determinamos los valores
+ de $ \beta_1$ y $\beta_2 $ que observamos en (12).
+
  \begin{equation}
   \beta_1 = -1.14  \hspace{0.8 cm} \beta_2 = 2.136
  \end{equation}
