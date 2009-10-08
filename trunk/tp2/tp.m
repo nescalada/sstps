@@ -19,7 +19,7 @@ tspan=[0 10];
 %size(Y)
 %hold on
 plot(t, Y(:,1));
-plot(t, Y(:,2));
+%plot(t, Y(:,2));
 %endfunction
 
 end
