@@ -452,7 +452,7 @@
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
 \author{Lucila Stancato,~\IEEEmembership{I.T.B.A,}
-        Damian Modernell,~\IEEEmembership{I.T.B.A,}
+        Dami\'an Modernell,~\IEEEmembership{I.T.B.A,}
 	Juan Brasca,~\IEEEmembership{I.T.B.A,}
         Conrado Negro,~\IEEEmembership{I.T.B.A}% <-this % stops a space
 %\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell is with the Department
@@ -526,7 +526,7 @@
 \begin{abstract}
 %\boldmath
 Simulamos un sistema de administraci\'on de dosis de una droga en sangre. Variando par\'ametros del modelo, buscamos experimentalmente
-mediante reiteradas simulaciones, lograr establecer una pol\'itica adecuada que controle la concentraci\'on de la sustancia en la sangre.
+mediante reiteradas simulaciones, lograr establecer una pol\'itica adecuada de control de la concentraci\'on de la sustancia en la sangre.
  Analizamos la estabilidad del modelo.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
@@ -616,12 +616,12 @@ donde uno cumple el rol de la sangre en el organismo, y el otro representa un \'
 del cuerpo. En el modelo, consideramos que los compartimentos poseen paredes porosas que permiten el intercambio 
 de materia, y asi simulamos la transferencia de la droga desde la sangre hacia el \'organo y viceversa. \\
 \indent Tras una serie de simulaciones logramos establecer los par\'ametros m\'as adecuados para lograr
-la estabilidad en la concentraci\'on de la droga en un determinado tiempo.
+la estabilidad de la concentraci\'on de la droga en un determinado tiempo.
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 \section{Modelo de Compartimentos}
 El modelo de compartimentos que utilizamos lo mostramos en la figura 1. Estimamos tres tasas de difusi\'on $ q_{0}$, $q_{12}$ y $q_{21}$ que dependen de
-las caracter\'isticas del intercambio de sustancia. $u$ es la dosis aplicada y representa la entrada del sistema.\\
+las caracter\'isticas del intercambio de sustancia. $u$ es la dosis aplicada y representa la entrada del modelo.\\
 \indent La dosis de flujo de sustancia est\'a dada por las ecuaciones diferenciales (1) y (2) donde $c_{1}$ es la concentraci\'on de la sustancia en sangre y $c_{2}$ representa la concentraci\'on de la sustancia en el \'organo. 
 \begin{align}
  V_{1}\frac{dc_{1}}{dt} &= q_{12}(c_{2} - c_{1}) - q_{0}c_{1} + c_{0}u \\
@@ -647,7 +647,7 @@ Expresamos el sistema de ecuaciones diferenciales de (3) y (4) como un sistema l
  0
 \end{matrix} \right) u
 \end{equation}
-Lo que medimos como salida del sistema es la concentraci\'on en el \'organo ($c_{2}$). $ u $ es la realimentaci\'on que controla el sistema, que modelamos 
+Lo que medimos como salida del sistema es la concentraci\'on en el \'organo ($c_{2}$). $ u $ es la realimentaci\'on que controla el modelo, que modelamos 
 como $ u(t) = K(r(t) - y(t))$. $r(t)$ es la concentraci\'on deseada. En nuestras simulaciones, $r(t) = 30$ mol. 
 
 
@@ -680,14 +680,13 @@ obteniendo la ecuaci\'on (6).
 	\end{matrix}
 	\bigg\vert
 \end{equation}
-Calculando el m\'odulo obtenemos la ecuaci\'on (\ref{eq:autovalores2}), e igualamos a cero
-para determinar los autovalores
+Calculando el m\'odulo obtenemos la ecuaci\'on (\ref{eq:autovalores2}), y determinamos los autovalores
 \begin{equation}
 \label{eq:autovalores2}
 	\lambda^2 + ( k_{0} + k_{1} + k_{2} ) \lambda + k_{0} k_{2} = 0
 \end{equation}
 que resultan ser $\lambda_{1} = -0.261387212$ y $\lambda_{2} = -5.738612788$.
-\indent Al obtener autovalores negativos, determinamos teoricamente que el modelo del sistema es estable. Hicimos una simulaci\'on 
+\indent Al obtener autovalores negativos, determinamos en forma te\'orica que el modelo del sistema es estable. Hicimos una simulaci\'on 
 del modelo a lazo abierto ( sin realimentacion ) con una entrada inicial de 30 mol y corroboramos que el modelo del sistema es estable 
 como observamos en la figura 2.
 
@@ -699,7 +698,7 @@ como observamos en la figura 2.
 % where an .eps filename suffix will be assumed under latex, 
 % and a .pdf suffix will be assumed for pdflatex; or what has been declared
 % via \DeclareGraphicsExtensions.
-\caption{$x(t)$ es la concentraci\'on de la sustancia en sangre. $y(t)$ es la concenraci\'on de la sustancia en el \'organo. Vemos que ambas concentraciones tienden a cero}
+\caption{$x(t)$ es la concentraci\'on de la sustancia en sangre. $y(t)$ es la concenraci\'on de la sustancia en el \'organo. Vemos que ambas concentraciones tienden a cero cuando no hay realimentaci\'on}
 \end{center}
 \end{figure}
 % needed in second column of first page if using \IEEEpubid
@@ -737,7 +736,7 @@ como observamos en la figura 2.
 
 
 \section{Simulaciones}
-En nuestro modelo proponemos una concentraci\'on deseada $r(t)$ de 30 mol. Por lo tanto la funci\'on de realimentaci\'on que nos queda la vemos 
+En nuestro modelo proponemos una concentraci\'on deseada $r(t)$ de 30 mol. Por lo tanto la funci\'on de realimentaci\'on que obtenemos la vemos 
 en la ecuaci\'on (8).
 \begin{equation}
  u(t) = K 30 - Kc_{2}
@@ -745,7 +744,6 @@ en la ecuaci\'on (8).
 \indent Nos propusimos determinar el rango de valores de $K$ tal que la concentraci\'on deseada se alcance en 0.3 horas. Para ello realizamos
  reiteradas simulaciones del modelo variando el valor de $K$. Determinamos experimentalmente que el rango m\'as adecuado de $ K $ para que la 
 concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura 3 y en la figura 4.
-
 \begin{figure}[t]
 %\label{fig:sim1}
 \begin{center}
@@ -770,14 +768,12 @@ concentraci\'on se estabilice en 0.3 horas es [6,8] como observamos en la figura
 \caption{Observamos varias concentraciones de la sustancia en el \'organo para distintos valores de $K$, Buscamos la que m\'as rapidamente se estabiliza en 30 mol}
 \end{center}
 \end{figure}
-\indent Para 
-
 \section{Realimentaci\'on en variables de estado}
 
 Realimentamos el modelo nuevamente, pero esta vez utilizamos variables de estado, quedando la funci\'on de realimentaci\'on $ u(t) =
  r(t) - \beta_{1}c_1 - \beta_{2}c_{2}$. Determinamos $ \beta_1$ y $\beta_2 $ de manera tal que la concentraci\'on de la
  sustancia se estabilice sin oscilaciones.\\
- \indent Para determinar $ \beta_1$ y $\beta_2 $, elegimos que los autovalores del modelo a lazo cerrado $\dot{x}(t)=(A-bk^T)x(t)-br(t)$  sean negativos y reales. Donde $A$ y  $b$ corresponden al modelo a lazo abierto,  $k^T=(\beta_1, \beta_2)$ y $r(t)$ es el nivel de concentraci\'on que deseamos. Al mismo tiempo
+ \indent Para determinar $ \beta_1$ y $\beta_2 $, elegimos los autovalores del modelo a lazo cerrado $\dot{x}(t)=(A-bk^T)x(t)-br(t)$ tal que los mismos sean negativos y reales. $A$ y  $b$ corresponden al modelo a lazo abierto,  $k^T=(\beta_1, \beta_2)$ y $r(t)$ es el nivel de concentraci\'on que deseamos. Al mismo tiempo
  dichos autovalores deben cumplir que $\frac{1}{\lambda_{1,2}} \leq 0.3 $ para que la soluci\'on exponencial se estabilice
  en 0.3 horas. \\
 
@@ -891,14 +887,14 @@ se comporta adecuadamente, y muestra las oscilaciones que existen entre un \'org
 de sustancias.
 
 
-\indent Al buscar la ganancia de la funci\'on de realimentaci\'on del sistema a lazo cerrado, obtenemos un sistema
-que se estabiliza m\'as lentamente, que teniendo uno que depende de la variable $K$.   Sin embargo, lo bueno de esta
-implementaci\'on de la funci\'on de realimentaci\'on, es que no presenta oscilaciones.  
-
-\indent Si queremos evitar que la droga alcance alcance alg\'un valor t\'oxico para el organismo, entonces, 
-la funci\'on de realimentaci\'on que depende de $\beta_1$ y $\beta_2$ es mejor, aunque alcance el nivel deseado en m\'as tiempo.
-Por el contrario, si deseamos que el nivel de droga en sangre requerido, se alcance lo m\'as r\'apido posible, entonces conviene
-usar un sistema realimentado que dependa de $K$, pero hay que tener en cuenta que puede llegar a alcanzar niveles demasiado altos.
+\indent Al buscar la ganancia de la funci\'on de realimentaci\'on del modelo en variables de estado, obtenemos un modelo
+que se estabiliza m\'as lentamente que aqu\'el que depende de la constante $K$. Sin embargo, la ventaja de \'esta
+realimentaci\'on es que no presenta oscilaciones. Por lo tanto si queremos evitar que la droga alcance alg\'un valor t\'oxico
+para el organismo, producido por las oscilaciones, entonces el modelo de realimentaci\'on en variables de estado, 
+$\beta_1$ y $\beta_2$, es mejor, aunque alcance el nivel deseado en un tiempo mayor al esperado.\\
+\indent Por el contrario, si deseamos alcanzar el nivel de droga en sangre requerido lo m\'as r\'apido posible, entonces conviene
+usar un modelo de realimentaci\'on que dependa de $K$, pero hay que tener en cuenta que con dicho modelo de controlador, 
+podemos llegar a alcanzar niveles de concentraci\'on de la sustancia demasiado altos.
 
 
 
