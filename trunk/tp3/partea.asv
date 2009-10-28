@@ -52,7 +52,7 @@ M	= 2147483562
     dist = zeros(1,10);
     clases = [0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95];
     
-    while (i<10000)
+    while (i<CORRIDAS)
         i=i+1;
         if(u(i) < 0.1)
             dist(1)=dist(1)+1;
@@ -86,15 +86,18 @@ M	= 2147483562
     end
     
     dist
+    %%%% frecuencias para cada intervalo de clase
     %plot( clases, dist);
     
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%% estadistico chi cuadrado %%%%%%%%
     
     
     chi0cuadrado = 0;
+    E_i = CORRIDAS/10; %valor esperado
     i=1;
     while (i<=10)
-        chi0cuadrado = chi0cuadrado + (dist(i)-1000)^2/1000;
+        chi0cuadrado = chi0cuadrado + ((dist(i)-E_i)^2) /E_i;
         i=i+1;
     end
     
@@ -102,41 +105,111 @@ M	= 2147483562
     xcritico = 16.91898
     
         
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% test KS  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    sorted_u = sort(u);
     
     
+    %ktest devuelve el i
+    
+    i=1;
+    while(i<=10)
+        
+        D_mas_aux(i)= ktest(sorted_u, clases(i))/CORRIDAS - clases(i);
+        
+        D_menos_aux(i) = clases(i) - (ktest(sorted_u, clases(i))-1)/CORRIDAS;
+        
+        i= i+1;
+    end
+    D_mas_aux;
+    D_mas = max(D_mas_aux);
+    
+    D_menos_aux;
+    D_menos  = max(D_menos_aux);
+    
+    D = max(D_mas, D_menos)
+    
+    D_tabla = 1.36/sqrt(CORRIDAS);
+    
+    
+    
+        
     %%%%%%%%%%%%% plots en 2 d y en 3d     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
     i = 1;
-    u2d= zeros(1,10000);
-    u3d= zeros(1,10000);
-    while(i+1<10000)
+    u2d= zeros(1,CORRIDAS);
+    u3d= zeros(1,CORRIDAS);
+    while(i+1<CORRIDAS)
         u2d(i+1) = u(i);
         u3d(i+2) = u(i);
         i=i+1;
     end
     
-    size(u)
-    size(u2d)
-    size(u3d)
+    size(u);
+    size(u2d);
+    size(u3d);
     
     %plot(u, u2d);
-    plot3(u, u2d, u3d);
+  % plot3(u, u2d, u3d);
         
+        
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        
+       triang = mi_randtriang(sorted_u, 0, 1, 3);
+       
+       max_triang = max(triang);
+       min_triang = min(triang);
+       
+       %%compruebo que es triangular%%
+      
+       
+    %%% frecuencia en cada intervalo de clase %%%
+    i=0;
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% test KS  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+    dist_triang = zeros(1,10);
+    clases = [0.15, 0.45, 0.75, 1.05, 1.35, 1.65, 1.95, 2.25, 2.55, 2.85];
     
-    sorted_u = sort(u)
+    while (i<CORRIDAS)
+        i=i+1;
+        if(triang(i) < clases(1))
+            dist_triang(1)=dist_triang(1)+1;
+        else if(triang(i) < clases(2))
+                dist_triang(2)=dist_triang(2)+1;
+                else if(triang(i) < clases(3))
+                    dist_triang(3)=dist_triang(3)+1;
+                    else if(triang(i) < clases(4))
+                        dist_triang(4)=dist_triang(4)+1;
+                        else if(triang(i) <0.5)
+                            dist_triang(5)=dist_triang(5)+1;
+                            else if(triang(i) <0.6)
+                                dist_triang(6)=dist_triang(6)+1;
+                                else if(triang(i) <0.7)
+                                    dist_triang(7)=dist_triang(7)+1;
+                                    else if(triang(i) <0.8)
+                                    dist_triang(8)=dist_triang(8)+1;
+                                        else if(triang(i) <0.9)
+                                        dist_triang(9)=dist_triang(9)+1;
+                                            else
+                                            dist_triang(10)=dist_triang(10)+1;
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+            end
+        end
+    end
+       
     
     
-        
-        
-        
-        
-        
-        
+    %%%% frecuencias para cada intervalo de clase
+    plot( clases, dist_triang);
          
            
      

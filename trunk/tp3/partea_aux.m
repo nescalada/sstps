@@ -5,7 +5,7 @@ M	= 2147483562
  M1	= 2147483563
  A2	= 40692
  M2	= 2147483399
- CORRIDAS	= 10000
+ CORRIDAS	= 2000
 
  
  %%%%%%%%%%% PARTE A%%%%%%%%%%%%%
@@ -94,10 +94,9 @@ M	= 2147483562
     
     
     chi0cuadrado = 0;
-    E_i = CORRIDAS/10; %valor esperado
     i=1;
     while (i<=10)
-        chi0cuadrado = chi0cuadrado + ((dist(i)-E_i)^2) /E_i;
+        chi0cuadrado = chi0cuadrado + (dist(i)-CORRIDAS/10)^2/CORRIDAS/10;
         i=i+1;
     end
     
@@ -110,15 +109,18 @@ M	= 2147483562
     
     sorted_u = sort(u);
     
+    hold on
+    plot(sorted_u)
+    plot(CORRIDAS/10*clases)
     
     %ktest devuelve el i
-    
+    n = CORRIDAS
     i=1;
     while(i<=10)
         
-        D_mas_aux(i)= ktest(sorted_u, clases(i))/CORRIDAS - clases(i);
+        D_mas_aux(i)= ktest(sorted_u, clases(i))/n - clases(i);
         
-        D_menos_aux(i) = clases(i) - (ktest(sorted_u, clases(i))-1)/CORRIDAS;
+        D_menos_aux(i) = clases(i) - (ktest(sorted_u, clases(i))-1)/n;
         
         i= i+1;
     end
@@ -130,7 +132,6 @@ M	= 2147483562
     
     D = max(D_mas, D_menos)
     
-    D_tabla = 1.36/sqrt(CORRIDAS);
     
     
     
@@ -153,63 +154,12 @@ M	= 2147483562
     size(u3d);
     
     %plot(u, u2d);
-  % plot3(u, u2d, u3d);
+   % plot3(u, u2d, u3d);
         
         
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         
-       triang = mi_randtriang(sorted_u, 0, 1, 3);
-       
-       max_triang = max(triang);
-       min_triang = min(triang);
-       
-       %%compruebo que es triangular%%
-      
-       
-    %%% frecuencia en cada intervalo de clase %%%
-    i=0;
-    
-    dist_triang = zeros(1,10);
-    clases_triang = [0.15, 0.45, 0.75, 1.05, 1.35, 1.65, 1.95, 2.25, 2.55, 2.85];
-    
-    while (i<CORRIDAS)
-        i=i+1;
-        if(triang(i) < clases_triang(1))
-            dist_triang(1)=dist_triang(1)+1;
-        else if(triang(i) < clases_triang(2))
-                dist_triang(2)=dist_triang(2)+1;
-                else if(triang(i) < clases_triang(3))
-                    dist_triang(3)=dist_triang(3)+1;
-                    else if(triang(i) < clases_triang(4))
-                        dist_triang(4)=dist_triang(4)+1;
-                        else if(triang(i) < clases_triang(5))
-                            dist_triang(5)=dist_triang(5)+1;
-                            else if(triang(i) < clases_triang(6))
-                                dist_triang(6)=dist_triang(6)+1;
-                                else if(triang(i) < clases_triang(7))
-                                    dist_triang(7)=dist_triang(7)+1;
-                                    else if(triang(i) < clases_triang(8))
-                                    dist_triang(8)=dist_triang(8)+1;
-                                        else if(triang(i) <clases_triang(9))
-                                        dist_triang(9)=dist_triang(9)+1;
-                                            else
-                                            dist_triang(10)=dist_triang(10)+1;
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-            end
-        end
-    end
-       
-    
-    
-    %%%% frecuencias para cada intervalo de clase
-    plot( clases_triang, dist_triang);
+        
          
            
      
