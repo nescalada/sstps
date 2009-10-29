@@ -170,12 +170,12 @@ A su vez, el tiempo de operaci\'on entre fallos del n\'ucleo WARP es de 72 horas
 La nave puede propulsarce a velocidad WARP con un solo motor funcionando.\\
 Por \'ultimo, las c\'amaras de dilitio funcionan de forma tal que, la c\'amara principal tiene un tiempo de operaci\'on entre 
 20 y 50 horas, de distribuci\'on uniforme. La c\'amara redundante tiene un tiempo entre fallos de 5 a 12 horas.\\
-Definimos las variables aleatorias $X_1$ y $X_2$ de distribuci\'on exponencial, que corresponden a los propulsores WARP del Enterprise.
-Ambas variables tienen un tiempo medio $T_1 = T_2 = $ 10 dias. Tambi\'en definimos una variable aleatoria $X_3$ de distribuci\'on 
-triangular, que corresponde al n\'ucleo WARP, con par\'ametros $\alpha = 60$ horas, $\beta = 72$ horas y $\delta = 84$ horas. Adem\'as 
-definimos dos variables aleatorias m\'as $X_4$ y $X_5$ las cuales tienen una distribucui\'on de probabilidad uniforme y corresponden 
+\indent Definimos dos variables aleatorias  $X_1$ y $X_2$, las cuales tienen una distribucui\'on de probabilidad uniforme y corresponden 
 a la c\'amara principal, de tiempo de operaci\'on entre fallos de 20 a 50 horas, y a la c\'amara redundante de tiempo de 
-operaci\'on entre fallos de 5 a 12 horas.
+operaci\'on entre fallos de 5 a 12 horas. Tambi\'en definimos una variable aleatoria $X_3$ de distribuci\'on 
+triangular, que corresponde al n\'ucleo WARP, con par\'ametros $\alpha = 60$ horas, $\beta = 72$ horas y $\delta = 84$ horas. Adem\'as
+definimos las variables aleatorias $X_4$ y $X_5$ de distribuci\'on exponencial, que corresponden a los propulsores WARP del Enterprise.
+Ambas variables tienen un tiempo medio $T_1 = T_2 = $ 10 dias.\\
 
 Observamos la representaci\'on del sistema de propulsi\'on de la nave Enterprise en la figura 4.
 
@@ -189,7 +189,10 @@ Observamos la representaci\'on del sistema de propulsi\'on de la nave Enterprise
 \end{center}
 \end{figure}
 
-
+Para estimar el tiempo de vuelo del USS Enterprise, definimos una variable aleatoria $T$ que la definimos en (5).
+\begin{equation}
+T(i) = min( max(X_1, X_2), X_3, max(X_4, X_5) );
+\end{equation}
 %\begin{figure}[t]
 %\label{fig:refuerzos2}
 %\begin{center}
