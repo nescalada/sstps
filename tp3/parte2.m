@@ -1,52 +1,43 @@
 format long 
 
-M	= 2147483562
- A1 =	40014
- M1	= 2147483563
- A2	= 40692
- M2	= 2147483399
- CORRIDAS	= 10000
+CORRIDAS = 10000;
 
- 
- %%%%%%%%%%% PARTE A%%%%%%%%%%%%%
- %%%% 10000 PASADAS DE U %%%%%%%%
- 
-	 i=1; 	v1=23; v2=23;
+%generacion de las uniformes (con semmillas distintas)
 
-     x1(1) = 23;
-     x2(1)= 23;
-     
-		
-	while(i < CORRIDAS)
-	i=i+1;
+u1=mi_uniforme(23,  CORRIDAS);
+u2=mi_uniforme(2,  CORRIDAS);
+u3=mi_uniforme( 5,  CORRIDAS);
+u4=mi_uniforme(17,  CORRIDAS);
+u5=mi_uniforme( 7,  CORRIDAS);
 
-    
-		x1(i) = mod((A1 * x1(i-1)) , M1);
-		x2(i) = mod((A2 * x2(i-1)) , M2);
 
-		
-		x(i) = mod((x1(i) - x2(i)) , M);
-		if(x(i)<0)
-		
-			while(x(i)<0)
-				x(i) = x(i) + M;
-            end
-        end
-         
-		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-		if(x(i) > 0)
-			u(i) = x(i)/M1;
-		else
-			u(i) = M/M1;
-        end
-    end
-    
-    sorted_u = sort(u);
-    
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
-        
-       triang = mi_randtriang2(sorted_u, 0, 1, 3, CORRIDAS);
+%camaras de dilitio. uniforme entre a y b
+x1 = mi_uniforme_ajustada(u1, 20, 50, CORRIDAS);
+x2 = mi_uniforme_ajustada(u2,  5, 12, CORRIDAS);
+
+% triangular[60, 72, 84] para el nucleo
+x3 = mi_randtriang2(u3, 60, 72, 84, CORRIDAS);
+
+min(u4)
+min(u5)
+
+%exponencial para los propulsores
+x4 = mi_exponencial(u4, 1/240, CORRIDAS);
+x5 = mi_exponencial(u5, 1/240, CORRIDAS);
+
        
        
+%%calculo de medias muestrales:
+m1 = media_muestral(x1, CORRIDAS)
+m2 = media_muestral(x2, CORRIDAS)
+m3 = media_muestral(x3, CORRIDAS)
+m4 = media_muestral(x4, CORRIDAS)
+m5 = media_muestral(x5, CORRIDAS)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Simulacion de montecarlo
+
+
+
