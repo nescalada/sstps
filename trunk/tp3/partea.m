@@ -152,7 +152,7 @@ M	= 2147483562
     size(u2d);
     size(u3d);
     
-    %plot(u, u2d);
+    plot(u, u2d);
   % plot3(u, u2d, u3d);
         
         
@@ -218,5 +218,48 @@ M	= 2147483562
     
            
      
+    %    pruebo la exponencial
+    
+    expo = mi_exponencial(u, 10, CORRIDAS);
+    
+     %%% frecuencia en cada intervalo de clase %%%
+    i=0;
+    
+    dist_expo = zeros(1,10);
+    clases_expo = [0.15, 0.45, 0.75, 1.05, 1.35, 1.65, 1.95, 2.25, 2.55, 2.85];
+    
+    while (i<CORRIDAS)
+        i=i+1;
+        if(expo(i) < clases_expo(1))
+            dist_expo(1)=dist_expo(1)+1;
+        else if(expo(i) < clases_expo(2))
+                dist_expo(2)=dist_expo(2)+1;
+                else if(expo(i) < clases_expo(3))
+                    dist_expo(3)=dist_expo(3)+1;
+                    else if(expo(i) < clases_expo(4))
+                        dist_expo(4)=dist_expo(4)+1;
+                        else if(expo(i) < clases_expo(5))
+                            dist_expo(5)=dist_expo(5)+1;
+                            else if(expo(i) < clases_expo(6))
+                                dist_expo(6)=dist_expo(6)+1;
+                                else if(expo(i) < clases_expo(7))
+                                    dist_expo(7)=dist_expo(7)+1;
+                                    else if(expo(i) < clases_expo(8))
+                                    dist_expo(8)=dist_expo(8)+1;
+                                        else if(expo(i) <clases_expo(9))
+                                        dist_expo(9)=dist_expo(9)+1;
+                                            else
+                                            dist_expo(10)=dist_expo(10)+1;
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+            end
+        end
+    end
     
     
+    %plot( clases_expo, dist_expo);
