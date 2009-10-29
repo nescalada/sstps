@@ -171,27 +171,27 @@ M	= 2147483562
     i=0;
     
     dist_triang = zeros(1,10);
-    clases = [0.15, 0.45, 0.75, 1.05, 1.35, 1.65, 1.95, 2.25, 2.55, 2.85];
+    clases_triang = [0.15, 0.45, 0.75, 1.05, 1.35, 1.65, 1.95, 2.25, 2.55, 2.85];
     
     while (i<CORRIDAS)
         i=i+1;
-        if(triang(i) < clases(1))
+        if(triang(i) < clases_triang(1))
             dist_triang(1)=dist_triang(1)+1;
-        else if(triang(i) < clases(2))
+        else if(triang(i) < clases_triang(2))
                 dist_triang(2)=dist_triang(2)+1;
-                else if(triang(i) < clases(3))
+                else if(triang(i) < clases_triang(3))
                     dist_triang(3)=dist_triang(3)+1;
-                    else if(triang(i) < clases(4))
+                    else if(triang(i) < clases_triang(4))
                         dist_triang(4)=dist_triang(4)+1;
-                        else if(triang(i) <0.5)
+                        else if(triang(i) < clases_triang(5))
                             dist_triang(5)=dist_triang(5)+1;
-                            else if(triang(i) <0.6)
+                            else if(triang(i) < clases_triang(6))
                                 dist_triang(6)=dist_triang(6)+1;
-                                else if(triang(i) <0.7)
+                                else if(triang(i) < clases_triang(7))
                                     dist_triang(7)=dist_triang(7)+1;
-                                    else if(triang(i) <0.8)
+                                    else if(triang(i) < clases_triang(8))
                                     dist_triang(8)=dist_triang(8)+1;
-                                        else if(triang(i) <0.9)
+                                        else if(triang(i) <clases_triang(9))
                                         dist_triang(9)=dist_triang(9)+1;
                                             else
                                             dist_triang(10)=dist_triang(10)+1;
@@ -209,9 +209,15 @@ M	= 2147483562
     
     
     %%%% frecuencias para cada intervalo de clase
-    plot( clases, dist_triang);
-         
+    %%plot( clases_triang, dist_triang);
+      
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PARTE B %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
            
      
+    %    pruebo la exponencial
     
     
