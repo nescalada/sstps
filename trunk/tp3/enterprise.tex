@@ -168,8 +168,16 @@ son procesados en una c\'amara controlada, llamada Matriz de Dilitio.\\
 El tiempo de operaci\'on de cada propulsor es una variable aleatoria de distribuci\'on exponencial con tiempo medio de 10 d\'ias. 
 A su vez, el tiempo de operaci\'on entre fallos del n\'ucleo WARP es de 72 horas, pudiendo variar linealmente hasta en 12 horas. 
 La nave puede propulsarce a velocidad WARP con un solo motor funcionando.\\
-Por \'ultimo, las c\'amaras de dilitio funcionan de forma tal que ...........
-Observamos la representaci\'on del sistema de propulsi\'on de la nave Enterpriise en la figura 4.
+Por \'ultimo, las c\'amaras de dilitio funcionan de forma tal que, la c\'amara principal tiene un tiempo de operaci\'on entre 
+20 y 50 horas, de distribuci\'on uniforme. La c\'amara redundante tiene un tiempo entre fallos de 5 a 12 horas.\\
+Definimos las variables aleatorias $X_1$ y $X_2$ de distribuci\'on exponencial, que corresponden a los propulsores WARP del Enterprise.
+Ambas variables tienen un tiempo medio $T_1 = T_2 = $ 10 dias. Tambi\'en definimos una variable aleatoria $X_3$ de distribuci\'on 
+triangular, que corresponde al n\'ucleo WARP, con par\'ametros $\alpha = 60$ horas, $\beta = 72$ horas y $\delta = 84$ horas. Adem\'as 
+definimos dos variables aleatorias m\'as $X_4$ y $X_5$ las cuales tienen una distribucui\'on de probabilidad uniforme y corresponden 
+a la c\'amara principal, de tiempo de operaci\'on entre fallos de 20 a 50 horas, y a la c\'amara redundante de tiempo de 
+operaci\'on entre fallos de 5 a 12 horas.
+
+Observamos la representaci\'on del sistema de propulsi\'on de la nave Enterprise en la figura 4.
 
 
 \begin{figure}[t]
@@ -177,7 +185,7 @@ Observamos la representaci\'on del sistema de propulsi\'on de la nave Enterpriis
 \begin{center}
 \centering
 \includegraphics[width=3.2in]{propulsor.jpg}
-\caption{Observamos la distribuci\'on uniforme de los 10000 n\'umeros obtenidos con el generador de L'Ecuyer en el espacio}
+\caption{Esquema de representaci\'on del sistema de propulsi\'on de la nave espacial USS Enterprise, donde el sistema falla, si falla el n\'ucleo WARP, o ambos propulsores, o ambas c\'amaras de dilitio ) }
 \end{center}
 \end{figure}
 
