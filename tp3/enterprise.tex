@@ -57,29 +57,29 @@ sdafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
 El generador propuesto por L'Ecuyer en 1998 combina dos generadores lineales congruenciales (LCGs)
 seg\'un los pasos del 1 al 5:
 \begin{itemize}
- \item{PASO 1} Seleccionar una semilla $X_{1,0}$ en el rango $[1,2147483562]$ para el primer LCG y otra $X_{2,0}$ en el rango $[1,2147483398]$ para el segundo LCG.\\
- \item{PASO 2} Evaluar cada generador individual:
+ \item{PASO 1:} Seleccionar una semilla $X_{1,0}$ en el rango $[1,2147483562]$ para el primer LCG y otra $X_{2,0}$ en el rango $[1,2147483398]$ para el segundo LCG.\\
+ \item{PASO 2:} Evaluar cada generador individual:
  \begin{align*}
   X_{1,n+1} &= 40014 X_{1,n} mod 2147483563\\
   X_{2,n+1} &= 40692 X_{2,n} mod 2147483399
  \end{align*}
  
- \item{PASO 3} Computar:
+ \item{PASO 3:} Computar:
  \begin{equation*}
   X_{n+1} = (X_{1,n+1} - X_{2,n+1}) mod 2147483562
  \end{equation*}
  
- \item{PASO 4} Computar:
+ \item{PASO 4:} Computar:
   \begin{equation*}
   \label{eq:f(t)}
   U_{n+1} = \left\{
   \begin{array}{rl}
-	\frac{X_{n+1}}{2147483563} \hspace{0.5cm} 0 < X_{n+1}\\\\
+	\frac{X_{n+1}}{2147483563} \hspace{0.5cm} X_{n+1} > 0\\\\
 	\frac{2147483562}{2147483563} \hspace{0.5cm} X_{n+1} = 0\\
   \end{array} \right.
   \end{equation*}
 
- \item{PASO 5} Hcer $n = n + 1$ y volver al $PASO 2$
+ \item{PASO 5:} Hcer $n = n + 1$ y volver al $PASO 2$
 \end{itemize}
 
 Los n\'umeros obtenidos por medio de este generador tienen una distribuci\'on uniforme.
@@ -115,12 +115,48 @@ Analizamos gr\'aficamente en el plano las duplas $(U_i, U_{i+1})$ en la figura 2
 \end{figure}
 
 \subsection{Prueba $\chi^2$}
+En las figuras 2 y 3 observamos que la distribuci\'on parece ser uniforme, pero podemos usar
+tests m\'as elaborados para corroborar esos resultados. El test $\chi^2$ determina, con un nivel
+de significaci\'on $\alpha$ que determinamos en $5\%$ si es razonable suponer que la distribuci\'on 
+observada de las 10000 muestras es consistente con que la variable tenga una distribuci\'on uniforme.
+Las hip\'otesis del test son:
+\begin{itemize}
+ \item {$H_{0}$:} $\chi_{0}^2 < \chi_{n-1,\alpha}$ (Los n\'umeros obtenidos mediante el m\'etodo de L'Ecuyer est\'an uniformemente distribuidos)
+ \item {$H_{1}$:} $\chi_{0}^2 \ge \chi_{n-1,\alpha}$ (Los n\'umeros obtenidos mediante el m\'etodo de L'Ecuyer no est\'an uniformemente distribuidos)
+\end{itemize}
+Para la prueba decidimos tomar 10 intervalos de clase, determinando as\'i 9 grados de libertad. Para estos
+par\'ametros, el valor cr\'itico es $\chi_{n-1,\alpha}^{2} = 16.91898$. El estad\'istico $\chi_{0}^{2}$ se computa
+mediante la f\'ormula de la ecuaci\'on 1
 
+\begin{equation}
+ \chi_{0}^{2} = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}
+\end{equation}
+
+y resulta $\chi_{0}^{2} = 5.592$ por lo que se acepta la hip\'otesis nula $H_0$.
 
 \subsection{Prueba de Kolmogorov-Smirnov}
+Las hip\'otesis utilizadas para esta prueba son:
+\begin{itemize}
+ \item {$H_{0}$:} $D < D_{\alpha}$ (Los n\'umeros obtenidos mediante el m\'etodo de L'Ecuyer est\'an uniformemente distribuidos)
+ \item {$H_{1}$:} $D \ge D_{\alpha}$ (Los n\'umeros obtenidos mediante el m\'etodo de L'Ecuyer no est\'an uniformemente distribuidos)
+\end{itemize}
+Donde $D$ es el resultado de la prueba y $D_{\alpha}$ es el valor cr\'itico correspondiente a los par\'ametros de la prueba.
+Computamos el valor $D$ con la f\'ormula de la ecuaci\'on 2.
+\begin{equation}
+ D = max(D^{+}, D^{-})
+\end{equation}
 
+siendo
+\begin{align}
+ D^{+} &= max(\frac{i}{n}-x_i)\\
+ D^{-} &= max(x_i - \frac{i-1}{n})
+\end{align}
 
-\section{parte b}
+donde $x_i$ es el i-\'esimo valor de los calculados por el m\'etodo de L'Ecuyer.
+Realizando los c\'alculos, resulta $D = 0.0034$ y como $D_{\alpha} = 0.0136$,
+tambi\'en se acepta la hip\'otesis nula.
+
+\section{}
 
 \section{algoritmo funcion triangular}
 
