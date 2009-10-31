@@ -1,0 +1,8 @@
+function[fx] = ktest(u, x)
+
+    i=1;
+    while (u(i)<x AND
+    
+
+
+end

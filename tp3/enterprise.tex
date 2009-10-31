@@ -22,13 +22,13 @@
 \IEEEcompsoctitleabstractindextext{%
 \begin{abstract}
 %\boldmath
-Analizamos la eficacia en la generaci\'on de n\'umeros pseudo-aleatorios del generador de L'Ecuyer aplicando los tests $\chi^2$ y $KS$
-, en los que determinamos la conveniencia de usar dicho generador. Tambi\'en realizamos la estimaci\'on del tiempo
-de vuelo de la nave espacial USS Enterprise mediante la simulaci\'on de Montecarlo.
+Analizamos la eficacia en la generaci\'on de n\'umeros pseudoaleatorios del generador de L'Ecuyer aplicando los tests $\chi^2$ y $KS$
+, en los que determinamos la conveniencia de usar dicho generador. Utilizando realizaciones de distintas variables pseudoaleatorias,
+estimamos el tiempo medio de vuelo de la nave espacial USS Enterprise.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Generador de L'Ecuyer, n\'umeros pseudoaleatorios, simulaci\'on de Montecarlo, propulsor WARP
+Generador de L'Ecuyer, n\'umeros pseudoaleatorios, propulsor WARP
 \end{IEEEkeywords}
 }%\IEEEcompsoctitleabstractindextext
 
@@ -55,7 +55,7 @@ aleatorios. ???????????????????????????????????
 
 \section{Generador de L'Ecuyer}
 El generador propuesto por L'Ecuyer en 1998 combina dos generadores lineales congruenciales (LCGs).
-El algoritmo est\'a compuesto por los pasos del 1 al 5:
+El algoritmo est\'a compuesto por cinco pasos:
 \begin{itemize}
  \item{PASO 1:} Seleccionar una semilla $X_{1,0}$ en el rango $[1,2147483562]$ para el primer LCG y otra $X_{2,0}$ en el rango $[1,2147483398]$ para el segundo LCG.\\
  \item{PASO 2:} Evaluar cada generador individual:
@@ -83,7 +83,7 @@ El algoritmo est\'a compuesto por los pasos del 1 al 5:
 \end{itemize}
 
 Los n\'umeros obtenidos por medio de este generador tienen una distribuci\'on uniforme.
-Generamos 10000 n\'umeros pseudoaleatorios con el algoritmo de L'Ecuyer.  Tomamos como semillas $X_{1,0}=23$ y $X_{2,0}=23$, ya que lo importante
+Generamos 10000 n\'umeros pseudoaleatorios con el algoritmo de L'Ecuyer.  Tomamos como semillas $X_{1,0}=23$ y $X_{2,0}=23$, sabiendo que lo importante
 es no inicializar al generador con cero.  Una vez obtenidas 10000 realizaciones, las dividimos en 10 intervalos de clase de amplitud uniforme, y 
 presentamos las frecuencias obtenidas en el histograma de la figura 1.
 
@@ -131,7 +131,7 @@ Las hip\'otesis del test son:
  \item {$H_{1}$:} $\chi_{0}^2 \ge \chi_{n-1,\alpha}$ (Los n\'umeros obtenidos mediante el m\'etodo de L'Ecuyer no est\'an uniformemente distribuidos)
 \end{itemize}
 Para la prueba decidimos tomar 10 intervalos de clase, determinando as\'i 9 grados de libertad. Para estos
-par\'ametros, obtenemos de tablas el valor cr\'itico es $\chi_{n-1,\alpha}^{2} = 16.91898$. El estad\'istico $\chi_{0}^{2}$ se computa
+par\'ametros, obtenemos de tablas el valor cr\'itico $\chi_{n-1,\alpha}^{2} = 16.919$. El estad\'istico $\chi_{0}^{2}$ se computa
 mediante la f\'ormula de la ecuaci\'on 1
 
 \begin{equation}
@@ -161,10 +161,10 @@ siendo
 donde $x_i$ es el i-\'esimo valor de los calculados por el m\'etodo de L'Ecuyer; 
 y el valor $i$ es la cantidad de realizaciones menores que $x_i$ de la muestra de 10000.
 Realizando los c\'alculos, resulta $D = 0.0034$ y como $D_{\alpha} = 0.0136$,
-tambi\'en se acepta la hip\'otesis nula.
+ se acepta la hip\'otesis nula.
 
 \section{Generaci\'on de variables aleatorias con distintas funciones de probabilidad}
-Teniendo una realizaci\'on de una variable aleatoria $u ~ U[0,1]$, podemos generar otra variable que tenga
+Teniendo una realizaci\'on de una variable aleatoria con distribuci\'on $U[0,1]$, podemos generar otra variable que tenga
 una funci\'on de distribuci\'on $F(x)$. Para hacerlo, calculamos la imagen inversa $x_i = F^{-1}(u_i)$.
 
 \subsection{Distribuci\'on triangular}
@@ -200,7 +200,7 @@ en 10 intervalos de clase, y graficamos las frecuencias obteniendo el histograma
 \begin{center}
 \centering
 \includegraphics[width=3.2in]{triangular.jpg}
-\caption{Histograma de una realizaci\'on de una variable pseudoaleatoria con distribuci\'on de probabilidad triangular con par\'ametros a=0, b=1 y c=3; obtenida a partir de una realizaci\'on de una variable con distribuci\'on uniforme $u$}
+\caption{Histograma de una realizaci\'on de una variable pseudoaleatoria con distribuci\'on de probabilidad triangular con par\'ametros a=0, b=1 y c=3; obtenida a partir de una realizaci\'on de una variable con distribuci\'on uniforme.}
 \end{center}
 \end{figure}
 
@@ -238,19 +238,19 @@ $U[a, b]$, usamos la expresi\'on de la ecuaci\'on 9.
 
 \section{Estimaci\'on del tiempo de vuelo medio del USS Enterprise}
 La nave espacial USS Enterprise, famosa por las pel\'iculas de Star Treck, es impulsada por un sistema de propulsi\'on WARP, 
-que se conforma por dos motores a los laterales, uno a babor y otro a estribor. Ambos propulsores son alimentados por un nucleo WARP
+que se conforma por dos motores a los laterales, uno a babor y otro a estribor. Ambos propulsores son alimentados por un n\'ucleo WARP
 donde se llevan a cabo reacciones de aniquilaci\'on materia / antimateria, moderadas por cristales de dilitio. Dichos cristales 
 son procesados en una c\'amara controlada, llamada Matriz de Dilitio.\\
 El tiempo de operaci\'on de cada propulsor es una variable aleatoria de distribuci\'on exponencial con tiempo medio de 10 d\'ias. 
 A su vez, el tiempo de operaci\'on entre fallos del n\'ucleo WARP es de 72 horas, pudiendo variar linealmente hasta en 12 horas. 
-La nave puede propulsarce a velocidad WARP con un solo motor funcionando. Por \'ultimo, las c\'amaras de dilitio funcionan de forma tal que, la c\'amara principal tiene un tiempo de operaci\'on entre 
+La nave puede propulsarse a velocidad WARP con un solo motor funcionando. Por \'ultimo, las c\'amaras de dilitio funcionan de forma tal que, la c\'amara principal tiene un tiempo de operaci\'on entre 
 20 y 50 horas, de distribuci\'on uniforme. La c\'amara redundante tiene un tiempo entre fallos de 5 a 12 horas.\\
 
 \indent Definimos dos variables aleatorias  $X_1~U[20,50]$ horas y $X_2~U[5, 12]$, las cuales tienen una distribucui\'on de probabilidad uniforme y corresponden a la c\'amara principal, y a la c\'amara redundante. Tambi\'en definimos una variable aleatoria $X_3$ de distribuci\'on 
 triangular, que corresponde al n\'ucleo WARP, con par\'ametros $a = 60$ horas, $b = 72$ horas y $c = 84$ horas. Adem\'as
 definimos las variables aleatorias $X_4$ y $X_5$ de distribuci\'on exponencial con $\lambda=1/240$, que corresponden a los propulsores WARP del Enterprise.\\
 \indent Para generar las variables pseudoaleatorias $X_1$, $X_2$, $X_3$, $X_4$ y $X_5$ utilizamos 5 variables pseudoaleatorias generadas
-a partir del algoritmo de L'Ecuyer.  Para esas 5 variables tomamos 5 semillas distintas (distintas a cero), cuyos valores se muestran en la tabla 1.
+a partir del algoritmo de L'Ecuyer.  Para esas 5 variables tomamos 5 semillas distintas (distintas a cero), cuyos valores mostramos en la tabla 1.
 
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.3}
@@ -287,40 +287,79 @@ $u_5$ & 7 \\
 \end{center}
 \end{figure}
 
-Para estimar el tiempo de vuelo del USS Enterprise, definimos una variable aleatoria $T$ que la definimos en la ecuaci\'on 10.
+Para estimar el tiempo de vuelo del USS Enterprise, definimos una variable aleatoria $T$ que se caracteriza por la ecuaci\'on 10.
 \begin{equation}
-T = min( max(X_1, X_2), X_3, max(X_4, X_5) );
+T = min\{ max\{X_1, X_2\}, X_3, max\{X_4, X_5\} \}
 \end{equation}
 
-%\begin{figure}[t]
-%\label{fig:refuerzos2}
-%\begin{center}
-%\centering
-%\includegraphics[width=3.2in]{grafico3_bis}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Segunda politica de refuerzos}
-%\end{center}
-%\end{figure}
-%
-%\begin{figure*}[!t]
-%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
-%\label{fig_second_case}}}
-%\caption{Simulation results}
-%\label{fig_sim}
-%\end{figure*}
+
+\indent Estimar el tiempo medio de vuelo con un error porcentual menor al $5\%$, donde el error porcentual se computa
+como $100L/\bar{T}$, siendo $L$ la longitud del intervalo de confianza.  Hacemos 279 simulaciones y obtenemos una
+media muestral del tiempo de vuelo de $\bar{T}=34.1932$ y un desv\'io muestral de $8.9$.
+En la figura 6 mostramos la media muestral en funci\'on de la cantidad de iteraciones realizadas.  Podemos ver que se 
+estabiliza mientras m\'as simulaciones se hacen. El desv\'io muestral, que
+mostramos en la figura 7 disminuye a medida que aumenta la cantidad de simulaciones.  A su vez, podemos ver en la figura 8,
+que el error porcentual, tambi\'en disminuye con la cantidad de iteraciones, y que alcanza un nivel de $5\%$ a las 279 simulaciones.
+
+
+\begin{figure}[t]
+\label{fig:3d}
+\begin{center}
+\centering
+\includegraphics[width=3.2in]{media_muesrtal.jpg}
+\caption{Media muestral del tiempo de vuelo en funci\'on de la cantidad de simulaciones.}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[t]
+\label{fig:3d}
+\begin{center}
+\centering
+\includegraphics[width=3.2in]{desvio.jpg}
+\caption{Desv\'io muestral del tiempo de vuelo en funci\'on de la cantidad de simulaciones.}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}[t]
+\label{fig:3d}
+\begin{center}
+\centering
+\includegraphics[width=3.2in]{error_procentual.jpg}
+\caption{Error porcentual del tiempo de vuelo en funci\'on de la cantidad de simulaciones.}
+\end{center}
+\end{figure}
+
+
+
+
+
 
 \section{Conclusi\'on}
+
+
+
+
+
 
 \begin{thebibliography}{1}
 
 \bibitem{IEEEhowto:kopka}
 D\'iaz, A. R. \emph{El concepto de control}. Departamento de Ingenier\'ia Informatica. 
 Instituto Tecnol\'ogico de Buenos Aires.
+
+
+\bibitem{IEEEhowto:kopka}
+Tabla de valores cr\'iticos de la distribuci\'on $\chi^2$. http://www.mat.uda.cl/hsalinas/cursos/2008/probablilidad/Tab\\laChiCuadrada.pdf
+
+\bibitem{IEEhowto:kopka}
+Kolmogorov-Smirnov Test. http://www.eridlc.com/onlinetextbook\\/index.cfm?fuseaction=textbook.appendix\&FileName=Table7
+
+\bibitem{IEEhowto:kopka}
+Tabla de distribuci\'on T-Student. http://www.dm.uba.ar/materias/\\probabilidades\_estadistica\_C/2008/2/tdist.pdf
+
 \end{thebibliography}
 
 \end{document}
