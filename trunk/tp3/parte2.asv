@@ -1,4 +1,4 @@
-function[t_medio, varianza] =parte2 (CORRIDAS)
+function[t_medio] =parte2 (CORRIDAS)
 
 format long 
 
@@ -22,6 +22,9 @@ x2 = mi_uniforme_ajustada(u2,  5, 12, CORRIDAS);
 % triangular[60, 72, 84] para el nucleo
 x3 = mi_randtriang2(u3, 60, 72, 84, CORRIDAS);
 
+min(u4)
+min(u5)
+
 %exponencial para los propulsores
 x4 = mi_exponencial(u4, 1/240, CORRIDAS);
 x5 = mi_exponencial(u5, 1/240, CORRIDAS);
@@ -29,11 +32,11 @@ x5 = mi_exponencial(u5, 1/240, CORRIDAS);
        
        
 %%calculo de medias muestrales:
-%m1 = media_muestral(x1, CORRIDAS)
-%m2 = media_muestral(x2, CORRIDAS)
-%m3 = media_muestral(x3, CORRIDAS)
-%m4 = media_muestral(x4, CORRIDAS)
-%m5 = media_muestral(x5, CORRIDAS)
+m1 = media_muestral(x1, CORRIDAS)
+m2 = media_muestral(x2, CORRIDAS)
+m3 = media_muestral(x3, CORRIDAS)
+m4 = media_muestral(x4, CORRIDAS)
+m5 = media_muestral(x5, CORRIDAS)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Simulacion de montecarlo
@@ -49,22 +52,14 @@ end
 %tiempo medio
 t_medio  = media_muestral(T, CORRIDAS)
 
-
-
-
-t_medio_experimental =   34.70290343659776;
 %varianza
 
 i=1;
 while(i<=CORRIDAS)
-    acum = (T(i) - t_medio_experimental) * (T(i) - t_medio_experimental);
-    i=i+1;
+    acum = (T(i) - t_medio)*(T(i) - t_medio);
 end
 varianza = acum/(CORRIDAS-1)
 
-
-
-end
 
 
 

@@ -1,0 +1,22 @@
+function[x] = mi_randtriang(u, a, b, c)
+i=1;
+while(i<=10000)
+    aux = u(i);
+    
+    if( aux >= a && aux <= b  )
+        x(i) = sqrt( (b-a)*(c-a)*aux ) + a;
+    else if( aux >b && aux <=c)
+            m = aux * (c-b)*(c-a)/2   -  b*b/2 + c*b; 
+            x(i) = 
+        else
+            x(i)=0;
+        end
+    end
+    
+    i=i+1;
+end
+
+
+
+end
+
