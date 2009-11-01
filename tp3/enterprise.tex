@@ -79,12 +79,12 @@ El algoritmo est\'a compuesto por cinco pasos:
   \end{array} \right.
   \end{equation*}
 
- \item{PASO 5:} Hcer $n = n + 1$ y volver al $PASO 2$
+ \item{PASO 5:} Hacer $n = n + 1$ y volver al PASO 2.
 \end{itemize}
 
 Los n\'umeros obtenidos por medio de este generador tienen una distribuci\'on uniforme.
 Generamos 10000 n\'umeros pseudoaleatorios con el algoritmo de L'Ecuyer.  Tomamos como semillas $X_{1,0}=23$ y $X_{2,0}=23$, sabiendo que lo importante
-es no inicializar al generador con cero.  Una vez obtenidas 10000 realizaciones, las dividimos en 10 intervalos de clase de amplitud uniforme, y 
+es no inicializar al generador en cero.  Una vez obtenidas 10000 realizaciones, las dividimos en 10 intervalos de clase de amplitud uniforme, y 
 presentamos las frecuencias obtenidas en el histograma de la figura 1.
 
 \begin{figure}[t]
@@ -97,7 +97,7 @@ presentamos las frecuencias obtenidas en el histograma de la figura 1.
 \end{figure}
 
 
-Analizamos gr\'aficamente las realizaciones obtenidas con el algoritmo de L'Ecuyer para analizar la dependencia de una realizaci\'on 
+Analizamos gr\'aficamente las realizaciones obtenidas con el algoritmo de L'Ecuyer para determinar la dependencia de una realizaci\'on 
 con la anterior.  En la figura 2 mostramos en el plano las duplas $(U_i, U_{i+1})$, que no dejan ver a simple vista los planos de dependecia entre una
 iteraci\'on y la siguiente.  En la figura 3 mostramos en el espacio las ternas $(U_i, U_{i+1}, U_{i+2})$, que tampoco evidencian \'areas vac\'ias, o \'areas con mayor concentraci\'on de puntos que otras.
 
@@ -169,26 +169,26 @@ una funci\'on de distribuci\'on $F(x)$. Para hacerlo, calculamos la imagen inver
 
 \subsection{Distribuci\'on triangular}
 La funci\'on de la ecuaci\'on 5 corresponde a la funci\'on densidad de probabilidad de una variable aleatoria con distribuci\'on triangular.
-\begin{equation}
+\begin{align}
    f_{X}(x) = \left\{
   \begin{array}{rl}
-	\frac{2(x-a)}{(b-a)(c-a)} \hspace{0.5cm} a \le x \le b\\\\
-	\frac{2(c-x)}{(c-b)(c-a)} \hspace{0.5cm} b < x \le c\\\\
-	0 \hspace{0.5 cm} Otro \hspace{0.1cm} caso
+	&\frac{2(x-a)}{(b-a)(c-a)} \hspace{0.5cm} a \le x \le b\\\\
+	&\frac{2(c-x)}{(c-b)(c-a)} \hspace{0.5cm} b < x \le c\\\\
+	&0 \hspace{1.8 cm} Otro \hspace{0.1cm} caso
   \end{array} \right.
-\end{equation}
+\end{align}
 
 
 Integramos y calculamos la funci\'on inversa para obtener la expresi\'on de la ecuaci\'on 6
 
-\begin{equation}
+\begin{align}
  x_i = \left\{
   \begin{array}{rl}
-	a+\sqrt{u_i(b-a)(c-a)} \hspace{0.5cm} 0 \le u_i \le \frac{b-a}{c-a}\\\\
-	c-\sqrt{(1-u_i)(c-a)(c-b)} \hspace{0.5cm} \frac{b-a}{c-a} < u_i \le 1\\\\
-	0 \hspace{0.5 cm} Otro \hspace{0.1cm} caso
+	&a+\sqrt{u_i(b-a)(c-a)} \hspace{1.35cm} 0 \le u_i \le \frac{b-a}{c-a}\\\\
+	&c-\sqrt{(1-u_i)(c-a)(c-b)} \hspace{0.5cm} \frac{b-a}{c-a} < u_i \le 1\\\\
+	&0 \hspace{4.5 cm} Otro \hspace{0.1cm} caso
   \end{array} \right.
-\end{equation}
+\end{align}
 
 Aplicamos esta funci\'on de transformaci\'on al set de 10000 valores obtenidos en la seccion 2, y obtenemos
 10000 realizaciones de una variable pseudoaleatoria con distribuci\'on triangular.  Dividimos las realizaciones
@@ -207,23 +207,23 @@ en 10 intervalos de clase, y graficamos las frecuencias obteniendo el histograma
 \subsection{Distribuci\'on exponencial}
 La funci\'on de la ecuaci\'on 7 corresponde a la funci\'on densidad de probabilidad de una variable aleatoria con distribuci\'on exponencial.
 
-\begin{equation}
+\begin{align}
   f_{X}(x) = \left\{
   \begin{array}{rl}
-	\lambda e^{-\lambda x} \hspace{0.5cm} 0 \le x\\\\
-	0 \hspace{0.5 cm} Otro \hspace{0.1cm} caso
+	&\lambda e^{-\lambda x} \hspace{0.5cm} 0 \le x\\\\
+	&0 \hspace{0.9 cm} Otro \hspace{0.1cm} caso
   \end{array} \right.
-\end{equation}
+\end{align}
 
 Integramos y calculamos la funci\'on inversa para obtener la expresi\'on de la ecuaci\'on 8
 
-\begin{equation}
+\begin{align}
  x_i = \left\{
   \begin{array}{rl}
-	0 \hspace{0.5 cm} u_i = 0\\\\
-	-ln(u_i) \hspace{0.5cm} Otro \hspace{0.1cm} caso
+	&0 \hspace{1.5 cm} u_i = 0\\\\
+	&-ln(u_i) \hspace{0.5cm} Otro \hspace{0.1cm} caso
   \end{array} \right.
-\end{equation}
+\end{align}
 
 \subsection{Distribuci\'on uniforme parametrizada}
 Para convertir una variable aleatoria con distribuci\'on uniforme $U[0,1]$ en otra variable aleatoria con distribuci\'on
@@ -241,7 +241,7 @@ La nave espacial USS Enterprise, famosa por las pel\'iculas de Star Treck, es im
 que se conforma por dos motores a los laterales, uno a babor y otro a estribor. Ambos propulsores son alimentados por un n\'ucleo WARP
 donde se llevan a cabo reacciones de aniquilaci\'on materia / antimateria, moderadas por cristales de dilitio. Dichos cristales 
 son procesados en una c\'amara controlada, llamada Matriz de Dilitio.\\
-El tiempo de operaci\'on de cada propulsor es una variable aleatoria de distribuci\'on exponencial con tiempo medio de 10 d\'ias. 
+\indent El tiempo de operaci\'on de cada propulsor es una variable aleatoria de distribuci\'on exponencial con tiempo medio de 10 d\'ias. 
 A su vez, el tiempo de operaci\'on entre fallos del n\'ucleo WARP es de 72 horas, pudiendo variar linealmente hasta en 12 horas. 
 La nave puede propulsarse a velocidad WARP con un solo motor funcionando. Por \'ultimo, las c\'amaras de dilitio funcionan de forma tal que, la c\'amara principal tiene un tiempo de operaci\'on entre 
 20 y 50 horas, de distribuci\'on uniforme. La c\'amara redundante tiene un tiempo entre fallos de 5 a 12 horas.\\
@@ -293,9 +293,9 @@ T = min\{ max\{X_1, X_2\}, X_3, max\{X_4, X_5\} \}
 \end{equation}
 
 
-\indent Estimar el tiempo medio de vuelo con un error porcentual menor al $5\%$, donde el error porcentual se computa
+\indent Estimamos el tiempo medio de vuelo con un error porcentual menor al $5\%$, donde el error porcentual se computa
 como $100L/\bar{T}$, siendo $L$ la longitud del intervalo de confianza.  Hacemos 279 simulaciones y obtenemos una
-media muestral del tiempo de vuelo de $\bar{T}=34.1932$ y un desv\'io muestral de $8.9$.
+media muestral del tiempo de vuelo de $\bar{T}=34.1932$ horas y un desv\'io muestral de $8.9$ horas.
 En la figura 6 mostramos la media muestral en funci\'on de la cantidad de iteraciones realizadas.  Podemos ver que se 
 estabiliza mientras m\'as simulaciones se hacen. El desv\'io muestral, que
 mostramos en la figura 7 disminuye a medida que aumenta la cantidad de simulaciones.  A su vez, podemos ver en la figura 8,
@@ -306,7 +306,7 @@ que el error porcentual, tambi\'en disminuye con la cantidad de iteraciones, y q
 \label{fig:3d}
 \begin{center}
 \centering
-\includegraphics[width=3.2in]{media_muesrtal.jpg}
+\includegraphics[width=3.2in]{media_muestral.jpg}
 \caption{Media muestral del tiempo de vuelo en funci\'on de la cantidad de simulaciones.}
 \end{center}
 \end{figure}
@@ -327,7 +327,7 @@ que el error porcentual, tambi\'en disminuye con la cantidad de iteraciones, y q
 \label{fig:3d}
 \begin{center}
 \centering
-\includegraphics[width=3.2in]{error_procentual.jpg}
+\includegraphics[width=3.2in]{error_porcentual.jpg}
 \caption{Error porcentual del tiempo de vuelo en funci\'on de la cantidad de simulaciones.}
 \end{center}
 \end{figure}
