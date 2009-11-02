@@ -44,14 +44,17 @@ Generador de L'Ecuyer, n\'umeros pseudoaleatorios, propulsor WARP
 son dispositivos deterministas. La \'unica manera de obtenerlos ser\'ia a trav\'es de un dispositivo
 que detecte procesos naturales como por ejemplo el intervalo de tiempo entre dos part\'iculas $\alpha$
 en una muestra radiactiva.\\
-En la secci\'on 2 utilizamos y sometemos a prueba el generador propuesto por L'Ecuyer para la
+\indent En la secci\'on 2 utilizamos y sometemos a prueba el generador propuesto por L'Ecuyer para la
 generaci\'on de n\'umeros pseudoaleatorios que a diferencia de los n\'umeros aleatorios, pueden 
 ser generados por una computadora. Usamos las pruebas de $\chi^2$ y de Kolmogorov-Smirnov para determinar la bondad de ajuste del
 generador. En la secci\'on 3 utilizamos una variable pseudoaleatoria generada con el algoritmo de L'Ecuyer para
 obtener variables pseudoaleatorias con distintas funciones de distribuci\'on. En la secci\'on 4 
 calculamos la media y la varianza muestral del tiempo de vuelo del USS Enterprise.\\
-Comprobamos la efectividad del generador de L'Ecuyer ya que genera n\'umeros que aparentan ser 
-aleatorios. ???????????????????????????????????
+Comprobamos la efectividad del generador de L'Ecuyer en la generaci\'on de n\'umeros pseudo-aleatorios,
+ ya que los n\'umeros obtenidos con el mismo, aparentan ser aleatorios. Con dichos n\'umeros generados podemos realizar
+simulaciones de variables m\'as complejas como la que vemos en la secci\'on 4. \\
+\indent
+
 
 \section{Generador de L'Ecuyer}
 El generador propuesto por L'Ecuyer en 1998 combina dos generadores lineales congruenciales (LCGs).
@@ -332,15 +335,13 @@ que el error porcentual, tambi\'en disminuye con la cantidad de iteraciones, y q
 \end{center}
 \end{figure}
 
-
-
-
-
-
 \section{Conclusi\'on}
-
-
-
+Determinamos que para que un generador de n\'umeros pseudoaleatorios sea eficaz, debe superar no uno, 
+sino varios tests a los cuales es sometido. Quizas un generador pase un test, pero luego al obtener un gr\'afico
+en dos o tres dimensiones de una cantidad de puntos determinada, podamos ver la mala distribuci\'on de los mismos. 
+Como vemos, el generador de L'Ecuyer pasa todos los tests. Sin embargo el haber superado las pruebas, no significa que
+los n\'umeros que genera sean aleatorios. Al ser obtenidos con un dispositivo determinista, dichos n\'umeros son generados
+mediante un algor\'itmo, lo cual contrasta con el hecho de que los n\'umeros aleatorios son generados por procesos naturales.
 
 
 
@@ -349,7 +350,6 @@ que el error porcentual, tambi\'en disminuye con la cantidad de iteraciones, y q
 \bibitem{IEEEhowto:kopka}
 D\'iaz, A. R. \emph{El concepto de control}. Departamento de Ingenier\'ia Informatica. 
 Instituto Tecnol\'ogico de Buenos Aires.
-
 
 \bibitem{IEEEhowto:kopka}
 Tabla de valores cr\'iticos de la distribuci\'on $\chi^2$. http://www.mat.uda.cl/hsalinas/cursos/2008/probablilidad/Tab\\laChiCuadrada.pdf
