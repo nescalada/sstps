@@ -50,7 +50,7 @@ ser generados por una computadora. Usamos las pruebas de $\chi^2$ y de Kolmogoro
 generador. En la secci\'on 3 utilizamos una variable pseudoaleatoria generada con el algoritmo de L'Ecuyer para
 obtener variables pseudoaleatorias con distintas funciones de distribuci\'on. En la secci\'on 4 utilizamos variables
 aleatorias caracterizadas por las funciones de distribuci\'on calculadas en la secci\'on 3 que modelan el tiempo
-entre fallas de los distintos dispositivos que componen el sistema de propulsi\'on del USS Enterprise. Hicimos 
+entre fallas de los distintos dispositivos que componen el sistema de propulsi\'on del USS Enterprise. Hacemos 
 realizaciones de dichas variables para calcular la media y la varianza muestral del tiempo de vuelo de la nave.\\
 Comprobamos la efectividad del generador de L'Ecuyer en la generaci\'on de n\'umeros pseudo-aleatorios,
 ya que los n\'umeros obtenidos con el mismo, aparentan ser aleatorios. Con dichos n\'umeros podemos realizar
@@ -252,9 +252,9 @@ operaci\'on.\\
 
 \indent Definimos dos variables aleatorias  $X_1~U[20,50]$ (en horas) y $X_2~U[5, 12]$ (tambi\'en en horas), que corresponden a la c\'amara principal, y a la c\'amara redundante respectivamente. Tambi\'en definimos una variable aleatoria $X_3$ de distribuci\'on 
 triangular, que corresponde al n\'ucleo WARP, con par\'ametros $a = 60$ horas, $b = 72$ horas y $c = 84$ horas. Adem\'as
-definimos las variables aleatorias $X_4$ y $X_5$ de distribuci\'on exponencial con $\lambda=1/240$, que corresponden a los propulsores WARP del Enterprise.\\
+definimos las variables aleatorias $X_4$ y $X_5$ de distribuci\'on exponencial con $\lambda=1/240$ horas, que corresponden a los propulsores WARP del Enterprise.\\
 \indent Para generar las variables pseudoaleatorias $X_1$, $X_2$, $X_3$, $X_4$ y $X_5$ utilizamos 5 variables pseudoaleatorias generadas
-a partir del algoritmo de L'Ecuyer.  Para esas 5 variables tomamos 5 semillas distintas (distintas a cero), cuyos valores mostramos en la tabla 1.
+a partir del algoritmo de L'Ecuyer.  Para esas 5 variables tomamos 5 semillas distintas (no nulas), cuyos valores mostramos en la tabla 1.
 
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.3}
@@ -328,10 +328,10 @@ que el error porcentual, tambi\'en disminuye con la cantidad de iteraciones, y q
 
 \section{Conclusi\'on}
 Comprobamos que el generador de L'Ecuyer, efectivamente genera n\'umeros pseudoaleatorios uniformemente distribuidos
-entre 0 y 1 por medio de los tests de la secci\'on 1. Utilizando ese generador, logramos obtener realizaciones
+entre 0 y 1 por medio de los tests de la secci\'on 2. Utilizando ese generador, logramos obtener realizaciones
 de variables aleatorias con distintas funciones de distribuci\'on (triangular, exponencial y uniforme), que combinamos para modelar
 el tiempo de vuelo de la nave USS Enterprise. De esta manera, determinamos que el tiempo de vuelo es de aproximadamente 34 horas antes
-de que alg\'un dispositivo el sistema de propulsi\'on falle.
+de que alg\'un dispositivo del sistema de propulsi\'on falle.
 
 \begin{thebibliography}{1}
 
