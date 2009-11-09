@@ -1,0 +1,28 @@
+parte1:
+cantidad necesaria de iteraciones: 92
+maximo retardo en cola promedio: 14.839343 +- 0.261827
+maximo retardo en el sistema promedio: 15.875468 +-0.280937
+proporcion de clientes con retardo superior al minuto en cola: 0.766630 +- 0.002512
+proporcion de clientes con retardo superior al minuto en el sistema: 0.879337 +- 0.001863
+Tiempo medio de un cliente en el sistema: 7.017006 +- 0.147429
+Longitud maxima de la cola: 16.336957 +- 0.263592
+
+
+parte 2a:
+cantidad necesaria de iteraciones: 31
+maximo retardo en cola promedio: 3.204629 +- 0.131135
+maximo retardo en el sistema promedio: 3.849013 +-0.136589
+proporcion de clientes con retardo superior al minuto en cola: 0.185484 +- 0.010229
+proporcion de clientes con retardo superior al minuto en el sistema: 0.365917 +- 0.010162
+Tiempo medio de un cliente en el sistema: 1.006330 +- 0.020162
+Longitud maxima de la cola: 5.129032 +- 0.202543
+
+parte 2b:
+cantidad necesaria de iteraciones: 56
+maximo retardo en cola promedio: 2.496609 +- 0.053087
+maximo retardo en el sistema promedio: 6.230678 +-0.153826
+proporcion de clientes con retardo superior al minuto en cola: 0.103036 +- 0.010740
+proporcion de clientes con retardo superior al minuto en el sistema: 0.479076 +- 0.009895
+Tiempo medio de un cliente en el sistema: 1.258275 +- 0.031788
+Longitud maxima de la cola: 4.232143 +- 0.075973
+
