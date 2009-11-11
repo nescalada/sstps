@@ -8,10 +8,10 @@ Numero de clientes                   1000
 
 
 
-Tiempo medio en cola:              0.390 minutos
+Tiempo medio en cola:              0.404 minutos
 
-Longitud media de la cola:             0.385
+Longitud media de la cola:             0.382
 
-Utilizacion del servidor:              0.478
+Utilizacion del servidor:              0.464
 
-Simulacion finalizada a:            1012.309 minutos
+Simulacion finalizada a:            1057.655 minutos
