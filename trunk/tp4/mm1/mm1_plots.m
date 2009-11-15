@@ -79,13 +79,40 @@ fprintf(timfile,'ocupacion del servidor (OCUPADO=1,LIBRE=0)\n');
 % Inicializa la simulacion
 initialize();
 i=1;
+
+%para calcular el promedio en cada iteracion
+corte = false;
+acum_media = 0;
+acum_desv = 0;
+media =0;
+p_media(1) = 0;
+p_desv(1) = 0;
+
+
+
 % Corre la simulacion
 while ( num_custs_delayed < num_delays_required )
 	fprintf(timfile, '%16.3f %d %d\n',time,num_in_q,server_status);
-    plot_time(i) = time;
-    plot_num_in_q(i) = num_in_q;
-    plot_server_status(i) = server_status;
-    i= i+1;
+    
+   % if(num_in_q >0)
+        plot_time(i) = time;
+        plot_people(i) = i;
+        plot_num_in_q(i) = num_in_q;
+        plot_server_status(i) = server_status;
+
+        %promedio... acumulado y actual
+        acum_media = acum_media + num_in_q;
+        media = acum_media / i;
+        p_media(i) = media;
+        %desvio standard... idem
+        acum_desv = acum_desv + ( num_in_q-media )^2;
+        p_desv(i)=sqrt( acum_desv / (i -1));
+
+
+
+        i= i+1;
+   % end
+    
 	% Determina el proximo evento
 	timing();
 
@@ -111,5 +138,14 @@ fclose(timfile);
 
 
 %longitud de la cola en funcion del tiempo
+%plot(plot_time, plot_num_in_q);
 
-plot(plot_time, plot_num_in_q);
+%estado del servidor en funcion del tiempo
+plot(plot_time, plot_server_status);
+
+%promedio de longitud de la cola segun el tiempo
+%plot(plot_people, p_media);
+%plot(plot_time, p_media);
+
+%desvio de longitud de la cola segun el tiempo
+%plot(plot_people, p_desv);
