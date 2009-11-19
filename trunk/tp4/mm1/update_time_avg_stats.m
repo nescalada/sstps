@@ -31,7 +31,14 @@ time_since_last_event = time - time_last_event;
 time_last_event       = time;
 
 % Actualiza el area bajo la curva de numero en cola
-area_num_in_q = area_num_in_q + num_in_q * time_since_last_event;
+%%%%%%%%%%%%area_num_in_q = area_num_in_q + num_in_q * time_since_last_event;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%aca metimos mano nosotros!
+if(server_status == BUSY)
+    area_num_in_q = area_num_in_q + (num_in_q+1) * time_since_last_event;
+else
+    area_num_in_q = area_num_in_q + num_in_q * time_since_last_event;
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%aca metimos mano nosotros!
 
 % Actualiza el area bajo la curva de la funcio de servidor-ocupado
 area_server_status = area_server_status + server_status * time_since_last_event;

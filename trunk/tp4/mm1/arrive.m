@@ -50,10 +50,14 @@ else
 
 	% Incrementa el numero de clientes atendidos y pone el estatus
 	% del servidor ocupado.
-	num_custs_delayed =num_custs_delayed + 1;
+    num_custs_delayed =num_custs_delayed + 1;
 	server_status = BUSY;
 	
 	% Programa una partida (servicio completado)
-	time_next_event(2) = time + expon(mean_service);
+    aux = expon(mean_service);
+	time_next_event(2) = time + aux;
+    total_of_delays = total_of_delays + aux;
+    
+    
 end
 return;
