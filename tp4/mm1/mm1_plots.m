@@ -48,6 +48,8 @@ global total_of_delays;
 Q_LIMIT = 100;
 BUSY    = 1;
 IDLE    = 0;
+%jjj=1.0;
+%while( jjj<=10)
 
 % Abre los archivos I/O
 inpfile = fopen('mm1.inp','r');
@@ -59,10 +61,12 @@ num_events = 2;
 
 % Lee el archivo de entrada
 xdata = fscanf(inpfile,'%f %f %f',[1 3]);
-mean_interarrival   = xdata(1);
+mean_interarrival   = xdata(1);%%%%%%%%%%%%%ESTE VALOR SE PISA!!!!!
 mean_service        = xdata(2);
 num_delays_required = xdata(3);
 
+
+%mean_interval = jjj;
 
 % Escribe los encabezados de los reportes y parametros de entrada
 fprintf(outfile,'Sistema de cola de servidor simple\n\n');
@@ -141,7 +145,7 @@ fclose(timfile);
 %plot(plot_time, plot_num_in_q);
 
 %estado del servidor en funcion del tiempo
-plot(plot_time, plot_server_status);
+%plot(plot_time, plot_server_status);
 
 %promedio de longitud de la cola segun el tiempo
 %plot(plot_people, p_media);
@@ -149,3 +153,20 @@ plot(plot_time, plot_server_status);
 
 %desvio de longitud de la cola segun el tiempo
 %plot(plot_people, p_desv);
+
+
+
+
+%Longitud media de la cola:  %16.3f\n\n', ...
+%        rho =  mean_interval / mean_service;
+%        plot_rho(jjj) = rho;
+        
+%		plot_longitud_media_cola(jjj) = area_num_in_q / time;
+        
+%        plot_L_teorico(jjj) = rho/(1-rho);
+     
+%       jjj=jjj+1; 
+%end        
+%hold on
+%plot(plot_rho, plot_longitud_media_cola);
+%plot(plot_rho, plot_L_teorico);

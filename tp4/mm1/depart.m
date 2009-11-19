@@ -42,7 +42,11 @@ global total_of_delays;
 		% Incrementa el numero de clientes atendidos y programa la
 		%  partida.
 		num_custs_delayed = num_custs_delayed + 1;
-		time_next_event(2) = time + expon(mean_service);
+        aux=expon(mean_service);
+		time_next_event(2) = time + aux;
+        %%%%%%%%%%%%%%%%%%%%%%%%delay del customer en el
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%sistema
+        total_of_delays = total_of_delays + aux;
 
 		% Mueve cada cliente en la cola un lugar.
 		for i = 1:num_in_q
