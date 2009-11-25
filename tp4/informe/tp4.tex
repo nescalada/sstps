@@ -39,7 +39,7 @@ Teor\'ia de colas, modelo de cola simple, simulaci\'on forzada por eventos
 La teor\'ia de colas fue originada por Agner Krarup Erlang (1878-1929) en 1909. Es una colecci\'on
 de modelos matem\'aticos que describen sistemas de l\'ineas de espera (o colas) particulares o de
 sistemas de colas. Esta teor\'ia es de gran valor en los negocios de hoy en d\'ia ya que muchos de
-sus problemas pueden modelarse como problemas de congesti\'n llegada/partida.\\
+sus problemas pueden modelarse como problemas de congesti\'on llegada/partida.\\
 El modelo del sistema de una cola puede verse en la figura 1. Consiste en clientes que van a ser
 atendidos por un servidor. En el caso de que el servidor este desocupado y llegue un cliente, entonces
 este es atendido inmediatamente. Si el servidor estuviera ocupado, entonces el cliente espera en la
@@ -63,7 +63,8 @@ Este modelo es el m\'as simple de analizar mediante la simulaci\'on por eventos 
 forzada por eventos discretos es una t\'ecnica inform\'atica de modelado din\'amico de sistemas. Estos
 sistemas se caracterizan por mantener un estado interno global que cambia en instantes de tiempo asociados
 a la ocurrencia de un determinado evento en la din\'amica del sistema. En nuestro caso, el conjunto discreto
-de eventos del sistema es $E={llegada, partida}$, y el conjunto de estados del servidor es $S={libre, ocupado}$.
+de eventos del sistema es $E={llegada, partida}$, y el conjunto de estados del servidor es $S={libre, ocupado}$.\\
+##########En la secci\'on 2 hacemos ESTOOOOOOO en la seccion 3 hacemos ESTOOOOOOOOOOOOOO blablabla!!##############
 
 %para meter graficos
 %-------------------
@@ -98,17 +99,46 @@ de eventos del sistema es $E={llegada, partida}$, y el conjunto de estados del s
 %\label{tab:sim}
 %\end{table}
 
-\section{}
+\section{C\'alculo de par\'ametros del sistema}
+Para distintos sistemas como podr\'ia ser la cola de un banco, o de cualquier servicio que pueda ser
+simulado por el sistema de colas, puede llegar a ser muy \'util conocer distintos par\'ametros como
+por ejemplo el promedio temporal de clientes en el sistema, o el tiempo medio que un cliente tarda
+en el sistema.
 
-\subsection{}
+Estimamos con un error menor al 5\%, el promedio temporal de clientes en el sistema
+cuyo valor te\'orico se calcula con la ecuaci\'on 1
 
-\section{}
+\begin{equation}
+L = \frac{1}{T} \int_{0}^{T}L(t)dt 
+\end{equation}
 
-\subsection{}
+donde L(T) es la cantidad de clientes en el sistema en el instante t, para un tiempo de operación
+de la cola T. Para lograrlo, simulamos la cola mediante una simulaci\'on forzada por eventos realizada
+en Matlab y determinamos que se deben realizar XXXXXXXXXXXXXXXXXXX simulaciones para tener un error
+menor al 5%.
+%chamuyo
+En un caso pr\'actico, conocer este par\'ametro puede resultar \'util para saber si es necesario
+tener otra cola si la cantidad de clientes en el sistema con una sola cola es demasiado grande.
 
-\section{}
+%%%%%%%%%%%%%%%%%%%%
+%poner los resultados teoricos y los estimados, calcular la diferencia y chamuyar
+%%%%%%%%%%%%%%%%%%%%
+
+
+En algunos casos, se puede necesitar conocer el tiempo medio que un cliente tarda en el sistema. 
+Siempre se desea que este par\'ametro sea menor para que la atenci\'on a los clientes sea m\'as r\'apida.
+Estimamos este tiempo simulando la misma cola que en la secci\'on 1 y tambi\'en con un error menor al 5%.
+
+%%%%%%%%%%%%%%%%%%%%
+%poner los resultados teoricos y los estimados, calcular la diferencia y chamuyar
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Sistema de dos colas en serie}
+
+
 
 \section{Conclusi\'on}
+
 
 \begin{thebibliography}{1}
 
