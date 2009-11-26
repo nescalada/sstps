@@ -19,7 +19,7 @@
 \IEEEcompsoctitleabstractindextext{%
 \begin{abstract}
 %\boldmath
-Simulamos un modelo de cola simple con un esquema de simulaci\'on forzada por eventospara comparar
+Simulamos un modelo de cola simple con un esquema de simulaci\'on forzada por eventos para comparar
 los resultados con los valores te\'oricos de dicho modelo. Dise\~namos un modelo de un sistema de
 dos colas en serie para hacer simulaciones y obtener una estimaci\'on de los par\'ametros del sistema.
 \end{abstract}
@@ -40,18 +40,18 @@ Teor\'ia de colas, modelo de cola simple, simulaci\'on forzada por eventos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 La teor\'ia de colas fue originada por Agner Krarup Erlang (1878-1929) en 1909. Es una colecci\'on
 de modelos matem\'aticos que describen sistemas de l\'ineas de espera (o colas) particulares o de
-sistemas de colas. Esta teor\'ia es de gran valor en los negocios de hoy en d\'ia ya que muchos de
+sistemas de colas. Esta teor\'ia es de gr\'an valor en los negocios de hoy en d\'ia ya que muchos de
 sus problemas pueden modelarse como problemas de congesti\'on llegada/partida.\\
 El modelo del sistema de una cola puede verse en la figura 1. Consiste en clientes que van a ser
 atendidos por un servidor. En el caso de que el servidor este desocupado y llegue un cliente, entonces
-este es atendido inmediatamente. Si el servidor estuviera ocupado, entonces el cliente espera en la
+\'este es atendido inmediatamente. Si el servidor estuviera ocupado, entonces el cliente espera en la
 cola hasta que el servidor se desocupe.\\
 
 \begin{figure}[t] %figura 1
 \label{fig:colasimple}
 \begin{center}
 \centering
-%\includegraphics[width=3.2in]{cola.jpg}
+\includegraphics[width=3.2in]{cola2}
 \caption{Modelo de cola simple: los clientes llegan por la parte izquierda y entran en el servidor o en la cola, y luego de ser atendidos salen del servidor por la derecha}
 \end{center}
 \end{figure}
@@ -167,9 +167,9 @@ en el sistema.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%<chamuyo>
 En un caso pr\'actico, conocer este par\'ametro puede resultar \'util para saber si es necesario
-tener otra cola si la cantidad de clientes en el sistema con una sola cola es demasiado grande.\\
+tener otra cola, si la cantidad de clientes en el sistema con una sola cola es demasiado grande.\\
 %%%%%%%%%%%%%%%%%%%%<\chamuyo>
-Estimamos con un error menor al 5\%, el promedio temporal de clientes en el sistema
+Estimamos con un error menor al 5\%, el promedio temporal de clientes en el sistema ( L ), 
 cuyo valor te\'orico se calcula con la ecuaci\'on 1
 
 \begin{equation}
@@ -193,10 +193,9 @@ Los resultados de la simulaci\'on se ven en la figura 4.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Tiempo medio de un cliente en el sistema} %seccion 3.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-En algunos casos, se puede necesitar conocer el tiempo medio que un cliente tarda en el sistema desde
-que llega a la cola hasta que sale luego de ser atendido. Siempre se desea que este par\'ametro sea
-menor para que la atenci\'on a los clientes sea m\'as r\'apida.\\
-El valor te\'orico de este par\'ametro para este par\'ametro se calcula seg\'un la ecuaci\'on 2
+En algunos casos, podemos necesitar conocer el tiempo medio que un cliente tarda en el sistema desde
+que llega a la cola hasta que sale, luego de ser atendido. \\
+El valor te\'orico de este par\'ametro se calcula seg\'un la ecuaci\'on 2
 
 \begin{equation}
   W = \frac{1}{\mu - \lambda}
