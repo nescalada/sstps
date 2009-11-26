@@ -1,0 +1,186 @@
+% Matlab script: mm1.m
+% Proposito: Simula un modelo de cola con servidor simple del tipo
+%			  M/M/1 con disciplina FIFO.
+%			  Lee el archivo de entrada mm1.inp donde en el primer registro
+%			  aparecen, separados por espacios: tiempo medio entre arribos, 
+%			  tiempo medio de servicio y numero de clientes total procesados.
+%			  La salida de la simulacion se da en dos archivos:
+%			  mm1.out: Muestra valores estadisticos computados
+%			  mm1.tim: Muestra la series de tiempo resultado de la simulacion
+%			  
+%			  Adaptado de "Simulation Modeling & Analysis", Law y Kelton.Proposito:     Simula una cola M/M/1
+%
+% Funciones utilizadas:
+% arrive.m
+% depart.m
+% expon.m
+% initialize.m
+% report.m
+% timing.m
+% update_time_avg_stats.m
+%
+% Autor: Alejandro Diaz
+% Declaracion de constantes y variables:
+clear all
+
+global Q_LIMIT;
+global BUSY;
+global IDLE;
+
+global next_event_type;
+global num_custs_delayed;
+global num_custs_delayed2;
+global num_delays_required;
+global num_events;
+global num_in_q;
+global num_in_q2;
+global server_status;
+global server_status2;
+
+global area_num_in_q;
+global area_server_status;
+global area_num_in_q2;
+global area_server_status2;
+global mean_interarrival;
+global mean_service;
+global mean_service2;
+global time;
+global time_arrival;
+global time_arrival2;
+global time_last_event;
+global time_next_event;
+global total_of_delays;
+global total_of_delays2;
+global total_people_sys;
+
+
+%
+Q_LIMIT = 100;
+BUSY    = 1;
+IDLE    = 0;
+
+% Abre los archivos I/O
+inpfile = fopen('mm1.inp','r');
+outfile = fopen('mm1.out','w');
+timfile = fopen('mm1.tim','w');
+
+% Especifica el numero de eventos
+num_events = 3;
+
+% Lee el archivo de entrada
+xdata = fscanf(inpfile,'%f %f %f %f',[1 4]);
+mean_interarrival   = xdata(1);
+mean_service        = xdata(2);
+mean_service2       = xdata(3);
+num_delays_required = xdata(4);
+ 
+
+% Escribe los encabezados de los reportes y parametros de entrada
+fprintf(outfile,'Sistema de cola de servidor simple\n\n');
+fprintf(outfile,'Tiempo medio entre arribos1 %11.3f minutos\n\n',mean_interarrival);
+fprintf(outfile,'Tiempo medio de servicio1   %11.3f minutos\n\n',mean_service);
+fprintf(outfile,'Tiempo medio de servicio2   %11.3f minutos\n\n',mean_service2);
+fprintf(outfile,'Numero de clientes         %14d\n\n', num_delays_required);
+
+fprintf(timfile,'Series de tiempo producidas por mm1.m \n');
+fprintf(timfile,'3\n');
+fprintf(timfile,'time\n');
+fprintf(timfile,'longitud de la cola1  \n');
+fprintf(timfile,'ocupacion del servidor1 (OCUPADO=1,LIBRE=0)\n');
+fprintf(timfile,'longitud de la cola2  \n');
+fprintf(timfile,'ocupacion del servidor2 (OCUPADO=1,LIBRE=0)\n');
+
+% Inicializa la simulacion
+initialize();
+i=1;
+
+%para calcular el promedio en cada iteracion
+corte = false;
+acum_media = 0;
+acum_desv = 0;
+media =0;
+p_media(1) = 0;
+p_desv(1) = 0;
+total_people_sys = 0.0;
+
+
+% Corre la simulacion
+while ( num_custs_delayed2 < num_delays_required )
+	fprintf(timfile, '%d   %16.3f %d %d %d %d\n',next_event_type, time,num_in_q,server_status, num_in_q2, server_status2);
+	
+        plot_time(i) = time;
+        plot_people(i) = i;
+        plot_num_in_q(i) = num_in_q;
+        plot_num_in_sis(i) = num_in_q + server_status;
+        plot_server_status(i) = server_status;
+        plot_people_sys(i) = num_in_q + server_status + num_in_q2 + server_status2;
+
+        total_people_sys = total_people_sys + (num_in_q + server_status + num_in_q2 + server_status2)*delayy;
+        
+        %promedio... acumulado y actual
+        acum_media = acum_media + num_in_q;
+        media = acum_media / i;
+        p_media(i) = media;
+        %desvio standard... idem
+        acum_desv = acum_desv + ( num_in_q-media )^2;
+        p_desv(i)=sqrt( acum_desv / (i -1));
+
+
+
+        i= i+1;
+    
+    
+    
+    % Determina el proximo evento
+	timing();
+	
+	% Actualiza los acumuladores estadisticos de tiempos medios
+	update_time_avg_stats();
+	
+	% Invoca al evento apropiado
+	switch (next_event_type)
+		case 1
+			arrive();
+			%break;
+		case 2
+			depart();
+            arrive2();
+			%break;
+        case 3
+			depart2();
+			%break;
+    end
+            
+end
+
+num_custs_delayed
+num_custs_delayed2
+
+fprintf(timfile, '%d   %16.3f %d %d %d %d\n',next_event_type, time,num_in_q,server_status, num_in_q2, server_status2);
+
+% Invoca al generador de reportes y fin de la simulacion
+report(outfile);
+fclose(inpfile);
+fclose(outfile);
+fclose(timfile);
+
+
+%hold on
+%longitud de la cola en funcion del tiempo
+%plot(plot_time, plot_num_in_q);
+
+%estado del servidor en funcion del tiempo
+%plot(plot_time, plot_server_status);
+
+%promedio de longitud de la cola segun el tiempo
+%plot(plot_people, p_media);
+%plot(plot_time, p_media);
+
+%desvio de longitud de la cola segun el tiempo
+%plot(plot_people, p_desv);
+
+%cantidad de personasn el sistema en funcion del tiempo
+%plot(plot_time, plot_people_sys);
+
+
+
