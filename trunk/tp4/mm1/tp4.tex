@@ -40,7 +40,7 @@ Teor\'ia de colas, modelo de cola simple, simulaci\'on forzada por eventos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 La teor\'ia de colas fue originada por Agner Krarup Erlang (1878-1929) en 1909. Es una colecci\'on
 de modelos matem\'aticos que describen sistemas de l\'ineas de espera (o colas) particulares o de
-sistemas de colas. Esta teor\'ia es de gr\'an valor en los negocios de hoy en d\'ia ya que muchos de
+sistemas de colas. Esta teor\'ia es de gran valor en los negocios de hoy en d\'ia ya que muchos de
 sus problemas pueden modelarse como problemas de congesti\'on llegada/partida.\\
 El modelo del sistema de una cola puede verse en la figura 1. Consiste en clientes que van a ser
 atendidos por un servidor. En el caso de que el servidor este desocupado y llegue un cliente, entonces
@@ -58,10 +58,15 @@ cola hasta que el servidor se desocupe.\\
 
 El problema es determinar qu\'e capacidad tiene la cola o qu\'e tasa de servicio tiene el servidor ya
 que ni los clientes llegan a tiempos fijos ni los tiempos de servicio son iguales para todos los
-clientes. Nosotros utilizamos un modelo de cola simple de tipo M/M/1/$\inf$/FIFO en el que tanto el
+clientes. Nosotros utilizamos un modelo de cola simple de tipo M/M/1/$\infty$/FIFO en el que tanto el
 tiempo entre arribos de clientes como el tiempo de servicio son variables aleatorias con distribuci\'on
 exponencial. Tambi\'en supone que la cola tiene capacidad infinita, y sigue una disciplina de tipo FIFO.\\
-En la secci\'on 2 hacemos ESTOOOOOOO en la seccion 3 hacemos ESTOOOOOOOOOOOOOO blablabla!!
+En la secci\'on 2 simulamos una cola simple con una simulaci\'on forzada por eventos para obtener una
+estimaci\'on de los par\'ametros del sistema. En la secci\'on 3 computamos con un error del 5\% la longitud
+promedio de la cola y el tiempo medio de un cliente en la cola, en funci\'on del tr\'afico comparando los
+resultados de la simulaci\'on con los valores te\'oricos. En la seccion 4, dise\~namos un modelo
+de un sistema de dos colas en serie, y computamos la longitud media de la cola en funci\'on del tr\'afico.
+Finalmente en la secci\'on 5, exponemos las conclusiones.
 
 %para meter graficos
 %-------------------
@@ -99,14 +104,12 @@ En la secci\'on 2 hacemos ESTOOOOOOO en la seccion 3 hacemos ESTOOOOOOOOOOOOOO b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Simulando la cola} %seccion 2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-El modelo de cola elegido es el m\'as simple de analizar mediante la simulaci\'on por eventos discretos.
-La simulaci\'on forzada por eventos discretos es una t\'ecnica inform\'atica de modelado din\'amico de
+El modelo de cola elegido es el m\'as simple de analizar mediante la simulaci\'on forzada por eventos discretos.
+La simulaci\'on por eventos discretos es una t\'ecnica inform\'atica de modelado din\'amico de
 sistemas. Estos sistemas se caracterizan por mantener un estado interno global que cambia en instantes
 de tiempo asociados a la ocurrencia de un determinado evento en la din\'amica del sistema. En nuestro
-caso, el conjunto discreto de eventos del sistema es $E={llegada, partida}$, y el conjunto de estados
-del servidor es $S={libre, ocupado}$.\\
-Para una cola 
-
+caso, el conjunto discreto de eventos del sistema es $E=\{llegada, partida\}$, y el conjunto de estados
+del servidor es $S=\{libre, ocupado\}$.\\
 Para el caso en que el intervalo entre llegadas sea una variable aleatoria exponencialmente distribuida
 con tiempo medio entre arribos ($\lambda$) de 1 minuto y el tiempo de servicio ($\mu$) tambi\'en sea 
 exponencial con media de 0.5 minutos; una simulaci\'on forzada por eventos da los resultados de la tabla 1.\\
@@ -127,7 +130,7 @@ Simulaci\'on finalizada a	&	1057.655 minutos\\
 \hline
 \end{tabular}
 \label{tab:sim}
-\caption{Resultados de una simulaci\'on forzada por eventos con $\lambda = 1$ minuto y $\mu~E(0.5 minutos)$ para 1000 clientes}
+\caption{Resultados de una simulaci\'on forzada por eventos con $\lambda = 1$ minuto y $\mu \sim \epsilon(0.5 minutos)$ para 1000 clientes}
 \end{table}
 
 El estado del servidor en esta simulaci\'on lo mostramos en la figura 2, y en la figura 3 mostramos
@@ -169,7 +172,7 @@ en el sistema.
 En un caso pr\'actico, conocer este par\'ametro puede resultar \'util para saber si es necesario
 tener otra cola, si la cantidad de clientes en el sistema con una sola cola es demasiado grande.\\
 %%%%%%%%%%%%%%%%%%%%<\chamuyo>
-Estimamos con un error menor al 5\%, el promedio temporal de clientes en el sistema ( L ), 
+Estimamos con un error menor al 5\%, el promedio temporal de clientes en el sistema (L), 
 cuyo valor te\'orico se calcula con la ecuaci\'on 1
 
 \begin{equation}
@@ -203,7 +206,7 @@ El valor te\'orico de este par\'ametro se calcula seg\'un la ecuaci\'on 2
 
 donde $\lambda$ es la tasa media de clientes que llegan al sistema (en clientes por minuto) y
 $\frac{1}{\mu}$ es el tiempo que tarda el servidor en atender a un cliente.\\
-Estimamos este tiempo simulando la misma cola que en la secci\'on 3 tambi\'en con un error menor al 5\%.
+Estimamos este tiempo simulando la misma cola que en la secci\'on 3.1 tambi\'en con un error menor al 5\%.
 Los resultados los mostramos en la figura 5.
 
 \begin{figure}[t]%figura 5
@@ -218,7 +221,7 @@ Los resultados los mostramos en la figura 5.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sistema de dos colas en serie} %seccion 4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Dise\~namos un sistema m\'as complejo que el anterior, haciendo que haya otra cola en serie. 
+Dise\~namos un sistema m\'as complejo que el de las secciones 2 y 3, haciendo que haya otra cola en serie. 
 Cuando un cliente termina de ser atendido en el primer servidor, arriba a la siguiente cola
 que se comporta de la misma forma que la cola de las secciones 2 y 3.
 En este caso, simulamos el comportamiento para distintas intensidades de tr\'afico, calculamos
@@ -229,14 +232,15 @@ la cantidad media de clientes en el sistema y colocamos los resultados en el gr\
 \label{fig:puntodos}
 \begin{center}
 \centering
-%\includegraphics[width=3.2in]{L_serial}
-\caption{COMENTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRRRRRR}
+\includegraphics[width=3.2in]{plot_L}
+\caption{Gr\'afico de la simulaci\'on del sistema de dos colas en serie. Los valores te\'oricos en este caso no son cercanos a los medidos en la simulaci\'on.}
 \end{center}
 \end{figure}
 
 
-\section{Conclusi\'on}
-CONCLUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIRRRRRRRRRRRRRRRRRRRRRRRR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusi\'on} %seccion 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{thebibliography}{1}
