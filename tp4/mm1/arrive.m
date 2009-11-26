@@ -23,6 +23,7 @@ global time_arrival;
 global time_last_event;
 global time_next_event;
 global total_of_delays;
+global total_time_in_sistem;
 
 % Programa el proximo arrivo
 time_next_event(1) = time + expon(mean_interarrival);
@@ -56,7 +57,8 @@ else
 	% Programa una partida (servicio completado)
     aux = expon(mean_service);
 	time_next_event(2) = time + aux;
-    total_of_delays = total_of_delays + aux;
+    total_time_in_sistem = total_time_in_sistem + aux;
+   % total_of_delays = total_of_delays + aux;
     
     
 end

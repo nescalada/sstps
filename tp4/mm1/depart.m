@@ -23,6 +23,7 @@ global time_arrival;
 global time_last_event;
 global time_next_event;
 global total_of_delays;
+global total_time_in_sistem;
 
 % Chequea si la cola esta vacia
 	if ( num_in_q == 0)
@@ -38,7 +39,8 @@ global total_of_delays;
 		% y actualiza el acumulador del delay total
 		delay            = time - time_arrival(1);
 		total_of_delays = total_of_delays + delay;
-
+        total_time_in_sistem = total_time_in_sistem + delay;
+        
 		% Incrementa el numero de clientes atendidos y programa la
 		%  partida.
 		num_custs_delayed = num_custs_delayed + 1;
@@ -46,7 +48,7 @@ global total_of_delays;
 		time_next_event(2) = time + aux;
         %%%%%%%%%%%%%%%%%%%%%%%%delay del customer en el
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%sistema
-        total_of_delays = total_of_delays + aux;
+      %  total_of_delays = total_of_delays + aux;
 
 		% Mueve cada cliente en la cola un lugar.
 		for i = 1:num_in_q

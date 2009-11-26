@@ -43,7 +43,7 @@ global time_arrival;
 global time_last_event;
 global time_next_event;
 global total_of_delays;
-
+global total_time_in_sistem;
 %
 Q_LIMIT = 100;
 BUSY    = 1;
@@ -102,6 +102,7 @@ while ( num_custs_delayed < num_delays_required )
         plot_time(i) = time;
         plot_people(i) = i;
         plot_num_in_q(i) = num_in_q;
+        plot_num_in_sis(i) = num_in_q + server_status;
         plot_server_status(i) = server_status;
 
         %promedio... acumulado y actual
@@ -140,9 +141,9 @@ fclose(inpfile);
 fclose(outfile);
 fclose(timfile);
 
-
+hold on
 %longitud de la cola en funcion del tiempo
-%plot(plot_time, plot_num_in_q);
+plot(plot_time, plot_num_in_q);
 
 %estado del servidor en funcion del tiempo
 %plot(plot_time, plot_server_status);
@@ -154,6 +155,8 @@ fclose(timfile);
 %desvio de longitud de la cola segun el tiempo
 %plot(plot_people, p_desv);
 
+%cantidad de personasn el sistema en funcion del tiempo
+plot(plot_time, plot_num_in_sis);
 
 
 

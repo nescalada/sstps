@@ -23,6 +23,7 @@ global time_arrival;
 global time_last_event;
 global time_next_event;
 global total_of_delays;
+global total_time_in_sistem;
 
 % Inicializa el reloj de la simulacion
 time = 0.0;
@@ -43,6 +44,7 @@ area_server_status = 0.0;
 
 rand('seed', 5);
 
+total_time_in_sistem = 0.0;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
