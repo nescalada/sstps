@@ -1,17 +1,19 @@
 Sistema de cola de servidor simple
 
-Tiempo medio entre arribos       5.000 minutos
+Tiempo medio entre arribos       1.000 minutos
 
-Tiempo medio de servicio         0.500 minutos
+Tiempo medio de servicio         0.800 minutos
 
 Numero de clientes                   1000
 
 
 
-Tiempo medio en cola:              0.550 minutos
+Tiempo medio en cola:              2.969 minutos
 
-Longitud media de la cola:             0.105
+Longitud media de la cola:             3.731
 
-Utilizacion del servidor:              0.096
+Utilizacion del servidor:              0.807
 
-Simulacion finalizada a:            5209.404 minutos
+Simulacion finalizada a:            1015.561 minutos
+
+Tiempo medio en el sistema (L):               3.144 minutos
