@@ -63,9 +63,9 @@ tiempo entre arribos de clientes como el tiempo de servicio son variables aleato
 exponencial. Tambi\'en supone que la cola tiene capacidad infinita, y sigue una disciplina de tipo FIFO.\\
 En la secci\'on 2 simulamos una cola simple con una simulaci\'on forzada por eventos para obtener una
 estimaci\'on de los par\'ametros del sistema. En la secci\'on 3 computamos con un error del 5\% la longitud
-promedio de la cola y el tiempo medio de un cliente en la cola, en funci\'on del tr\'afico comparando los
+promedio de la cola y el tiempo medio de un cliente en la cola, en funci\'on de la intensidad de tr\'afico comparando los
 resultados de la simulaci\'on con los valores te\'oricos. En la seccion 4, dise\~namos un modelo
-de un sistema de dos colas en serie, y computamos la longitud media de la cola en funci\'on del tr\'afico.
+de un sistema de dos colas en serie, y computamos la longitud media de la cola en funci\'on de la intensidad de tr\'afico.
 Finalmente en la secci\'on 5, exponemos las conclusiones.
 
 %para meter graficos
@@ -111,8 +111,9 @@ de tiempo asociados a la ocurrencia de un determinado evento en la din\'amica de
 caso, el conjunto discreto de eventos del sistema es $E=\{llegada, partida\}$, y el conjunto de estados
 del servidor es $S=\{libre, ocupado\}$.\\
 Para el caso en que el intervalo entre llegadas sea una variable aleatoria exponencialmente distribuida
-con tiempo medio entre arribos ($\lambda$) de 1 minuto y el tiempo de servicio ($\mu$) tambi\'en sea 
-exponencial con media de 0.5 minutos; una simulaci\'on forzada por eventos da los resultados de la tabla 1.\\
+con tiempo medio entre arribos ($1/\lambda$) de 1 minuto y el tiempo de servicio ($1/\mu$) tambi\'en sea 
+exponencial con media de 0.5 minutos; una simulaci\'on forzada por eventos da los resultados de la tabla 1 
+(cuando la semilla del generador de n\'umeros aleatorios est\'a seteada en $5$).\\
 
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.3}
@@ -170,7 +171,7 @@ en el sistema.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%<chamuyo>
 En un caso pr\'actico, conocer este par\'ametro puede resultar \'util para saber si es necesario
-tener otra cola, si la cantidad de clientes en el sistema con una sola cola es demasiado grande.\\
+tener otra caja de atenci\'on al cliente, si la cantidad de clientes en el sistema con una sola es demasiado grande.\\
 %%%%%%%%%%%%%%%%%%%%<\chamuyo>
 Estimamos con un error menor al 5\%, el promedio temporal de clientes en el sistema (L), 
 cuyo valor te\'orico se calcula con la ecuaci\'on 1
@@ -179,7 +180,7 @@ cuyo valor te\'orico se calcula con la ecuaci\'on 1
 L = \frac{\rho}{1-\rho}
 \end{equation}
 
-donde $\rho$ es la intensidad de tr\'afico de la cola.\\
+donde $\rho=\lambda/\mu$ es la intensidad de tr\'afico de la cola.\\
 Para lograrlo, simulamos la cola mediante una simulaci\'on forzada por eventos realizada en Matlab.
 %%%%%%%%y determinamos que se deben realizar XXXXXXXXXXXXXXXXXXX simulaciones para tener un error menor al 5\%.
 Los resultados de la simulaci\'on se ven en la figura 4.
@@ -224,6 +225,9 @@ Los resultados los mostramos en la figura 5.
 Dise\~namos un sistema m\'as complejo que el de las secciones 2 y 3, haciendo que haya otra cola en serie. 
 Cuando un cliente termina de ser atendido en el primer servidor, arriba a la siguiente cola
 que se comporta de la misma forma que la cola de las secciones 2 y 3.
+Cuando el modelo de colas, representa una cola a continuaci\'on de otra, entonces $\rho$ se calcula como
+$\rho = \lambda/(\mu_1+\mu_2)$, siendo $\mu_1$ el tiempo medio de atenci\'on del primer servidor, y 
+$\mu_2$ el tiempo de atenci\'on del segundo servidor.
 En este caso, simulamos el comportamiento para distintas intensidades de tr\'afico, calculamos
 la cantidad media de clientes en el sistema y colocamos los resultados en el gr\'afico de la figura
 6.
@@ -244,14 +248,18 @@ la cantidad media de clientes en el sistema y colocamos los resultados en el gr\
 Calculamos los par\'ametros del sistema para un modelo de colas simples, obteniendo como resultado valores
 pr\'oximos a los te\'oricos. Sin embargo para un sistema m\'as complejo como el de la secci\'on 4, los
 valores medidos no resultaron cercanos a los te\'oricos.
+Lo importante de este tipo de simulaciones es obtener estimaciones sobre la cantidad de gente que hay en el sistema,
+eso podr\'ia serle \'util a un gerente, para saber el tama\~no que tiene que tener la sala de espera. O incluso,
+evaluar el costo de ampliar la sala de espera, contra la posibilidad de contratar otra persona para que atienda a 
+los clientes y as\'i reducir el tiempo de espera y la cantidad de personas. 
 
 \begin{thebibliography}{1}
 
 \bibitem{IEEEhowto:kopka}
-Teor\'ia de colas, http://exa.unne.edu.ar/depar/areas/informatica/evalua/teoria\_de\_colas.pdf
+Teor\'ia de colas, http://exa.unne.edu.ar/depar/areas/informatica/ evalua/teoria\_de\_colas.pdf
 
 \bibitem{IEEEhowto:kopka}
-Simulaci\'on de eventos discretos, http://es.wikipedia.org/wiki/Simulaci\%C3\%B3n\_por\_eventos\_discretos
+Simulaci\'on de eventos discretos, http://es.wikipedia.org/wiki/Sim ulaci\%C3\%B3n\_por\_eventos\_discretos
 
 \bibitem{IEEEhowto:kopka}
 Diaz, Alejandro: Notas de Clase Curso 2009, Simulaci\'on por Eventos Discretos
