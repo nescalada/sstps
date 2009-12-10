@@ -4,7 +4,7 @@ import java.util.Random;
 public class Statistics extends Random {
   private static final long serialVersionUID = 1L;
   
-  public Double expon(Double mean){
+  public double expon(Double mean){
    Double u;
    
    u = this.nextDouble();
@@ -12,7 +12,7 @@ public class Statistics extends Random {
    return - mean * Math.log(u);
   }
   
-  public Double uniform(Double min, Double max){
+  public double uniform(double min, double max){
     Double u;
     u = this.nextDouble();
     return  u*(max-min)   + min  ;
