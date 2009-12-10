@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 
-public class Cola {
-  private ArrayList<Object> elements = null;
+public class Cola<Type> {
+  private ArrayList<Type> elements = null;
 
   public Cola() {
-    this.elements = new ArrayList<Object>();
+    this.elements = new ArrayList<Type>();
   }
 
-  public void add(Object element) throws Exception{
+  public void add(Type element) throws Exception{
     if(elements == null){
       throw new Exception("Object Cola not initialized");
     }
@@ -19,7 +19,7 @@ public class Cola {
     elements.add(elements.size()+1, element);
   }
 
-  public Object remove() throws Exception{
+  public Type remove() throws Exception{
     if(elements == null){
       throw new Exception("Object Cola not initialized");
     }
@@ -31,8 +31,8 @@ public class Cola {
     return elements.remove(0);    
   }
 
-  public Object swap(Object element) throws Exception{
-    Object aux = null;
+  public Type swap(Type element) throws Exception{
+    Type aux = null;
 
     if(elements == null){
       throw new Exception("Object Cola not initialized");
@@ -51,4 +51,9 @@ public class Cola {
     elements.add(0, element);
     return aux;
   }
+  
+  public int size(){
+    return elements.size();
+  }
+  
 }
