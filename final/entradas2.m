@@ -110,4 +110,4 @@ var(y)
 disp('media: ')
 mean(y)
 
-hist(y, 10, max(size(y)))
+hist(y, 8, max(size(y)))
