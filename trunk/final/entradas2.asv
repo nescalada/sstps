@@ -101,13 +101,13 @@ y = [
 0.22143299625055946
 ];
 
-disp('mediana: ')
+disp("mediana:")
 median(y)
-disp(' desvio standard: ')
+sprintf("desvio standard: ")
 std(y)
-disp('varianza: ')
+sprintf("varianza: ")
 var(y)
-disp('media: ')
+sprintf("media: ")
 mean(y)
 
 hist(y, 10, max(size(y)))
