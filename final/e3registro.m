@@ -201,12 +201,12 @@ z = [
 1.8883
 ]
 
-printf("mediana:")
+disp('mediana: ')
 median(z)
-printf("desvio standard:")
+disp('desvio standard:')
 std(z)
-printf("varianza")
+disp('varianza')
 var(z)
-printf("media:")
+disp('media:')
 mean(z)
 hist(z, 10, max(size(z)))
