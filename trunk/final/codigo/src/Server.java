@@ -18,4 +18,23 @@ public abstract class Server{
     this.q = new Cola<Cliente>();
   }
   
+  public void add(Cliente element)
+    throws Exception{
+    this.q.add(element);
+  }
+  
+  public Cliente remove()
+    throws Exception{
+    return this.q.remove();
+  }
+  
+  public int size(){
+    return this.q.size();
+  }
+  
+  public Cliente swap(Cliente element) throws Exception{
+    return this.q.swap(element);
+  }
+  
+  
 }
