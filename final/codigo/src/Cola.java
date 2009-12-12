@@ -16,7 +16,7 @@ public class Cola<Type> {
       throw new Exception("Object can not be added");
     }
 
-    elements.add(elements.size()+1, element);
+    elements.add(elements.size(), element);
   }
 
   public Type remove() throws Exception{
@@ -42,13 +42,14 @@ public class Cola<Type> {
     }
 
     if(elements.size() <= 0){
+      elements.add(0, element);
       aux = element;
     }
     else{
       aux = elements.remove(0);
+      elements.add(0, element);
+      elements.add(0, aux);
     }
-
-    elements.add(0, element);
     return aux;
   }
   

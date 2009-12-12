@@ -6,9 +6,7 @@ public class Statistics extends Random {
   
   public double expon(Double mean){
    Double u;
-   
    u = this.nextDouble();
-   
    return - mean * Math.log(u);
   }
   
@@ -16,6 +14,12 @@ public class Statistics extends Random {
     Double u;
     u = this.nextDouble();
     return  u*(max-min)   + min  ;
+  }
+
+  public double normal(double mu, double sigma){
+    //TODO: revisar
+    
+    return (this.nextGaussian() - mu)/sigma;
   }
   
 }
