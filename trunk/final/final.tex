@@ -229,7 +229,7 @@
 %
 
 \newpage
-\section{Resoluci\'on}
+\section*{Resoluci\'on}
 
 \subsection*{a)}
 
@@ -263,7 +263,11 @@ $\chi^2$. Las hip\'otesis del test son:
 A partir de las mediciones y de los valores esperados para cada
 intervalo de clase, computamos el estad\'istico $\chi_{0}^2 = 10.709$. Como el valor
 cr\'itico con un nivel de significaci\'on de 5\% y con 5 grados de libertad resulta 
-$\chi_{0.05,5}^2 = 11.07$, rechazamos $H_1$ en favor de $H_0$.
+$\chi_{0.05,5}^2 = 11.07$, rechazamos $H_1$ en favor de $H_0$.\\
+Tambi\'en realizamos el test de Kolmogorov-Smirnov sobre las mediciones de los tiempos de arribos, agrupadas en los intervalos 
+de clase que mencionamos previamente. Obtenemos el estad\'istico para dichos datos $D =  0,1238$, con un valor cr\'itico para un nivel
+de significaci\'on $\alpha = 0.05 \% $, que es  $D_{7,\alpha} = 0.4834$. Luego al ser $D < D_{t, \alpha }$, podemos conclu\'irir que se pasa el test.
+Finalmente podemos suponer, habiendo pasado ambos tests, que los arribos de clientes al sistema estan distribuidos exponencialmente.
 
 \subsubsection*{Tasa de servicio de la estaci\'on $E3$}
 Analizamos los tiempos de servicio de la estaci\'on $E3$ medidos del sistema, y volcamos
@@ -294,13 +298,64 @@ Estimamos la media y la varianza de la distribuci\'on resultando:
 El valor del estad\'istico resulta $\chi_{0}^2 = 4,7492$, y como el valor
 cr\'itico es $\chi_{5,0.05}^2 = 11.07$ se rechaza $H_1$ en favor de $H_0$.
 
-\subsection{b)}
+\subsection*{b)}
 
-\subsection{c)}
+ACA poner el grafico del automata
 
-\subsection{d)}
+Considerando el gr\'afico de la figura 3,  consideramos el espacio de estados
+\begin{align*}
+ S =& \{ ( x_R, x_{E_1}, x_{OFT}, x_ {PSF}, x_{E_2}, x_{E_3}, x_{C_1}, x_{C_2}, x_{C_3}, \\
+&y_R, y_{E_1}, y_{OFT}, y_ {PSF}, y_{E_2}, y_{E_3}, y_{C_1}, y_{C_2}, y_{C_3} ) / \\
+& x_R, x_{E_1}, x_{OFT}, x_ {PSF}, x_{E_2}, x_{E_3}, x_{C_1}, x_{C_2}, x_{C_3} = 1, 2, 3, ...\\
+    & \wedge y_R, y_{E_1}, y_{OFT}, y_ {PSF}, y_{E_2}, y_{E_3}, y_{C_1}, y_{C_2}, y_{C_3} =  0, 1  \}
+\end{align*}
 
-\subsection{e)}
+Donde: \\
+ $x_R,$ es la longitud de la cola de recepci\'on.\\
+$x_{E_1}$ es la longitud de la cola del servidor E1.\\
+$x_{E_2}$ es la longitud del servidor E2.\\
+$x_{E_3}$ es la longitud del servidor E3.\\
+$ x_{OFT}$ es la longitud de la cola de oftalmolog\'ia.\\
+$x_ {PSF}$ es la longitud de la cola del estudio Psico-F\'isico.\\
+$x_{C_1}$ es la longitud de la cola de la caja C1.\\
+$x_{C_2}$es la longitud de la cola de la caja C2.\\
+$x_{C_3},$es la longitud de la cola de la caja C3.\\ \\
+\noindent
+$y_R,$ Ocupac\'on de la recepci\'on.\\
+$y_{E_1}$ Ocupaci\'on de la estaci\'on E1.\\
+$y_{E_2}$ Ocupaci\'on de la  estaci\'on E2.\\
+$y_{E_3}$ Ocupaci\'on de la  estaci\'on E3.\\
+$ y_{OFT}$ Ocupaci\'on de la oficina de oftalmolog\'ia\\
+$y_ {PSF}$ Ocupaci\'on de la oficina Psico-Fisica.\\
+$y_{C_1}$ Ocupaci\'on de la caja 1.\\
+$y_{C_2}$ Ocupaci\'on de la caja 2.\\
+$y_{C_3},$ Ocupaci\'on de la caja 3.\\
+
+\subsection*{c)}
+El espacio de eventos del sistema lo definimos como:\\
+\begin{equation}
+E = \{ A, B, r_1, e_3, oft, psf, e_2, e_{1, oft}, e_{1, psf}, c_1, c_2, c_3, e_{c1,e2}, e_{c2,e2}, e_{c3, e2} \}
+\end{equation}
+
+Donde:\\
+A es la entrada de una persona al sistema.\\
+D es la partida de una persona del sistema. \\
+$r_1$ es la partida de una persona desde $R$ hacia  $E_1$\\
+$e_3$ es la partida de una parsona de $E_1$ hacia $E_3$ \\
+$oft$ es la partida de una persona de $E_3$ hacia $OFT$\\
+$psf$ es la partida de una persona de $OFT$ hacia $PSF$.\\
+$e_2$ es la partida de una persona de $OFT$ hacia $E_2$.\\
+$e_{1, oft}, e_{1, psf} $ son las partidas desde $OFT$ o de $PSF$ hacia $E_1$\\
+$c_1, c_2, c_3$ son las partidas desde $E_2$ hacia las cajas 1, 2 o 3.\\
+$e_{c1,e2}, e_{c2,e2}, e_{c3, e2} $ son las partidas de $C1, C2 o C3 $ realimentadas en $E_2$.\\
+
+
+
+
+
+\subsection*{d)}
+
+\subsection*{e)}
 
 
 \begin{thebibliography}{1}
