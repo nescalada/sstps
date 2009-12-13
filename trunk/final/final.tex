@@ -229,18 +229,21 @@
 %
 
 \newpage
-\section*{Resoluci\'on}
 
-\subsection*{a)}
 
-\subsubsection*{Tiempo entre arribos al sistema}
+\section*{a)   Modelar el intervalo de tiempo entre arribos, a partir de los datos medidos del archivo
+llegadasregistro y modelar el intervalo de tiempo de atenci\'on de la estaci\'on E3 con los
+datos del archivo e3registro. Para ello hacer estad\'istica descriptiva, justificando el n\'umero
+de intervalo de clases y realizar los test pertinentes.
+}
+
+%\subsection*{Tiempo entre arribos al sistema}
 Mediante mediciones del horario de arribo de clientes al sistema, computamos
 los intervalos de tiempo entre arribos, y los representamos en el histograma
 de la figura 1. Est\'a dividido en 7 intervalos de clase determinados a partir
 de la f\'ormula de Sturgess que observamos en la ecuaci\'on 1.1.
-
 \begin{equation}
- k = 1 + 3.3 * Log(n)
+ k = 1 + 3.3 * Log(n)  \hspace{6cm} 
 \end{equation}
 donde $k$ es el N$^o$ de intervalos y $n$ es el N$^o$ de muestras.
 
@@ -298,11 +301,11 @@ Estimamos la media y la varianza de la distribuci\'on resultando:
 El valor del estad\'istico resulta $\chi_{0}^2 = 4,7492$, y como el valor
 cr\'itico es $\chi_{5,0.05}^2 = 11.07$ se rechaza $H_1$ en favor de $H_0$.
 
-\subsection*{b)}
+\section*{b) Indicar las variables de estado del sistema y el espacio de estado.}
 
 ACA poner el grafico del automata
 
-Considerando el gr\'afico de la figura 3,  consideramos el espacio de estados
+Considerando el gr\'afico de la figura 3,  definimos el espacio de estados
 \begin{align*}
  S =& \{ ( x_R, x_{E_1}, x_{OFT}, x_ {PSF}, x_{E_2}, x_{E_3}, x_{C_1}, x_{C_2}, x_{C_3}, \\
 &y_R, y_{E_1}, y_{OFT}, y_ {PSF}, y_{E_2}, y_{E_3}, y_{C_1}, y_{C_2}, y_{C_3} ) / \\
@@ -331,15 +334,15 @@ $y_{C_1}$ Ocupaci\'on de la caja 1.\\
 $y_{C_2}$ Ocupaci\'on de la caja 2.\\
 $y_{C_3},$ Ocupaci\'on de la caja 3.\\
 
-\subsection*{c)}
+\section*{c) Indicar los tipos de eventos y el espacio de eventos.}
 El espacio de eventos del sistema lo definimos como:\\
-\begin{equation}
+\begin{equation*}
 E = \{ A, B, r_1, e_3, oft, psf, e_2, e_{1, oft}, e_{1, psf}, c_1, c_2, c_3, e_{c1,e2}, e_{c2,e2}, e_{c3, e2} \}
-\end{equation}
+\end{equation*}
 
 Donde:\\
-A es la entrada de una persona al sistema.\\
-D es la partida de una persona del sistema. \\
+A es la entrada de una persona a $R$.\\
+B es la partida de una persona del sistema. \\
 $r_1$ es la partida de una persona desde $R$ hacia  $E_1$\\
 $e_3$ es la partida de una parsona de $E_1$ hacia $E_3$ \\
 $oft$ es la partida de una persona de $E_3$ hacia $OFT$\\
@@ -353,10 +356,21 @@ $e_{c1,e2}, e_{c2,e2}, e_{c3, e2} $ son las partidas de $C1, C2 o C3 $ realiment
 
 
 
-\subsection*{d)}
+\section*{d)      Realizar una simulaci\'on indicando las condiciones iniciales, el tipo de generador usado y
+la semilla. Mostrar las g\'aficas de las colas en cada estaci\'on.
+}
 
-\subsection*{e)}
-
+\section*{e)     Realizar 10 simulaciones independientes. Hallar el tiempo medio por cliente en el sistema,
+suponiendo que las tres cajas C1, C2 y C3 est\'an operativas mostrar los resultados convenien-
+temente en una tabla. Computar con estos resulatados el estimador del tiempo medio por
+cliente y su error.
+}
+\section*{f)    Si la probabilidad de que la caja C3 est\'e operativa es p, computar el tiempo medio por
+cliente en el sistema en funci\'on de p. Graficar.
+}
+\section*{g)   Computar la probabilidad de que el tiempo medio de espera en la cola de OFT sea mayor
+a 5 minutos
+}
 
 \begin{thebibliography}{1}
 \bibitem{IEEhowto:kopka}
