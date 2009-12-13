@@ -1,31 +1,36 @@
-public class Statistics{
+import java.util.Random;
+
+
+
+public class Statistics extends Random{
   public static final Statistics stats = new Statistics();
   //variables para l'ecuyer
-  public static int x1n = (40014 * 23) % 2147483563;
-  public static int x2n = (40692 * 21) % 2147483399;
+  public static int x1n = (40014 * 5) % 2147483563;
+  public static int x2n = (40692 * 2) % 2147483399;
+
 
   public static Statistics getInstance(){
             return stats;
   }
 
-  public double expon(Double mean){
+  public double expon(Double lambda){
    Double u;
-   u = nextLecuyer();
-   //u = this.nextDouble();
-   System.out.println("u = " + u);
-   return - mean * Math.log(u);
+   //u = nextLecuyer();
+   u = this.nextDouble();
+   return -  Math.log(u)/lambda;
   }
   
   public double uniform(double min, double max){
     Double u;
-    u = nextLecuyer();
-    //u = this.nextDouble();
+    //u = nextLecuyer();
+    u = this.nextDouble();
     return  u*(max-min)   + min  ;
   }
 
   public double normal(double mu, double sigma){
-    return sigma*nextBoxMuller()+mu;
-    //return sigma*this.nextGaussian()+mu;
+    //return sigma*nextBoxMuller()+mu;
+    return sigma*this.nextGaussian() + mu;
+    
   }
  
   private double nextBoxMuller() {
