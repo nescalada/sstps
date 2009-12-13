@@ -40,7 +40,7 @@ public class Programa {
     try {
 
       this.outfile = new FileOutputStream(
-          "C:\\Users\\Lucila\\Documents\\simulacion de sistemas\\tp2\\final\\codigo\\src\\vectores.txt");
+          "C:\\Users\\Lucila\\Documents\\simulacion de sistemas\\tp2\\final\\codigo\\src\\vectores.m");
 
       this.p_out = new PrintStream(outfile);
 
@@ -58,7 +58,7 @@ public class Programa {
     /* Abre los archivos de entrada y salida */
     Programa p = new Programa();
     /* Escribe el encabezado del reporte de salida en mm1.out */
-    p.p_out.println("CHACHASistema de cola con servidor simple\n\n");
+    
 
     /* Inicializa la simulacion */
     p.initialize();
@@ -264,7 +264,7 @@ public class Programa {
       /* programa la partida */
       time_next_event.set(cola, srv.timeInServer(time));
     }
-    System.out.println("[" + cliente.getId() + "] depart_c:" + this.time);
+    System.out.println("[" + cliente.getId() + "] depart_c"+ cola+ ":" + this.time);
     servers.set(cola, srv);
     cliente.Pay();
     arrive_e2(cliente);
@@ -411,7 +411,7 @@ public class Programa {
       double timeInServer = srv.timeInServer(time);
       time_next_event.set(cola, timeInServer);
     }
-    System.out.println("[" + cliente.getId() + "] arrive_c:" + this.time);
+    System.out.println("[" + cliente.getId() + "] arrive_c"+ cola+ ":" + this.time);
     servers.set(cola, srv);
   }
 
@@ -496,9 +496,9 @@ public class Programa {
 
     // TODO: las llegadas!
     this.r = new UniformServer(0.0833333333, 0.5);
-    this.e1 = new ExpServer(1 / 0.05);
+    this.e1 = new ExpServer( 1/0.05);
     this.e2 = new ExpServer(1 / 4.0);
-    this.e3 = new NormalServer(1.995, 0.00832); // TODO: calcular
+    this.e3 = new NormalServer(1.995, 0.00832); 
     this.oft = new ExpServer(1 / 3.5);
     this.psf = new ExpServer(1 / 8.0);
     this.c1 = new ExpServer(1 / 2.5);
@@ -560,15 +560,15 @@ public class Programa {
     /* Programa el proximo arribo */
     Statistics s = new Statistics();
     /* si son las 13 hs no se deja entrar a nadie mas */
-    if (this.time >= Programa.ENDS) {// TODO:
+    if (this.time >= Programa.ENDS   ) {// TODO:
       // DEBUG
       // las 13
       // horas
       time_next_event.set(Programa.ARRIVE, 1.0e+30);
       return;
     }
-    // TODO: ver cual es el lambda!!!!!
-    time_next_event.set(Programa.ARRIVE, time + s.expon(18.825 / 60));
+    
+    time_next_event.set(Programa.ARRIVE, time + s.expon(0.31375));
 
     /* Chequea si el servidor R esta ocupado */
     Cliente cliente = new Cliente(time, this.num_custs_delayed);
@@ -648,7 +648,7 @@ public class Programa {
 
   boolean ends() {
     if (this.FLAG_ENDS == true) {
-
+      System.out.println("flaggg!!!");
       return true;
     }
     int cant = 0;
