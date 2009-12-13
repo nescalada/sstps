@@ -1,9 +1,8 @@
-
 public class Statistics{
   public static final Statistics stats = new Statistics();
   //variables para l'ecuyer
-  public static int x1n = (40014 * 800634) % 2147483563;
-  public static int x2n = (40692 * 2518) % 2147483399;
+  public static int x1n = (40014 * 23) % 2147483563;
+  public static int x2n = (40692 * 21) % 2147483399;
 
   public static Statistics getInstance(){
             return stats;
@@ -12,6 +11,7 @@ public class Statistics{
   public double expon(Double mean){
    Double u;
    u = nextLecuyer();
+   //u = this.nextDouble();
    System.out.println("u = " + u);
    return - mean * Math.log(u);
   }
@@ -19,11 +19,13 @@ public class Statistics{
   public double uniform(double min, double max){
     Double u;
     u = nextLecuyer();
+    //u = this.nextDouble();
     return  u*(max-min)   + min  ;
   }
 
   public double normal(double mu, double sigma){
     return sigma*nextBoxMuller()+mu;
+    //return sigma*this.nextGaussian()+mu;
   }
  
   private double nextBoxMuller() {
