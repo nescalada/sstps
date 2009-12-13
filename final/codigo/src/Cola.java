@@ -57,4 +57,27 @@ public class Cola<Type> {
     return elements.size();
   }
   
+  public String toString(){
+    String s = new String();
+    s = "[ ";
+    for(int i=0; i< this.size(); i++){
+      s = s + this.elements.get(i) + ", "; 
+    }
+    s = s+ " ] ";
+    return s;
+  }
+
+  public Type get(int i) {
+    return this.elements.get(i);
+  }
+  
+  public Type remove(int i){
+    return this.elements.remove(i);
+  }
+  
+  public void add(int i, Type element){
+    this.elements.add(i, element);
+  }
+  
+  
 }

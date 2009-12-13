@@ -6,9 +6,11 @@ public class Cliente {
   private final double do_psf_prob = 0.17;
   private final double fail_psf_prob = 0.02;
   private boolean r, fail_oft, do_psf, fail_psf, paid;
+  private int id;
 
-  public Cliente(double time) {
+  public Cliente(double time, int id) {
     super();
+    this.id = id;
     this.time = time;
     this.time_receive_form = 0;
     this.r = generateR(); //true=se queda en el sistema | false=se va
@@ -17,14 +19,23 @@ public class Cliente {
     this.fail_psf = false; //true=falla psf | false=no falla psf
     this.paid = false; //true=pago en c1,c2 o c3 | false=no pago en c1,c2 o c3
     Statistics s = new Statistics();
-    this.form_time = s.normal(4, 2);//tiempo que tarda en llenar el formulario
-    //Distribucion normal con mu = 4 y sigma = 2
+    this.form_time = s.uniform(0.5, 2.0);//tiempo que tarda en llenar el formulario
+    //Distribucion uniforme entre 2 y 4
   }
 
   public void Pay(){
     this.paid = true;
   }
 
+  public int getId(){
+    return this.id;
+  }
+  
+  public String toString(){
+   return "{"+this.id+", "+ this.time_receive_form+ ", " +this.form_time+ "}";
+  }
+  
+  
   public boolean generateFailPsf() {
     Statistics s = new Statistics();
     double resp = s.uniform(0, 1);
@@ -93,11 +104,11 @@ public class Cliente {
     return paid;
   }
 
-  public double getTime_last_stage() {
+  public double getTime_receive_form() {
     return time_receive_form;
   }
 
-  public void setTime_last_stage(double time_last_stage) {
+  public void setTime_receive_form(double time_last_stage) {
     this.time_receive_form = time_last_stage;
   }
 
@@ -108,5 +119,9 @@ public class Cliente {
   public void setFail_psf() {
     this.fail_psf = generateFailPsf();
     
+  }
+  
+  public double getTimeFinishForm(){
+    return this.time_receive_form+this.form_time;
   }
 }

@@ -32,6 +32,13 @@ public abstract class Server{
     return this.q.size();
   }
   
+  public int len(){
+    int ret  = this.q.size();
+    if( ret > 0)
+      ret--;
+    return ret;
+  }
+  
   public Cliente swap(Cliente element) throws Exception{
     return this.q.swap(element);
   }
