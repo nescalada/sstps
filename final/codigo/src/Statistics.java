@@ -1,3 +1,4 @@
+
 public class Statistics{
   public static final Statistics stats = new Statistics();
   //variables para l'ecuyer
