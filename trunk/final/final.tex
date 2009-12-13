@@ -237,7 +237,7 @@ datos del archivo e3registro. Para ello hacer estad\'istica descriptiva, justifi
 de intervalo de clases y realizar los test pertinentes.
 }
 
-%\subsection*{Tiempo entre arribos al sistema}
+\subsection*{Tiempo entre arribos al sistema}
 Mediante mediciones del horario de arribo de clientes al sistema, computamos
 los intervalos de tiempo entre arribos, y los representamos en el histograma
 de la figura 1. Est\'a dividido en 7 intervalos de clase determinados a partir
@@ -303,7 +303,12 @@ cr\'itico es $\chi_{5,0.05}^2 = 11.07$ se rechaza $H_1$ en favor de $H_0$.
 
 \section*{b) Indicar las variables de estado del sistema y el espacio de estado.}
 
-ACA poner el grafico del automata
+\begin{figure}
+\begin{center}
+\includegraphics[width=10cm]{automata.jpeg}
+%	\includegraphics{fluxmed1.jpg}
+	\end{center}
+\end{figure}
 
 Considerando el gr\'afico de la figura 3,  definimos el espacio de estados
 \begin{align*}
@@ -371,6 +376,22 @@ cliente en el sistema en funci\'on de p. Graficar.
 \section*{g)   Computar la probabilidad de que el tiempo medio de espera en la cola de OFT sea mayor
 a 5 minutos
 }
+
+La variable aleatoria $OFT$ tiene distribuci\'on exponencial con tiempo medio de 3.5 minutos. Para determinar la probabilidad de que el tiempo medio
+de espera sea mayor a 5 minutos la obtenemos a trav\'es de las ecuaciones XXXXXXXXXXX
+
+\begin{equation}
+ P( OFT > 5 ) = 1 - P( OFT \leq 5 )
+\end{equation}
+entonces:
+\begin{equation}
+P(OFT > 5 ) = 1 - ( 1 - e^{- \frac{1}{3.5}5} )
+\end{equation}
+Finalmente la probabilidad resulta:
+\begin{equation}
+ P( OFT > 5 ) = 0.2397
+\end{equation}
+
 
 \begin{thebibliography}{1}
 \bibitem{IEEhowto:kopka}
