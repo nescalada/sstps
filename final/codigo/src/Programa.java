@@ -14,10 +14,8 @@ public class Programa {
   static final int DEPART_C2 = 9;
   static final int DEPART_C3 = 10;
   static final int CANT_EVENTS = 10;
-
   static double BEGINS = 8.0 * 60; // 08:00 hs (en minutos)
   static double ENDS = 13.0 * 60; // 13:00 hs (en minutos)
-
   private double time;
   private Server r, e1, e3, oft, psf, e2, c1, c2, c3;
   private double time_last_event;
