@@ -2,11 +2,11 @@ import java.util.Random;
 
 
 
-public class Statistics extends Random{
+public class Statistics {
   public static final Statistics stats = new Statistics();
   //variables para l'ecuyer
-  public static int x1n = (40014 * 5) % 2147483563;
-  public static int x2n = (40692 * 2) % 2147483399;
+  public static int x1n = (40014 * 50) % 2147483563;
+  public static int x2n = (40692 * 23) % 2147483399;
 
 
   public static Statistics getInstance(){
@@ -15,21 +15,19 @@ public class Statistics extends Random{
 
   public double expon(Double lambda){
    Double u;
-   //u = nextLecuyer();
-   u = this.nextDouble();
+   u = nextLecuyer();
    return -  Math.log(u)/lambda;
   }
   
   public double uniform(double min, double max){
     Double u;
-    //u = nextLecuyer();
-    u = this.nextDouble();
+    u = nextLecuyer();
     return  u*(max-min)   + min  ;
   }
 
   public double normal(double mu, double sigma){
-    //return sigma*nextBoxMuller()+mu;
-    return sigma*this.nextGaussian() + mu;
+    return sigma*nextBoxMuller()+mu;
+    
     
   }
  
