@@ -18,25 +18,18 @@ public class Programa {
   static double ENDS = 13.0 * 60; // 13:00 hs (en minutos)
   private double time;
   private Server r, e1, e3, oft, psf, e2, c1, c2, c3;
-
   private ArrayList<ArrayList<Double>> vector_cola;
   private ArrayList<ArrayList<Double>> vector_status;
-
   /* estadisticos */
   int num_custs_delayed;
   double total_of_delays;
   double area_num_in_q;
   double area_server_status;
   int next_event_type;
-
   private FileOutputStream outfile; // declare a file output object
-
   private PrintStream p_out; // declare a print stream object
-
   private FileOutputStream outfile2; // declare a file output object
-
   private PrintStream p_out2; // declare a print stream object
-
   ArrayList<Double> time_next_event;
   ArrayList<Server> servers;
   private boolean FLAG_ENDS;
@@ -46,15 +39,10 @@ public class Programa {
 
       this.outfile = new FileOutputStream(
           "C:\\Users\\Lucila\\Documents\\simulacion de sistemas\\tp2\\final\\codigo\\src\\vectores.m");
-
       this.p_out = new PrintStream(outfile);
-
       this.outfile2 = new FileOutputStream(
       "C:\\Users\\Lucila\\Documents\\simulacion de sistemas\\tp2\\final\\codigo\\src\\vectores2.m");
-
-  this.p_out2 = new PrintStream(outfile2);
-
-      
+      this.p_out2 = new PrintStream(outfile2);
       this.FLAG_ENDS = false;
     } catch (Exception e) {
       e.printStackTrace();
@@ -70,19 +58,13 @@ public class Programa {
   public static void main(String[] args) {
     /* Abre los archivos de entrada y salida */
     Programa p = new Programa();
-    /* Escribe el encabezado del reporte de salida en mm1.out */
-    
-
-    /* Inicializa la simulacion */
+   /* Inicializa la simulacion */
     p.initialize();
-
     /* Simulacion */
     while (!p.ends()) {
       /* Determina el proximo evento */
       try {
-
         p.timing();
-
         if (p.next_event_type != 0) {
           // en 0 va el tiempo
           p.vector_cola.get(0).add(p.time);
@@ -92,12 +74,8 @@ public class Programa {
             p.vector_status.get(i).add((p.servers.get(i).status==true)?1.0:0.0);
           }
         }
-        // /* Actualiza los acumuladores estadisticos de tiempos medios */
-        // update_time_avg_stats();
         /* Llama a la funcion de evento que corresponde */
-
         switch (p.next_event_type) {
-
         case Programa.ARRIVE:
           p.arrive_r();
           break;
@@ -134,21 +112,13 @@ public class Programa {
         e.printStackTrace();
         System.out.println(e.getMessage());
         p.p_out.close();
-
       }
-      // /* Imprime las series de tiempo */
-      // fprintf(timefile,"%12.3f %4d %d\n",time,num_in_q,server_status);
     }
-
-    System.out.println("fin!===>" + p.num_custs_delayed);
+    System.out.println("fin!===>" + p.num_custs_delayed + " TIME:"+ p.time);
+    System.out.println("tiempo medio en el sistema: "+ (p.total_of_delays / p.num_custs_delayed));
     p.printMatlab();
     p.p_out.close();
     p.p_out2.close();
-    /* Llama a la funcion que genera el reporte de salida y finaliza */
-    // report();
-    // fclose(infile);
-    // fclose(outfile);
-    // fclose(timefile);
   }
 
   private void printMatlab() {
@@ -189,7 +159,6 @@ public class Programa {
   }
 
   private void depart_oft() throws Exception {
-    double delay;
     Cliente cliente = null;
     Server srv = servers.get(Programa.DEPART_OFT);
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
@@ -202,18 +171,12 @@ public class Programa {
       srv.status = Server.IDLE;
       time_next_event.set(Programa.DEPART_OFT, 1.0e+30);
     } else {
-      /*
-       * Calcula el delay del cliente que esta comenzando a ser servido y
-       * actualiza el acumulador del delay total
-       */
-      delay = time - cliente.getTime();
-      total_of_delays += delay;
       /* programa la partida */
       time_next_event.set(Programa.DEPART_OFT, srv.timeInServer(time));
     }
     servers.set(Programa.DEPART_OFT, srv);
     if (cliente.isFail_oft()) {
-
+      //System.out.println("FALLA OFT");
       this.arrive_e1(cliente);
       return;
     }
@@ -226,7 +189,7 @@ public class Programa {
   }
 
   private void arrive_e2(Cliente cliente) throws Exception {
-    System.out.println("["+cliente.toString()+"] arrive_e2: "+this.time);
+   // System.out.println("["+cliente.toString()+"] arrive_e2: "+this.time);
     Server srv = servers.get(Programa.DEPART_E2);
     srv.add(cliente);
     if (srv.status != Server.BUSY) {
@@ -272,7 +235,6 @@ public class Programa {
   }
 
   private void depart_c(int cola) throws Exception {
-    double delay;
     Cliente cliente = null;
     Server srv = servers.get(cola);
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
@@ -285,12 +247,6 @@ public class Programa {
       srv.status = Server.IDLE;
       time_next_event.set(cola, 1.0e+30);
     } else {
-      /*
-       * Calcula el delay del cliente que esta comenzando a ser servido y
-       * actualiza el acumulador del delay total
-       */
-      delay = time - cliente.getTime();
-      total_of_delays += delay;
       /* programa la partida */
       time_next_event.set(cola, srv.timeInServer(time));
     }
@@ -306,7 +262,7 @@ public class Programa {
     Server srv = servers.get(Programa.DEPART_E3);
     Cliente cliente = null;
     cliente = srv.remove();
-    System.out.println("["+cliente.toString()+"] depart_e3: "+this.time);
+    //System.out.println("["+cliente.toString()+"] depart_e3: "+this.time);
     if (srv.size() == 0) {
       srv.status = Server.IDLE;
       this.time_next_event.set(Programa.DEPART_E3, 1.0e+30);
@@ -327,7 +283,7 @@ public class Programa {
             index = i;
           }  
       }
-      System.out.println("SWAP: "+index);
+      //System.out.println("SWAP: "+index);
       // c es el cliente [index] que antes va a terminar der llenar el form
       if(index != 0){
         c = srv.q.remove(index);
@@ -369,7 +325,7 @@ public class Programa {
   }
 
   private void depart_psf() throws Exception {
-    double delay;
+    
     Cliente cliente = null;
     Server srv = servers.get(Programa.DEPART_PSF);
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
@@ -381,18 +337,13 @@ public class Programa {
       srv.status = Server.IDLE;
       time_next_event.set(Programa.DEPART_PSF, 1.0e+30);
     } else {
-      /*
-       * Calcula el delay del cliente que esta comenzando a ser servido y
-       * actualiza el acumulador del delay total
-       */
-      delay = time - cliente.getTime();
-      total_of_delays += delay;
       /* programa la partida */
       time_next_event.set(Programa.DEPART_PSF, srv.timeInServer(time));
     }
    // System.out.println("[" + cliente.getId() + "] depart_psf:" + this.time);
     servers.set(Programa.DEPART_PSF, srv);
     if (cliente.isFail_psf()) {
+      //System.out.println("FALLA PSF");
       this.arrive_e1(cliente);
       return;
     }
@@ -400,25 +351,20 @@ public class Programa {
   }
 
   private void depart_e2() throws Exception {
-    double delay;
+    
     Cliente cliente = null;
     Server srv = servers.get(Programa.DEPART_E2);
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
     /* La cola no esta vacia. decrementa el numero de clientes en cola. */
     cliente = srv.remove();
-    System.out.println("["+cliente.toString()+"] depart_e2: "+this.time);
+    //System.out.println("["+cliente.toString()+"] depart_e2: "+this.time);
     /* Chequea si la cola esta vacia */
     if (srv.size() == 0) {
       /* La cola esta vacia entonces, pone el servidor en libre */
       srv.status = Server.IDLE;
       time_next_event.set(Programa.DEPART_E2, 1.0e+30);
     } else {
-      /*
-       * Calcula el delay del cliente que esta comenzando a ser servido y
-       * actualiza el acumulador del delay total
-       */
-      delay = time - cliente.getTime();
-      total_of_delays += delay;
+      
       /* programa la partida */
       time_next_event.set(Programa.DEPART_E2, srv.timeInServer(time));
     }
@@ -457,12 +403,12 @@ public class Programa {
 
   private void exit(Cliente cliente) {
    // System.out.println("[" + cliente.getId() + "] exit:" + this.time);
-    // TODO Auto-generated method stub
-
+    
+    this.total_of_delays += (this.time - cliente.getTime());
   }
 
   private void depart_e1() throws Exception {
-    double delay;
+    
     Cliente cliente = null;
     Server srv = servers.get(Programa.DEPART_E1);
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
@@ -475,12 +421,7 @@ public class Programa {
       srv.status = Server.IDLE;
       time_next_event.set(Programa.DEPART_E1, 1.0e+30);
     } else {
-      /*
-       * Calcula el delay del cliente que esta comenzando a ser servido y
-       * actualiza el acumulador del delay total
-       */
-      delay = time - cliente.getTime();
-      total_of_delays += delay;
+      
       /* programa la partida */
       time_next_event.set(Programa.DEPART_E1, srv.timeInServer(time));
     }
@@ -493,7 +434,7 @@ public class Programa {
   }
 
   private void arrive_e3(Cliente cliente) throws Exception {
-    System.out.println("["+cliente.toString()+"] arrive_e3: "+this.time);
+    //System.out.println("["+cliente.toString()+"] arrive_e3: "+this.time);
     Server srv = servers.get(Programa.DEPART_E3);
     if (srv == null) {
       throw new Exception("srv es null");
@@ -513,7 +454,7 @@ public class Programa {
         timeInServer = srv.timeInServer(this.time);
       }
       
-      System.out.println("LO ATIENDE: "+ timeInServer);
+     // System.out.println("LO ATIENDE: "+ timeInServer);
       this.time_next_event.set(Programa.DEPART_E3, timeInServer);
 
     }
@@ -620,7 +561,6 @@ public class Programa {
   }
 
   void depart_r() throws Exception {
-    double delay;
     Cliente cliente = null;
     Server srv = servers.get(Programa.DEPART_R);
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
@@ -633,12 +573,6 @@ public class Programa {
       srv.status = Server.IDLE;
       time_next_event.set(Programa.DEPART_R, 1.0e+30);
     } else {
-      /*
-       * Calcula el delay del cliente que esta comenzando a ser servido y
-       * actualiza el acumulador del delay total
-       */
-      delay = time - cliente.getTime();
-      total_of_delays += delay;
       /* programa la partida */
       time_next_event.set(Programa.DEPART_R, srv.timeInServer(time));
     }
@@ -652,32 +586,9 @@ public class Programa {
 
   }
 
-  void report() {
-    // fprintf(outfile, "\n\nTiempo medio en cola: %16.3f minutos\n\n",
-    // total_of_delays / num_custs_delayed);
-    // fprintf(outfile, "Longitud media de la cola: %16.3f\n\n",
-    // area_num_in_q / time);
-    // fprintf(outfile, "Utilizacion del servidor: %16.3f\n\n",
-    // area_server_status / time);
-    // fprintf(outfile, "Simulacion finalizada a: %16.3f minutos", time);
-  }
+  
 
-  void update_time_avg_stats() {
-    // float time_since_last_event;
-    //
-    // /* Computa el tiempo desde el ultimo evento */
-    //
-    // time_since_last_event = time - time_last_event;
-    // time_last_event = time;
-    //
-    // /* Acutualiza el area bajo num_in_q */
-    //
-    // area_num_in_q += num_in_q * time_since_last_event;
-    //
-    // /* Actualiza el area bajo la funcion de ocupacion del server */
-    //
-    // area_server_status += server_status * time_since_last_event;
-  }
+  
 
   boolean ends() {
     if (this.FLAG_ENDS == true) {
