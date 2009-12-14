@@ -3,6 +3,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class Programa {
+  static final double prob_c3 = 1.0;
   static final int ARRIVE = 1;
   static final int DEPART_R = 2;
   static final int DEPART_E1 = 3;
@@ -30,8 +31,11 @@ public class Programa {
   private PrintStream p_out; // declare a print stream object
   private FileOutputStream outfile2; // declare a file output object
   private PrintStream p_out2; // declare a print stream object
+  private FileOutputStream outfile_oft; // declare a file output object
+  private PrintStream p_out_oft; // declare a print stream object
   ArrayList<Double> time_next_event;
   ArrayList<Server> servers;
+  ArrayList<Double> delay_oft;
   private boolean FLAG_ENDS;
 
   public Programa() {
@@ -43,6 +47,9 @@ public class Programa {
       this.outfile2 = new FileOutputStream(
       "C:\\Users\\Lucila\\Documents\\simulacion de sistemas\\tp2\\final\\codigo\\src\\vectores2.m");
       this.p_out2 = new PrintStream(outfile2);
+      this.outfile_oft = new FileOutputStream(
+      "C:\\Users\\Lucila\\Documents\\simulacion de sistemas\\tp2\\final\\codigo\\src\\vectores_f.m");
+      this.p_out_oft = new PrintStream(outfile_oft);
       this.FLAG_ENDS = false;
     } catch (Exception e) {
       e.printStackTrace();
@@ -53,6 +60,7 @@ public class Programa {
       vector_cola.add(new ArrayList<Double>());
       vector_status.add(new ArrayList<Double>());
     }
+    delay_oft = new ArrayList<Double>();
   }
 
   public static void main(String[] args) {
@@ -156,14 +164,24 @@ public class Programa {
       .println("legend('Recepcion', 'E1','E3','OFT','PSF','E2','C1','C2', 'C3');");
     this.p_out2.flush();
     
+    this.p_out_oft.println("t = [");
+    for (int i = 0; i < this.delay_oft.size(); i++) {
+      this.p_out_oft.println(this.delay_oft.get(i));
+    }
+    this.p_out_oft.println("];");
+    
+    
   }
 
   private void depart_oft() throws Exception {
     Cliente cliente = null;
+    double delay = 0.0;
     Server srv = servers.get(Programa.DEPART_OFT);
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
     /* La cola no esta vacia. decrementa el numero de clientes en cola. */
     cliente = srv.remove();
+    delay = this.time - cliente.getArrive_oft();
+    this.delay_oft.add(delay);
    // System.out.println("[" + cliente.getId() + "] depart_oft:" + this.time);
     /* Chequea si la cola esta vacia */
     if (srv.size() == 0) {
@@ -313,6 +331,8 @@ public class Programa {
   private void arrive_oft(Cliente cliente) throws Exception {
     Server srv = servers.get(Programa.DEPART_OFT);
     cliente.setFail_oft();
+    
+    cliente.setArrive_oft(this.time);
     srv.add(cliente);
     if (srv.status != Server.BUSY) {
       srv.status = Server.BUSY;
@@ -320,6 +340,7 @@ public class Programa {
       double timeInServer = srv.timeInServer(time);
       time_next_event.set(Programa.DEPART_OFT, timeInServer);
     }
+    
    // System.out.println("[" + cliente.getId() + "] arrive_oft:" + this.time);
     servers.set(Programa.DEPART_OFT, srv);
   }
@@ -388,6 +409,17 @@ public class Programa {
       cola = Programa.DEPART_C3;
       shorter = aux;
     }
+    
+    //PUNTO F
+//    if(cola == Programa.DEPART_C3){
+//      //calculo la probabilidad de que esté cerrada
+//      // si está cerrada, lo mando a C2
+//      if(Statistics.getInstance().uniform(0, 1) < Programa.prob_c3){
+//        cola = Programa.DEPART_C2;
+//      }
+//    }
+//    
+    
     Server srv = servers.get(cola);
     srv.add(cliente);
     /* hago el arrive en la cola mas corta entre C1 C2 y C3 */
