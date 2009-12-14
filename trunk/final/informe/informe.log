@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=latex 2009.12.14)  14 DEC 2009 03:32
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=latex 2009.12.14)  14 DEC 2009 08:04
 entering extended mode
 **informe.tex
 (informe.tex
@@ -48,7 +48,11 @@ File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 )
 ("C:\Program Files\MiKTeX 2.7\tex\latex\placeins\placeins.sty"
 Package: placeins 2005/04/18  v 2.2
-) (informe.aux)
+) (informe.aux
+
+LaTeX Warning: Label `IEEhowto:kopka' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
@@ -67,49 +71,58 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 38.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 38.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 45.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 45.
 
-Overfull \hbox (3.45134pt too wide) in paragraph at lines 46--46
-\OT1/cmr/bx/n/14.4 de la estacion E3 con los datos del archivo e3registro.
+Overfull \hbox (11.09372pt too wide) in paragraph at lines 45--45
+\OT1/cmr/bx/n/14.4 par-tir de los datos me-di-dos del archivo $\OML/cmm/m/it/14
+.4 llegadasregistro$
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 53.
+(Font)              <10.95> on input line 55.
 File: histograma_llegadas.eps Graphic file (type eps)
 <histograma_llegadas.eps>
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 70.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
  ("C:\Program Files\MiKTeX 2.7\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 70.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
  [1
 
 ] [2]
 File: histograma_e3.eps Graphic file (type eps)
  <histograma_e3.eps> [3]
-File: automata.eps Graphic file (type eps)
- <automata.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--150
+Underfull \hbox (badness 10000) in paragraph at lines 129--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--150
+Underfull \hbox (badness 10000) in paragraph at lines 129--149
+
+ []
+
+File: automata.eps Graphic file (type eps)
+<automata.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
-
- []
-
-
-Overfull \hbox (79.55722pt too wide) in paragraph at lines 154--156
+Overfull \hbox (79.55722pt too wide) in paragraph at lines 166--167
 []$\OML/cmm/m/it/10.95 E \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/i
 t/10.95 A; D; r[]; e\OT1/cmr/m/n/10.95 1[]\OML/cmm/m/it/10.95 ; e\OT1/cmr/m/n/1
 0.95 3[]\OML/cmm/m/it/10.95 ; oft[]; oft[]; psf[]; oft[]; psf[]; e\OT1/cmr/m/n/
@@ -120,37 +133,79 @@ S/cmsy/m/n/10.95 g$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--169
+Underfull \hbox (badness 10000) in paragraph at lines 168--179
 
  []
 
 
-Overfull \hbox (2.2529pt too wide) in paragraph at lines 177--177
+Overfull \hbox (2.2529pt too wide) in paragraph at lines 183--183
 []\OT1/cmr/bx/n/14.4 d) Re-alizar una sim-u-lacion in-di-cando las condi-cione
 s
  []
 
-[5]
-Missing character: There is no ñ in font cmr10!
 Missing character: There is no – in font cmr10!
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
 
-Overfull \hbox (7.84627pt too wide) in paragraph at lines 205--205
+ []
+
+File: status_r.eps Graphic file (type eps)
+<status_r.eps>
+File: status_e1.eps Graphic file (type eps)
+ <status_e1.eps>
+File: status_e3.eps Graphic file (type eps)
+ <status_e3.eps>
+File: status_oft.eps Graphic file (type eps)
+ <status_oft.eps>
+File: status_psf.eps Graphic file (type eps)
+
+<status_psf.eps>
+File: status_e2.eps Graphic file (type eps)
+ <status_e2.eps>
+File: status_c1.eps Graphic file (type eps)
+ <status_c1.eps>
+File: status_c2.eps Graphic file (type eps)
+ <status_c2.eps>
+File: status_c3.eps Graphic file (type eps)
+
+<status_c3.eps>
+File: cola_r.eps Graphic file (type eps)
+ <cola_r.eps>
+File: cola_e3.eps Graphic file (type eps)
+ <cola_e3.eps>
+File: cola_oft.eps Graphic file (type eps)
+ <cola_oft.eps>
+File: cola_e2.eps Graphic file (type eps)
+ <cola_e2.eps>
+Overfull \hbox (7.84627pt too wide) in paragraph at lines 310--310
 \OT1/cmr/bx/n/14.4 el tiempo medio por cliente en el sis-tema, suponiendo
  []
 
-
-Overfull \hbox (1.5912pt too wide) in paragraph at lines 211--211
+[6] [7] [8] [9] [10] [11] [12] [13]
+File: punto_f.eps Graphic file (type eps)
+ <punto_f.eps>
+Overfull \hbox (1.5912pt too wide) in paragraph at lines 375--375
 []\OT1/cmr/bx/n/14.4 g) Com-putar la prob-a-bil-i-dad de que el tiempo medio
  []
 
-[6] [7] (informe.aux) ) 
-Here is how much of TeX's memory you used:
- 587 strings out of 95305
- 6622 string characters out of 1183096
- 56587 words of memory out of 1500000
- 3835 multiletter control sequences out of 110000
- 8811 words of font info for 31 fonts, out of 1200000 for 2000
- 14 hyphenation exceptions out of 8191
- 25i,7n,19p,280b,288s stack positions out of 5000i,500n,10000p,200000b,5000s
+[14] [15]
+Overfull \hbox (56.62373pt too wide) in paragraph at lines 405--406
+[]\OT1/cmr/m/n/10.95 http://www.cyta.com.ar/biblioteca/bddoc/bdlibros/guia[]est
+adistica/modulo[]8.htm 
+ []
 
-Output written on informe.dvi (7 pages, 14640 bytes).
+[16] (informe.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 622 strings out of 95305
+ 7074 string characters out of 1183096
+ 62587 words of memory out of 1500000
+ 3855 multiletter control sequences out of 110000
+ 9772 words of font info for 34 fonts, out of 1200000 for 2000
+ 14 hyphenation exceptions out of 8191
+ 25i,9n,19p,421b,286s stack positions out of 5000i,500n,10000p,200000b,5000s
+
+Output written on informe.dvi (16 pages, 24948 bytes).

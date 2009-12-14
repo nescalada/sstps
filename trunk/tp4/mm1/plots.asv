@@ -1,0 +1,5 @@
+
+
+hold on
+plot(rho, L_teorico, rho, L_medido);
+
