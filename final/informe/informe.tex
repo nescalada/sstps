@@ -197,105 +197,106 @@ el formulario que le entregan en la estaci\'on $E1$, y lo simulamos con una vari
 Para las cajas $C_1$, $C_2$ y $C_3$, asumimos que los clientes se encolan en la caja que tenga menos personas, siempre optando primero por
 $C_1$, luego por $C_2$ y como \'ultima opci\'on por $C_3$.
 
-Con estas consideraciones, realizamos una simulaci\'on que termina a las 16:56 hs y atiende a 128 clientes. En
-las figuras 4 a 12 podemos observar los estados de los servidores durante la simulaci\'on. Cuando el estado es 0,
+Con estas consideraciones, realizamos una simulaci\'on que termina a las 16:56 hs y atiende a 128 clientes. \\
+
+En las figuras 4 a 12 podemos observar los estados de los servidores durante la simulaci\'on. Cuando el estado es 0,
 la estaci\'on se encuentra desocupada, mientras que cuando vale 1 la estaci\'on se encuentra atendiendo a un cliente.
 
 \begin{figure} %figure 4
 \begin{center}
-\includegraphics[width=6cm]{status_r}
+\includegraphics[width=12cm]{status_r}
 \caption{Estado de la recepci\'on en funci\'on del tiempo. El primer cliente llega a las 8hs y las puertas se cierran a las 13hs.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 5
 \begin{center}
-\includegraphics[width=6cm]{status_e1}
+\includegraphics[width=12cm]{status_e1}
 \caption{Estado de la estaci\'on $E_1$ en funci\'on del tiempo. Se puede observar que aproximadamente a las 13hs, cuando no llegan m\'as clientes, la estaci\'on $E_1$ cesa sus actividades.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 6
 \begin{center}
-\includegraphics[width=6cm]{status_e3}
+\includegraphics[width=12cm]{status_e3}
 \caption{Estado de la estaci\'on $E_3$ en funci\'on del tiempo.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 7
 \begin{center}
-\includegraphics[width=6cm]{status_oft}
+\includegraphics[width=12cm]{status_oft}
 \caption{Estado del consultorio $OFT$ en funci\'on del tiempo.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 8
 \begin{center}
-\includegraphics[width=6cm]{status_psf}
+\includegraphics[width=12cm]{status_psf}
 \caption{Estado del consultorio $PSF$ en funci\'on del tiempo. Esta estaci\'on est\'a visiblemente menos ocupado que las dem\'as ya que s\'olo el 17\% de los clientes renuevan un registro profesional o son mayores de 70 a\~nos.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 9
 \begin{center}
-\includegraphics[width=6cm]{status_e2}
+\includegraphics[width=12cm]{status_e2}
 \caption{Estado de la estaci\'on $E_2$ en funci\'on del tiempo. Esta es la estaci\'on m\'as ocupada del sistema, ya que tiene un alto tiempo de atenci\'on en comparaci\'on con los otros, y adem\'as, recibe dos veces a cada cliente (cuando llegan de $OFT$ o $PSF$, y cuando llegan desde las cajas $C_1$, $C_2$ o $C_3$).}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 10
 \begin{center}
-\includegraphics[width=6cm]{status_c1}
-\caption{Estado de la caja $C_1$ en funci\'on del tiempo. Esta es la caja m\'as usada de las tres ya que los clientes la tienen como primer opci\'on a elegir cuando est\'a vac\'ia. Si se encontrara ocupada, probar\'ian con la caja $C_2$, y luego con $C_3$.}
+\includegraphics[width=12cm]{status_c1}
+\caption{Estado de la caja $C_1$ en funci\'on del tiempo. Esta es la caja m\'as usada de las tres ya que los clientes la tienen como primer opci\'on a elegir cuando todas las cajas tienen una fila de la misma longitud. Si se encontrara ocupada, probar\'ian con la caja $C_2$, y luego con $C_3$.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 11
 \begin{center}
-\includegraphics[width=6cm]{status_c2}
-\caption{Estado de la caja $C_2$ en funci\'on del tiempo. Esta es la segunda caja m\'as usada, ya que es elegida s\'olo si la caja $C_1$ se encuentra ocupada, y $C_2$ no. De estar ocupada, los clientes pasan por la caja $C_3$.}
+\includegraphics[width=12cm]{status_c2}
+\caption{Estado de la caja $C_2$ en funci\'on del tiempo. Esta es la segunda caja m\'as usada, ya que es elegida s\'olo si la caja $C_1$ tiene una fila m\'as larga que la caja $C_2$. }
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 12
 \begin{center}
-\includegraphics[width=6cm]{status_c3}
+\includegraphics[width=12cm]{status_c3}
 \caption{Estado de la caja $C_3$ en funci\'on del tiempo. Se puede observar el poco uso que los clientes hacen de esta caja, ya que $C_1$ y $C_2$ cumplen con casi todo el trabajo.}
 \end{center}
 \end{figure}
 
 En las figuras 13 a 16 se puede observar la longitud de cada cola en funci\'on del tiempo. Como las estaciones
 $E_1$, $PSF$, $C_1$, $C_2$ y $C_3$ nunca tienen clientes en sus colas, no los graficamos. $E_1$ no tiene clientes
-en su cola porque el tiempo medio de atenci\'on es de aproximadamente 3 segundos, y los clientes llegan a un ritmo
-menor desde la recepci\'on que recibe clientes con tiempo medio de entre 5 y 30 segundos. La estaci\'on $PSF$ nunca
+en su cola porque el tiempo medio de atenci\'on es de  3 segundos, y los clientes llegan a un ritmo
+menor desde la recepci\'on que atiende clientes con tiempo medio de entre 5 y 30 segundos. La estaci\'on $PSF$ nunca
 tiene cola ya que recibe solo al $17\%$ de los clientes que ingresan al sistema, y tiene tiempo de atenderlos sin 
 acumular clientes en la misma. Por \'ultimo, al tener tres cajas, la longitud de las colas esta dividida entre las
 tres, y el tiempo de atenci\'on de cada caja es menor que el tiempo de arribo de clientes a este sector.
 
 \begin{figure} %figure 13
 \begin{center}
-\includegraphics[width=6cm]{cola_r}
+\includegraphics[width=12cm]{cola_r}
 \caption{Cantidad de clientes en la cola de la recepci\'on en funci\'on del tiempo.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 14
 \begin{center}
-\includegraphics[width=6cm]{cola_e3}
+\includegraphics[width=12cm]{cola_e3}
 \caption{Cantidad de clientes en la cola de la estaci\'on $E_3$ en funci\'on del tiempo.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 15
 \begin{center}
-\includegraphics[width=6cm]{cola_oft}
+\includegraphics[width=12cm]{cola_oft}
 \caption{Cantidad de clientes en la cola del consultorio $OFT$ en funci\'on del tiempo.}
 \end{center}
 \end{figure}
 
 \begin{figure} %figure 16
 \begin{center}
-\includegraphics[width=6cm]{cola_e2}
+\includegraphics[width=12cm]{cola_e2}
 \caption{Cantidad de clientes en la cola de la estaci\'on $E_2$ en funci\'on del tiempo. Como esta es la estaci\'on m\'as ocupada del sistema, la cola que se genera hacia el final es la m\'as larga del sistema, llegando hasta 42 clientes.}
 \end{center}
 \end{figure}
@@ -307,34 +308,105 @@ suponiendo que las tres cajas C1, C2 y C3 est\'an operativas mostrar los resulta
 temente en una tabla. Computar con estos resulatados el estimador del tiempo medio por
 cliente y su error.
 }
+
+
+
+Realizamos 10 simulaciones con diferentes semillas. En cada simulaci\'on se mide el tiempo medio  $\bar{t}$ de un cliente en el sistema,
+la cantidad $N$ de clientes, y la hora $t_{final}$ a la que finaliza la simulaci\'on .  Los resultados se muestran en la tabla 1.
+
+
+\begin{table}[!t]
+\begin{center}
+Tabla 1: Simulaciones con distintas semillas
+\end{center}
+\renewcommand{\arraystretch}{1.3}
+%\caption{Simulaciones con distintas semillas}
+\centering
+\begin{tabular}{r r r r r }
+\hline
+\hline
+Semilla 1 & Semilla 2 & $\bar{t}$ [hs] & $N$ & $t_{final}$ [hs]\\
+\hline
+50		&	23		&	1:45	&	128	&	16:56\\
+150		&	263		&	1:50	& 	125	&	16:39\\
+18		&	639		&	1:17	&	119 &	15:39\\
+9018	&	78639	&	2:40	&	122 &	17:39\\
+19018	&	278639	&	1:13	&	129 &	16:10\\
+111		&	223		&	2:16	&	127 &	17:03\\
+41114	&	82238	&	2:37	&	123 &	17:59\\
+4199114	&	9		&	1:35	&	132 &	16:08\\
+9		&	4199114	&	1:58	&	141 &	17:25\\
+90		&	70		&	1:39	&	119 &	16:24\\
+
+\hline
+\hline
+\end{tabular}
+\end{table}
+
+A partir de las simulaciones realizadas computamos la media muestral del tiempo medio de un cliente en el sistema, y obtenemos $\bar{t}=1:53$ hs,
+con un desvio muestral de $\sigma = 30.3369$.  El error de la estimaci\'on lo calculamos haciendo $\sigma_t = \sigma/\sqrt(n)$, lo que resulta en 
+$\sigma_t = 9.5934$ minutos, es decir, un error del 8.5\%.
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section*{f)    Si la probabilidad de que la caja C3 est\'e operativa es p, computar el tiempo medio por
 cliente en el sistema en funci\'on de p. Graficar.
 }
+
+Dada $p$, la probabilidad de que la caja $C_3$ est\'e operativa, realizamos distintas simulaciones para estimar el tiempo 
+medio de un cliente en el sistema.  Los resultados de las simulaciones se muestran en la figura 17.
+  Vemos que si la probabilidad de que la caja $C_3$ est\'e abierta, es menor que 0.9, entonces el tiempo medio de un cliente
+  en el sistema se incrementa en 22 minutos.  Si bien se ve en las secciones anteriores, que la caja 3 es la que menos se usa, 
+  hay una diferencia entre tener un sistema con 2 cajas o tener un sistema con 3 cajas.
+
+\begin{figure} %figure 17
+\begin{center}
+\includegraphics[width=12cm]{punto_f}
+\caption{Tiempo medio de un cliente en el sistema, en funci\'on de la probabilidad $p$ de que la caja $C_3$ est\'e operativa.}
+\end{center}
+\end{figure}
+
+
 \section*{g)   Computar la probabilidad de que el tiempo medio de espera en la cola de OFT sea mayor
 a 5 minutos
 }
 
-La variable aleatoria $OFT$ tiene distribuci\'on exponencial con tiempo medio de 3.5 minutos. Para determinar la probabilidad de que el tiempo medio
-de espera sea mayor a 5 minutos la obtenemos a trav\'es de las ecuaciones XXXXXXXXXXX
+Para computar la probabilidad de que el tiempo medio de espera en la cola OFT sea mayor a 5 minutos, almacenamos
+ el tiempo de espera de cada cliente en la cola OFT. Luego contamos la cantidad de clientes que tienen un tiempo
+ de espera mayor a 5 minutos, y lo dividimos por la cantidad de clientes que esperaron.  Con las condiciones iniciales
+ de la secci\'on \emph{d}, obtenemos que 40 clientes esperaron m\'as de 5 minutos, sobre un total de 85. Lo que indica
+ que la probabilidad de que el tiempo de espera sea mayor a 5 minutos es de 0.5294.
 
-\begin{equation}
- P( OFT > 5 ) = 1 - P( OFT \leq 5 )
-\end{equation}
-entonces:
-\begin{equation}
-P(OFT > 5 ) = 1 - ( 1 - e^{- \frac{1}{3.5}5} )
-\end{equation}
-Finalmente la probabilidad resulta:
-\begin{equation}
- P( OFT > 5 ) = 0.2397
-\end{equation}
+
+% La variable aleatoria $OFT$ tiene distribuci\'on exponencial con tiempo medio de 3.5 minutos. Para determinar la probabilidad de que el tiempo medio
+% de espera sea mayor a 5 minutos la obtenemos a trav\'es de las ecuaciones XXXXXXXXXXX
+
+% \begin{equation}
+%  P( OFT > 5 ) = 1 - P( OFT \leq 5 )
+% \end{equation}
+% entonces:
+% \begin{equation}
+% P(OFT > 5 ) = 1 - ( 1 - e^{- \frac{1}{3.5}5} )
+% \end{equation}
+% Finalmente la probabilidad resulta:
+% \begin{equation}
+%  P( OFT > 5 ) = 0.2397
+% \end{equation}
 
 
 \begin{thebibliography}{1}
 \bibitem{IEEhowto:kopka}
 http://es.wikipedia.org/wiki/Regla\_de\_Sturgess
+
+\bibitem{IEEhowto:kopka}
+http://www.cyta.com.ar/biblioteca/bddoc/bdlibros/guia\_estadistica/modulo\_8.htm
+
+\bibitem{IEEEhowto:kopka}
+Diaz, Alejandro: Notas de Clase Curso 2009, Simulaci\'on por Eventos Discretos
+
 \end{thebibliography}
 
 
