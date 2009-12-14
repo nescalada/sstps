@@ -5,8 +5,8 @@ import java.util.Random;
 public class Statistics {
   public static final Statistics stats = new Statistics();
   //variables para l'ecuyer
-  public static int x1n = (40014 * 90) % 2147483563;
-  public static int x2n = (40692 * 70) % 2147483399;
+  public static int x1n = (40014 * 50) % 2147483563;
+  public static int x2n = (40692 * 23) % 2147483399;
 
 
   public static Statistics getInstance(){

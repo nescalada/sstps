@@ -1,6 +1,6 @@
 
 public class Cliente {
-  private double time, form_time, time_receive_form;
+  private double time, form_time, time_receive_form, arrive_oft;
   private final double r_prob = 0.8;
   private final double fail_oft_prob = 0.02;
   private final double do_psf_prob = 0.17;
@@ -25,6 +25,14 @@ public class Cliente {
 
   public void Pay(){
     this.paid = true;
+  }
+
+  public double getArrive_oft() {
+    return arrive_oft;
+  }
+
+  public void setArrive_oft(double arrive_oft) {
+    this.arrive_oft = arrive_oft;
   }
 
   public int getId(){
