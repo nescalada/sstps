@@ -1,0 +1,164 @@
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=latex 2009.12.14)  14 DEC 2009 02:27
+entering extended mode
+**informe.tex
+(informe.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2008-06-18, ngerman-x-2008-06-18, french, loaded.
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\article.cls"
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\size11.clo"
+File: size11.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphics.sty"
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 90.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\dvips.def"
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\placeins\placeins.sty"
+Package: placeins 2005/04/18  v 2.2
+) (informe.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 38.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 38.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 38.
+
+Overfull \hbox (3.45134pt too wide) in paragraph at lines 46--46
+\OT1/cmr/bx/n/14.4 de la estacion E3 con los datos del archivo e3registro.
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 53.
+File: histograma_llegadas.eps Graphic file (type eps)
+<histograma_llegadas.eps>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 70.
+ ("C:\Program Files\MiKTeX 2.7\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 70.
+ [1
+
+] [2]
+File: histograma_e3.eps Graphic file (type eps)
+ <histograma_e3.eps> [3]
+
+! LaTeX Error: Cannot determine size of graphic in automata.jpg (no BoundingBox
+).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.116 \includegraphics[width=1cm]{automata.jpg}
+                                               
+? 
+File: automata.jpg Graphic file (type eps)
+<automata.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--150
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+
+ []
+
+
+Overfull \hbox (79.55722pt too wide) in paragraph at lines 154--156
+[]$\OML/cmm/m/it/10.95 E \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 f\OML/cmm/m/i
+t/10.95 A; D; r[]; e\OT1/cmr/m/n/10.95 1[]\OML/cmm/m/it/10.95 ; e\OT1/cmr/m/n/1
+0.95 3[]\OML/cmm/m/it/10.95 ; oft[]; oft[]; psf[]; oft[]; psf[]; e\OT1/cmr/m/n/
+10.95 2[]\OML/cmm/m/it/10.95 ; e\OT1/cmr/m/n/10.95 2[]\OML/cmm/m/it/10.95 ; e\O
+T1/cmr/m/n/10.95 2[]\OML/cmm/m/it/10.95 ; c\OT1/cmr/m/n/10.95 1[]\OML/cmm/m/it/
+10.95 ; c\OT1/cmr/m/n/10.95 2[]\OML/cmm/m/it/10.95 ; c\OT1/cmr/m/n/10.95 3[]\OM
+S/cmsy/m/n/10.95 g$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--169
+
+ []
+
+
+Overfull \hbox (2.2529pt too wide) in paragraph at lines 177--177
+[]\OT1/cmr/bx/n/14.4 d) Re-alizar una sim-u-lacion in-di-cando las condi-cione
+s
+ []
+
+
+Overfull \hbox (7.84627pt too wide) in paragraph at lines 183--183
+\OT1/cmr/bx/n/14.4 el tiempo medio por cliente en el sis-tema, suponiendo
+ []
+
+
+Overfull \hbox (1.5912pt too wide) in paragraph at lines 189--189
+[]\OT1/cmr/bx/n/14.4 g) Com-putar la prob-a-bil-i-dad de que el tiempo medio
+ []
+
+[5] [6] (informe.aux) ) 
+Here is how much of TeX's memory you used:
+ 589 strings out of 95305
+ 6639 string characters out of 1183096
+ 56587 words of memory out of 1500000
+ 3836 multiletter control sequences out of 110000
+ 8811 words of font info for 31 fonts, out of 1200000 for 2000
+ 14 hyphenation exceptions out of 8191
+ 25i,7n,19p,985b,294s stack positions out of 5000i,500n,10000p,200000b,5000s
+
+Output written on informe.dvi (6 pages, 12632 bytes).
