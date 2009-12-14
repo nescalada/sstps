@@ -19,7 +19,8 @@ public class Programa {
   private double time;
   private Server r, e1, e3, oft, psf, e2, c1, c2, c3;
 
-  private ArrayList<ArrayList<Double>> vectores;
+  private ArrayList<ArrayList<Double>> vector_cola;
+  private ArrayList<ArrayList<Double>> vector_status;
 
   /* estadisticos */
   int num_custs_delayed;
@@ -31,6 +32,10 @@ public class Programa {
   private FileOutputStream outfile; // declare a file output object
 
   private PrintStream p_out; // declare a print stream object
+
+  private FileOutputStream outfile2; // declare a file output object
+
+  private PrintStream p_out2; // declare a print stream object
 
   ArrayList<Double> time_next_event;
   ArrayList<Server> servers;
@@ -44,13 +49,21 @@ public class Programa {
 
       this.p_out = new PrintStream(outfile);
 
+      this.outfile2 = new FileOutputStream(
+      "C:\\Users\\Lucila\\Documents\\simulacion de sistemas\\tp2\\final\\codigo\\src\\vectores2.m");
+
+  this.p_out2 = new PrintStream(outfile2);
+
+      
       this.FLAG_ENDS = false;
     } catch (Exception e) {
       e.printStackTrace();
     }
-    vectores = new ArrayList<ArrayList<Double>>();
+    vector_cola = new ArrayList<ArrayList<Double>>();
+    vector_status = new ArrayList<ArrayList<Double>>();
     for (int i = 0; i <= Programa.CANT_EVENTS; i++) {
-      vectores.add(new ArrayList<Double>());
+      vector_cola.add(new ArrayList<Double>());
+      vector_status.add(new ArrayList<Double>());
     }
   }
 
@@ -72,10 +85,11 @@ public class Programa {
 
         if (p.next_event_type != 0) {
           // en 0 va el tiempo
-          p.vectores.get(0).add(p.time);
-          for (int i = Programa.DEPART_R; i < Programa.CANT_EVENTS; i++) {
-            p.vectores.get(i).add((double) p.servers.get(i).len());
-
+          p.vector_cola.get(0).add(p.time);
+          p.vector_status.get(0).add(p.time);
+          for (int i = Programa.DEPART_R; i <= Programa.CANT_EVENTS; i++) {
+            p.vector_cola.get(i).add((double) p.servers.get(i).len());
+            p.vector_status.get(i).add((p.servers.get(i).status==true)?1.0:0.0);
           }
         }
         // /* Actualiza los acumuladores estadisticos de tiempos medios */
@@ -129,6 +143,7 @@ public class Programa {
     System.out.println("fin!===>" + p.num_custs_delayed);
     p.printMatlab();
     p.p_out.close();
+    p.p_out2.close();
     /* Llama a la funcion que genera el reporte de salida y finaliza */
     // report();
     // fclose(infile);
@@ -139,24 +154,38 @@ public class Programa {
   private void printMatlab() {
     // imprimo los tiempos
     this.p_out.println("t = [");
-    for (int i = 0; i < this.vectores.get(0).size(); i++) {
-      this.p_out.println(this.vectores.get(0).get(i));
+    this.p_out2.println("t = [");
+    for (int i = 0; i < this.vector_cola.get(0).size(); i++) {
+      this.p_out.println(this.vector_cola.get(0).get(i));
+      this.p_out2.println(this.vector_status.get(0).get(i));
     }
     this.p_out.println("];");
+    this.p_out2.println("];");
     // imprimo las longitudes de las colas
     for (int i = Programa.DEPART_R; i <= Programa.CANT_EVENTS; i++) {
       this.p_out.println("x_" + i + " = [");
-      for (int j = 0; j < this.vectores.get(i).size(); j++) {
-        this.p_out.println(this.vectores.get(i).get(j));
+      this.p_out2.println("x_" + i + " = [");
+      for (int j = 0; j < this.vector_cola.get(i).size(); j++) {
+        this.p_out.println(this.vector_cola.get(i).get(j));
+        this.p_out2.println(this.vector_status.get(i).get(j));
       }
       this.p_out.println("];");
+      this.p_out2.println("];");
     }
     this.p_out.println("hold  on");
+    this.p_out2.println("hold  on");
     this.p_out
-        .println("plot(t,x_2, t, x_3 ,t, x_4,t, x_5 ,t, x_6,t, x_7, t, x_8,t,x_9);");
+        .println("plot(t,x_2, t, x_3 ,t, x_4,t, x_5 ,t, x_6,t, x_7, t, x_8,t,x_9,t, x_10);");
     this.p_out
-        .println("legend('Recepcion', 'E1','E3','OFT','PSF','E2','C1','C2');");
+        .println("legend('Recepcion', 'E1','E3','OFT','PSF','E2','C1','C2', 'C3');");
     this.p_out.flush();
+    
+    this.p_out2
+      .println("plot(t,x_2, t, x_3 ,t, x_4,t, x_5 ,t, x_6,t, x_7, t, x_8,t,x_9,t, x_10);");
+    this.p_out2
+      .println("legend('Recepcion', 'E1','E3','OFT','PSF','E2','C1','C2', 'C3');");
+    this.p_out2.flush();
+    
   }
 
   private void depart_oft() throws Exception {
@@ -166,7 +195,7 @@ public class Programa {
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
     /* La cola no esta vacia. decrementa el numero de clientes en cola. */
     cliente = srv.remove();
-    System.out.println("[" + cliente.getId() + "] depart_oft:" + this.time);
+   // System.out.println("[" + cliente.getId() + "] depart_oft:" + this.time);
     /* Chequea si la cola esta vacia */
     if (srv.size() == 0) {
       /* La cola esta vacia entonces, pone el servidor en libre */
@@ -197,6 +226,7 @@ public class Programa {
   }
 
   private void arrive_e2(Cliente cliente) throws Exception {
+    System.out.println("["+cliente.toString()+"] arrive_e2: "+this.time);
     Server srv = servers.get(Programa.DEPART_E2);
     srv.add(cliente);
     if (srv.status != Server.BUSY) {
@@ -206,7 +236,7 @@ public class Programa {
 
       time_next_event.set(Programa.DEPART_E2, timeInServer);
     }
-    System.out.println("[" + cliente.getId() + "] arrive_e2:" + this.time);
+    //System.out.println("[" + cliente.getId() + "] arrive_e2:" + this.time);
     servers.set(Programa.DEPART_E2, srv);
   }
 
@@ -220,7 +250,7 @@ public class Programa {
       double timeInServer = srv.timeInServer(time);
       time_next_event.set(Programa.DEPART_PSF, timeInServer);
     }
-    System.out.println("[" + cliente.getId() + "] arrive_psf:" + this.time);
+   // System.out.println("[" + cliente.getId() + "] arrive_psf:" + this.time);
     servers.set(Programa.DEPART_PSF, srv);
   }
 
@@ -238,7 +268,7 @@ public class Programa {
     }
     srv.add(cliente);
     servers.set(Programa.DEPART_E1, srv);
-    System.out.println("[" + cliente.getId() + "] arrive_e1:" + this.time);
+   // System.out.println("[" + cliente.getId() + "] arrive_e1:" + this.time);
   }
 
   private void depart_c(int cola) throws Exception {
@@ -264,7 +294,7 @@ public class Programa {
       /* programa la partida */
       time_next_event.set(cola, srv.timeInServer(time));
     }
-    System.out.println("[" + cliente.getId() + "] depart_c"+ cola+ ":" + this.time);
+  //  System.out.println("[" + cliente.getId() + "] depart_c"+ cola+ ":" + this.time);
     servers.set(cola, srv);
     cliente.Pay();
     arrive_e2(cliente);
@@ -272,9 +302,11 @@ public class Programa {
   }
 
   private void depart_e3() throws Exception {
+    
     Server srv = servers.get(Programa.DEPART_E3);
     Cliente cliente = null;
     cliente = srv.remove();
+    System.out.println("["+cliente.toString()+"] depart_e3: "+this.time);
     if (srv.size() == 0) {
       srv.status = Server.IDLE;
       this.time_next_event.set(Programa.DEPART_E3, 1.0e+30);
@@ -282,21 +314,29 @@ public class Programa {
       Cliente c = srv.q.get(0);
       int index = 0;
       boolean finish = false;
+      
       // calculo el que primero termina de llenar el form
       for (int i = 1; i < srv.size() && !finish; i++) {
-        if (c.getTimeFinishForm() < this.time) {
-          finish = true;
-          index = i;
-        } else {
-          if (c.getTimeFinishForm() < srv.q.get(i).getTimeFinishForm()) {
+          //calcula quien es el que menos va a tardar en llenar el form
+          if (c.getTimeFinishForm() > srv.q.get(i).getTimeFinishForm()) {
             c = srv.q.get(i);
             index = i;
           }
+          if (c.getTimeFinishForm() < this.time) {
+            finish = true;
+            index = i;
+          }  
+      }
+      System.out.println("SWAP: "+index);
+      // c es el cliente [index] que antes va a terminar der llenar el form
+      if(index != 0){
+        c = srv.q.remove(index);
+        srv.q.add(0, c);
+      }else{
+        if (c.getTimeFinishForm() < this.time) {
+          finish = true;
         }
       }
-      // c es el cliente [index] que antes va a terminar der llenar el form
-      c = srv.q.remove(index);
-      srv.q.add(0, c);
       // si ya terminó el form, lo atiendo
       if (finish) {
         this.time_next_event.set(Programa.DEPART_E3, srv.timeInServer(time));
@@ -324,7 +364,7 @@ public class Programa {
       double timeInServer = srv.timeInServer(time);
       time_next_event.set(Programa.DEPART_OFT, timeInServer);
     }
-    System.out.println("[" + cliente.getId() + "] arrive_oft:" + this.time);
+   // System.out.println("[" + cliente.getId() + "] arrive_oft:" + this.time);
     servers.set(Programa.DEPART_OFT, srv);
   }
 
@@ -350,7 +390,7 @@ public class Programa {
       /* programa la partida */
       time_next_event.set(Programa.DEPART_PSF, srv.timeInServer(time));
     }
-    System.out.println("[" + cliente.getId() + "] depart_psf:" + this.time);
+   // System.out.println("[" + cliente.getId() + "] depart_psf:" + this.time);
     servers.set(Programa.DEPART_PSF, srv);
     if (cliente.isFail_psf()) {
       this.arrive_e1(cliente);
@@ -366,7 +406,7 @@ public class Programa {
     /* SUPONGO QUE SI EL SERVIDOR ESTA ATENDIENDO, LA COLA TIENE UN CLIENTE */
     /* La cola no esta vacia. decrementa el numero de clientes en cola. */
     cliente = srv.remove();
-
+    System.out.println("["+cliente.toString()+"] depart_e2: "+this.time);
     /* Chequea si la cola esta vacia */
     if (srv.size() == 0) {
       /* La cola esta vacia entonces, pone el servidor en libre */
@@ -382,7 +422,7 @@ public class Programa {
       /* programa la partida */
       time_next_event.set(Programa.DEPART_E2, srv.timeInServer(time));
     }
-    System.out.println("[" + cliente.getId() + "] depart_e2:" + this.time);
+    //System.out.println("[" + cliente.getId() + "] depart_e2:" + this.time);
     servers.set(Programa.DEPART_E2, srv);
     if (cliente.isPaid())
       this.exit(cliente);
@@ -411,12 +451,12 @@ public class Programa {
       double timeInServer = srv.timeInServer(time);
       time_next_event.set(cola, timeInServer);
     }
-    System.out.println("[" + cliente.getId() + "] arrive_c"+ cola+ ":" + this.time);
+    //System.out.println("[" + cliente.getId() + "] arrive_c"+ cola+ ":" + this.time);
     servers.set(cola, srv);
   }
 
   private void exit(Cliente cliente) {
-    System.out.println("[" + cliente.getId() + "] exit:" + this.time);
+   // System.out.println("[" + cliente.getId() + "] exit:" + this.time);
     // TODO Auto-generated method stub
 
   }
@@ -445,7 +485,7 @@ public class Programa {
       time_next_event.set(Programa.DEPART_E1, srv.timeInServer(time));
     }
     servers.set(Programa.DEPART_E1, srv);
-    System.out.println("[" + cliente.getId() + "] depart_e1:" + this.time);
+    //System.out.println("[" + cliente.getId() + "] depart_e1:" + this.time);
     if (!cliente.isFail_oft() && !cliente.isFail_psf())
       this.arrive_e3(cliente);
     else
@@ -453,7 +493,7 @@ public class Programa {
   }
 
   private void arrive_e3(Cliente cliente) throws Exception {
-
+    System.out.println("["+cliente.toString()+"] arrive_e3: "+this.time);
     Server srv = servers.get(Programa.DEPART_E3);
     if (srv == null) {
       throw new Exception("srv es null");
@@ -464,28 +504,21 @@ public class Programa {
     srv.add(cliente);
 
     if (srv.status != Server.BUSY) {
-
+      
       srv.status = Server.BUSY;
-      this.time_next_event.set(Programa.DEPART_E3, srv.timeInServer(cliente
-          .getTimeFinishForm()));
+      double timeInServer = 0.0;
+      if(this.time < cliente.getTimeFinishForm()){
+        timeInServer = srv.timeInServer(cliente.getTimeFinishForm());
+      }else{
+        timeInServer = srv.timeInServer(this.time);
+      }
+      
+      System.out.println("LO ATIENDE: "+ timeInServer);
+      this.time_next_event.set(Programa.DEPART_E3, timeInServer);
 
     }
-    // if (srv.status != Server.BUSY) {
-    // /* si ya completó el formulario: */
-    // if (cliente.getTime_receive_form() + cliente.getFormTime() < time) {
-    // srv.status = Server.BUSY;
-    // /* Programa una partida (servicio completado) */
-    // double timeInServer = srv.timeInServer(time);
-    // time_next_event.set(Programa.DEPART_E3, timeInServer);
-    // }else{
-    // time_next_event.set(Programa.DEPART_E3, cliente.getTime_receive_form()
-    // + cliente.getFormTime());
-    // }
-    //      
-    // }
-    //    
-    //    
-    System.out.println("[" + cliente.getId() + "] arrive_e3!:" + this.time);
+
+   // System.out.println("[" + cliente.getId() + "] arrive_e3!:" + this.time);
     servers.set(Programa.DEPART_E3, srv);
   }
 
@@ -560,7 +593,7 @@ public class Programa {
     /* Programa el proximo arribo */
     Statistics s = new Statistics();
     /* si son las 13 hs no se deja entrar a nadie mas */
-    if (this.time >= Programa.ENDS   ) {// TODO:
+    if (this.time >= Programa.ENDS   /*||  this.num_custs_delayed == 10*/) {// TODO:
       // DEBUG
       // las 13
       // horas
@@ -583,7 +616,7 @@ public class Programa {
     }
     servers.set(Programa.DEPART_R, srv);
     this.num_custs_delayed++; // cantidad de clientes que vinieron
-    System.out.println("[" + cliente.getId() + "] arrive_r:" + this.time);
+   // System.out.println("[" + cliente.getId() + "] arrive_r:" + this.time);
   }
 
   void depart_r() throws Exception {
@@ -610,7 +643,7 @@ public class Programa {
       time_next_event.set(Programa.DEPART_R, srv.timeInServer(time));
     }
     servers.set(Programa.DEPART_R, srv);
-    System.out.println("[" + cliente.getId() + "] depart_r:" + this.time);
+    //System.out.println("[" + cliente.getId() + "] depart_r:" + this.time);
     /* si vino a buscar un formulario, se va; sino lo encolo en E1 */
     if (cliente.isR())
       this.arrive_e1(cliente);
@@ -648,7 +681,7 @@ public class Programa {
 
   boolean ends() {
     if (this.FLAG_ENDS == true) {
-      System.out.println("flaggg!!!");
+     // System.out.println("flaggg!!!");
       return true;
     }
     int cant = 0;

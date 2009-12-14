@@ -32,7 +32,7 @@ public class Cliente {
   }
   
   public String toString(){
-   return "{"+this.id+", "+ this.time_receive_form+ ", " +this.form_time+ "}";
+   return "{"+this.id+", rc:"+ this.time_receive_form+ ",fin: " +this.getTimeFinishForm()+ "}";
   }
   
   
