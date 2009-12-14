@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=latex 2009.12.14)  14 DEC 2009 02:27
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=latex 2009.12.14)  14 DEC 2009 03:32
 entering extended mode
 **informe.tex
 (informe.tex
@@ -87,19 +87,8 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 ] [2]
 File: histograma_e3.eps Graphic file (type eps)
  <histograma_e3.eps> [3]
-
-! LaTeX Error: Cannot determine size of graphic in automata.jpg (no BoundingBox
-).
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.116 \includegraphics[width=1cm]{automata.jpg}
-                                               
-? 
-File: automata.jpg Graphic file (type eps)
-<automata.jpg>
+File: automata.eps Graphic file (type eps)
+ <automata.eps>
 Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
@@ -141,24 +130,27 @@ Overfull \hbox (2.2529pt too wide) in paragraph at lines 177--177
 s
  []
 
+[5]
+Missing character: There is no ñ in font cmr10!
+Missing character: There is no – in font cmr10!
 
-Overfull \hbox (7.84627pt too wide) in paragraph at lines 183--183
+Overfull \hbox (7.84627pt too wide) in paragraph at lines 205--205
 \OT1/cmr/bx/n/14.4 el tiempo medio por cliente en el sis-tema, suponiendo
  []
 
 
-Overfull \hbox (1.5912pt too wide) in paragraph at lines 189--189
+Overfull \hbox (1.5912pt too wide) in paragraph at lines 211--211
 []\OT1/cmr/bx/n/14.4 g) Com-putar la prob-a-bil-i-dad de que el tiempo medio
  []
 
-[5] [6] (informe.aux) ) 
+[6] [7] (informe.aux) ) 
 Here is how much of TeX's memory you used:
- 589 strings out of 95305
- 6639 string characters out of 1183096
+ 587 strings out of 95305
+ 6622 string characters out of 1183096
  56587 words of memory out of 1500000
- 3836 multiletter control sequences out of 110000
+ 3835 multiletter control sequences out of 110000
  8811 words of font info for 31 fonts, out of 1200000 for 2000
  14 hyphenation exceptions out of 8191
- 25i,7n,19p,985b,294s stack positions out of 5000i,500n,10000p,200000b,5000s
+ 25i,7n,19p,280b,288s stack positions out of 5000i,500n,10000p,200000b,5000s
 
-Output written on informe.dvi (6 pages, 12632 bytes).
+Output written on informe.dvi (7 pages, 14640 bytes).

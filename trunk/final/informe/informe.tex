@@ -107,13 +107,13 @@ Estimamos la media y la varianza de la distribuci\'on resultando:
 \end{itemize}
 
 El valor del estad\'istico resulta $\chi_{0}^2 = 4,7492$, y como el valor
-cr\'itico es $\chi_{5,0.05}^2 = 11.07$ se rechaza $H_1$ en favor de $H_0$.
+cr\'itico es $\chi_{5,0.05}^2 = 11.07$ rechazamos $H_1$ en favor de $H_0$.
 
 \section*{b) Indicar las variables de estado del sistema y el espacio de estado.}
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=1cm]{automata.jpg}
+\includegraphics[width=6cm]{automata}
 
 \caption{Modelo del sistema de renovaci\'on del registro}
 	\end{center}
@@ -175,6 +175,28 @@ $c1_{e2}$, $c2_{e2}$ y $c3_{e2}$ son las partidas desde $C_1$, $C_2$ y $C_3$ hac
 \section*{d)      Realizar una simulaci\'on indicando las condiciones iniciales, el tipo de generador usado y
 la semilla. Mostrar las g\'aficas de las colas en cada estaci\'on.
 }
+
+Para generar n\'umeros pseudoaleatorios, usamos el generador de L'Ecuyer con semillas 50 y 23 (recordando
+que lo importante es que las semillas no sean cero).  El generador de L'Ecuyer genera una secuencia de n\'umeros
+pseudoaleatorios con distribuci\'on uniforme entre 0 y 1.  A partir de esa secuencia, generamos secuencias de n\'umeros pseudoaleatorios
+con distribuci\'on exponencial. Para generar una secuencia de n\'umeros pseudoaleatorios con distribuci\'on normal usamos
+el generador de Box-Muller (usando el generador de L'Ecuyer para generar la secuencia que tiene distribuci\'on uniforme).
+
+Para hacer la simulaci\'on consideramos que el porcentaje de personas con m\'as de 70 a\~nos es de 7\%.   Esto hace
+que la probabilidad de que un cliente haga el examen de aptitud psico–f\'isica pase de un 10\% a un 17\%.  Consideramos tambi\'en
+que un 20\% de los clientes vienen solamente a buscar el instructivo para hacer el tr\'amite y se van, y solamente el 80\% hace el tr\'amite.
+Adem\'as suponemos que un cliente tarda entre 0.5 y 2 minutos en llenar el formulario que le entregan en la estaci\'on $E1$, 
+y lo simulamos con una variable pseudo-aleatoria uniformemente distribuida.
+Para las cajas $C_1$, $C_2$ y $C_3$, asumimos que los clientes se encolan en la caja que tenga menos personas, siempre optando primero por
+$C_1$, luego por $C_2$ y como \'ultima opci\'on por $C_3$.  
+
+Con estas consideraciones, realizamos una simulaci\'on que termina a las 16:56 hs y atiende a 128 clientes.
+
+
+
+
+
+
 
 \section*{e)     Realizar 10 simulaciones independientes. Hallar el tiempo medio por cliente en el sistema,
 suponiendo que las tres cajas C1, C2 y C3 est\'an operativas mostrar los resultados convenien-
